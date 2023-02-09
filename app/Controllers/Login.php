@@ -12,7 +12,6 @@ class Dashboard extends BaseController
 {
 
     protected $pegawaimodel;
-
     protected $unitmodel;
     protected $vendormodel;
 
