@@ -273,6 +273,12 @@ class Izin extends BaseController
                         //     ->resize(200, 100, true, 'height')
                         //     ->save(FCPATH . '/assets/upload/images/izin/' . $filerandomname);
 
+                        if ($izin == '') {
+                            $verified = 'a';
+                        } else {
+                            $verified = 'b';
+                        }
+
                         $data = [
                             'pegawai_nip' => $idkar,
                             'pegawai_nama' => $nama['nama'],
@@ -285,7 +291,7 @@ class Izin extends BaseController
                             'user_id' => user()->id,
                             // 'file_image' => $filerandomname,
                             'ket' => 'n',
-                            'verified' => 'b'
+                            'verified' => $verified
                         ];
 
                         if ($data) {
