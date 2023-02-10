@@ -423,9 +423,13 @@ class Izin extends BaseController
                 $row[] = $ls->createdat;
                 $dataproses = $ls->verified;
                 if ($dataproses == 'a') {
-                    $row[] = 'Diterima';
+                    if ($ls->izin == "") {
+                        $row[] = "Diterima <a class=\"btn btn-danger btn-delete btn-sm\" data-deleteizin=\"$ls->idtblizin\">Delete</a>";
+                    } else {
+                        $row[] = 'Diterima';
+                    }
                 } elseif ($dataproses == 'b') {
-                    $row[] = 'Proses Pengajuan';
+                    $row[] = "Proses Pengajuan <a class=\"btn btn-danger btn-delete btn-sm\" data-deleteizin=\"$ls->idtblizin\">Delete</a>";
                 } else {
                     $row[] = 'Ditolak';
                 }

@@ -152,6 +152,34 @@ class RekapAll_model extends Model
             ->get()->getResultArray();
     }
 
+    public function TS2($tanggal)
+    {
+        $grupkerja = ['GK01', 'GK02', 'GK03'];
+        return $this->select("pegawai.`pegawai_pin` AS pin, pegawai.`pegawai_nama` AS nama, pegawai.`pegawai_nip`, TIMEDIFF(TIME('14:51:00'),TIME(att_log.`scan_date`)) AS selisih")
+            ->join('tb_jadwal', 'pegawai.`grup_jam_kerja`=tb_jadwal.`grup`')
+            ->join("pembagian2", "pegawai.`pembagian2_id`=pembagian2.`pembagian2_id`", "left")
+            ->join('att_log', 'pegawai.`pegawai_pin`=att_log.`pin`')
+            ->whereNotIn('pegawai.`grup_jam_kerja`', $grupkerja)
+            ->like("pembagian2.`pembagian2_nama`", $tanggal['divisi'])
+            ->where('pegawai.`resign`', '0')
+            ->where("scan_date BETWEEN '" . $tanggal['tanggal'] . " 14:51:00' AND '" . $tanggal['tanggal'] . " 23:00:00'")
+            ->get()->getResultArray();
+    }
+
+    public function TS3($tanggal)
+    {
+        $grupkerja = ['GK01', 'GK02', 'GK03'];
+        return $this->select("pegawai.`pegawai_pin` AS pin, pegawai.`pegawai_nama` AS nama, pegawai.`pegawai_nip`, TIMEDIFF(TIME('22:51:00'),TIME(att_log.`scan_date`)) AS selisih")
+            ->join('tb_jadwal', 'pegawai.`grup_jam_kerja`=tb_jadwal.`grup`')
+            ->join("pembagian2", "pegawai.`pembagian2_id`=pembagian2.`pembagian2_id`", "left")
+            ->join('att_log', 'pegawai.`pegawai_pin`=att_log.`pin`')
+            ->whereNotIn('pegawai.`grup_jam_kerja`', $grupkerja)
+            ->like("pembagian2.`pembagian2_nama`", $tanggal['divisi'])
+            ->where('pegawai.`resign`', '0')
+            ->where("scan_date BETWEEN '" . $tanggal['tanggal'] . " 22:51:00' AND '" . $tanggal['tanggal'] . " 07:00:00'")
+            ->get()->getResultArray();
+    }
+
     public function DKPHarian($data)
     {
         return $this->db->query("SELECT pembagian2.`pembagian2_nama`, pembagian4.`pembagian4_nama`, COUNT(pembagian4.`pembagian4_nama`) AS dkp, ns1, sh1, sh2, sh3, sh0 FROM pegawai

@@ -91,6 +91,47 @@ $(document).ready(function() {
             "orderable": false,
         }],
     })
+    $('#logizin tbody').on('click', '.btn-delete', function(e) {
+        const idizin = $(this).data('deleteizin');
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "<?= site_url('admin/izin/delete') ?>",
+                    method: "post",
+                    data: {
+                        idizin: idizin
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.sukses) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            );
+                            $('#logizin').DataTable().ajax.reload();
+                        }
+                        $('input[name=csrf_test_name]').val(response
+                            .csrf_test_name);
+                    },
+                    error: function(xhr, ajaxOption, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" +
+                            thrownError);
+                    }
+                });
+
+            }
+        })
+    });
     $('#refresh').click(function(e) {
         $('#logizin').DataTable().ajax.reload()
     });
