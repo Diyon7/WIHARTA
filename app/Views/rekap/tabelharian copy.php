@@ -19,16 +19,32 @@ thead th {
     <table id="table-dkp" class="table table-striped tabel-dkp table-bordered">
         <thead>
             <tr>
-                <th class="column freeze">DIVISI</th>
-                <th class="column freeze">UNIT</th>
-                <th>DK</th>
-                <th>DSP</th>
-                <th>DKP</th>
-                <th>LIBUR</th>
-                <th>DILIBURKAN</th>
+                <th rowspan="2" class="column freeze">DIVISI</th>
+                <th rowspan="2" class="column freeze">UNIT</th>
+                <th rowspan="2">DK</th>
+                <th rowspan="2">DSP</th>
+                <th rowspan="2">DKP</th>
+                <th rowspan="2">LIBUR</th>
+                <th colspan="2">NS</th>
+                <th colspan="3">SHIFT 1</th>
+                <th colspan="3">SHIFT 2</th>
+                <th colspan="3">SHIFT 3</th>
+                <th colspan="3">GRAND TOTAL</th>
+            </tr>
+            <tr>
+                <th>M</th>
+                <th>TM</th>
                 <th>M</th>
                 <th>TM</th>
                 <th>DKP</th>
+                <th>M</th>
+                <th>TM</th>
+                <th>DKP</th>
+                <th>M</th>
+                <th>TM</th>
+                <th>DKP</th>
+                <th>M</th>
+                <th>TM</th>
                 <th>%</th>
             </tr>
         </thead>
@@ -53,16 +69,33 @@ thead th {
                 <td></td>
                 <?php $dkp2 = $dkp2 + $dkp; ?>
                 <td><?= $libur = $dkpharian[$dh]['sh0'] ?></td>
-                <td></td>
-                <td><?= $dkpshs = $dkpmasuk[$dh]['mk'] ?></td>
+                <td><?= $dkpmnssl = $dkpmasuk[$dh]['ns1'] ?></td>
+                <?php $dkpmnssl2 = $dkpmnssl2 + $dkpmnssl ?>
+                <td><?= $tmns1 = $dkpharian[$dh]['ns1'] - $dkpmasuk[$dh]['ns1'] ?></td>
+                <?php $tmns12 = $tmns12 + $tmns1; ?>
+                <td><?= $dkpshs = $dkpmasuk[$dh]['sh1'] ?></td>
                 <?php $dkpshs2 = $dkpshs2 + $dkpshs; ?>
-                <td><?= $tmsh1 = $dkpharian[$dh]['mk'] - $dkpmasuk[$dh]['mk'] ?></td>
-                <td style="font-weight: bold;"><?= $dkpharian[$dh]['mk'] ?></td>
+                <td><?= $tmsh1 = $dkpharian[$dh]['sh1'] - $dkpmasuk[$dh]['sh1'] ?></td>
+                <td style="font-weight: bold;"><?= $dkpharian[$dh]['sh1'] ?></td>
                 <?php $tmsh12 = $tmsh12 + $tmsh1; ?>
-                <?php $tms =   $tmsh1 ?>
+                <td><?= $dkpshd = $dkpmasuk[$dh]['sh2'] ?></td>
+                <?php $dkpshd2 = $dkpshd2 + $dkpshd ?>
+                <td><?= $tmsh2 = $dkpharian[$dh]['sh2'] - $dkpmasuk[$dh]['sh2'] ?></td>
+                <td style="font-weight: bold;"><?= $dkpharian[$dh]['sh2']  ?></td>
+                <?php $tmsh22 = $tmsh22 + $tmsh2; ?>
+                <td><?= $dkpsht = $dkpmasuk[$dh]['sh3'] ?></td>
+                <?php $dkpsht2 = $dkpsht2 + $dkpsht ?>
+                <td><?= $tmsh3 = $dkpharian[$dh]['sh3'] - $dkpmasuk[$dh]['sh3'] ?></td>
+                <td style="font-weight: bold;"><?= $dkpharian[$dh]['sh3']  ?></td>
+                <?php $tmsh32 = $tmsh32 + $tmsh3; ?>
+                <td><?= $mnsa = $dkpmnssl + $dkpshs + $dkpshd + $dkpsht ?></td>
+                <?php $mnsa2 = $mnsa2 + $mnsa ?>
+                <td><?= $tmnsa = $tmns1 +  $tmsh1 + $tmsh2 + $tmsh3 ?></td>
+                <?php $tmnsa2 = $tmnsa2 + $tmnsa  ?>
+                <?php $tms = $tmns1 +  $tmsh1 + $tmsh2 + $tmsh3 ?>
                 <?php $dl = $dkp - $libur ?>
                 <?php if ($tms != "0" && $dl != "0") { ?>
-                <td><?= ceil((($tmsh1) / ($dkp - $libur)) * 100) ?>%</td>
+                <td><?= ceil((($tmns1 +  $tmsh1 + $tmsh2 + $tmsh3) / ($dkp - $libur)) * 100) ?>%</td>
                 <?php } else { ?>
                 <td>0%</td>
                 <?php } ?>
@@ -75,8 +108,16 @@ thead th {
                 <td></td>
                 <td></td>
                 <td></td>
+                <td><?= $dkpmnssl2 ?></td>
+                <td><?= $tmns12 ?></td>
                 <td><?= $dkpshs2 ?></td>
                 <td><?= $tmsh12 ?></td>
+                <td></td>
+                <td><?= $dkpshd2 ?></td>
+                <td><?= $tmsh22 ?></td>
+                <td></td>
+                <td><?= $dkpsht2 ?></td>
+                <td><?= $tmsh32 ?></td>
                 <td></td>
                 <td><?= $mnsa2 ?></td>
                 <td><?= $tmnsa2 ?></td>
