@@ -11,6 +11,7 @@ use App\Models\Unit_model;
 use App\Models\Subunit_model;
 use App\Models\Vendor_model;
 use App\Models\Group_model;
+use App\Models\Diliburkan_model;
 use Config\Services;
 use App\Models\Logkaryawan_model;
 
@@ -22,6 +23,7 @@ class Karyawan extends BaseController
     protected $pendidikan;
     protected $divisi;
     protected $unitmodel;
+    protected $diliburkan;
     protected $group;
     protected $subunit;
     protected $vendormodel;
@@ -34,6 +36,7 @@ class Karyawan extends BaseController
         $this->pendidikan = new Pendidikan_model();
         $this->divisi = new Divisi_model();
         $this->unitmodel = new Unit_model();
+        $this->diliburkan = new Diliburkan_model();
         $this->subunit = new Subunit_model();
         $this->vendormodel = new Vendor_model();
     }
@@ -47,6 +50,21 @@ class Karyawan extends BaseController
         ];
 
         return view('karyawan/index', $data);
+    }
+
+    public function Diliburkan()
+    {
+
+        $unit = $this->unitmodel->findAll();
+
+        $data = [
+            'title' => 'WKA INFORMATION SYSTEM',
+            'devisi' => 'Karyawan',
+            'unit' => $unit,
+            'halaman' => 'Karyawan',
+        ];
+
+        return view('karyawan/diliburkan', $data);
     }
 
     public function Add()
@@ -318,6 +336,79 @@ class Karyawan extends BaseController
                 }
                 echo json_encode($msg);
             }
+        }
+    }
+
+    public function Adddiliburkan()
+    {
+        if ($this->request->isAJAX()) {
+            if ($this->request->getMethod() == 'post') {
+
+                $rules = [
+                    'tgl' => [
+                        'label'  => 'tgl',
+                        'rules'  => 'required',
+                        'errors' => [
+                            'required' => 'Tanggal harus dipilih !',
+                        ],
+                    ],
+                ];
+
+                if ($this->validate($rules)) {
+                    $tgl = htmlspecialchars($this->request->getPost('tgl'));
+                    $unit = $this->request->getPost('unit');
+                    $jorang = $this->request->getPost('jorang');
+
+                    $pegawai = [
+                        'tgl' => $tgl,
+                        'pembagian4_id' => $unit,
+                        'jumlah_orang' => $jorang
+                    ];
+
+                    $save = $this->diliburkan->insert($pegawai);
+
+                    if ($save) {
+                        $msg = [
+                            'success' => 'berhasil'
+                        ];
+                    } else {
+                        $msg = [
+                            'error' => 'data error'
+                        ];
+                    }
+                } else {
+                    $msg = [
+                        'error' => $this->validator->listErrors()
+                    ];
+                }
+                echo json_encode($msg);
+            }
+        }
+    }
+
+    public function Datatablesdiliburkan()
+    {
+        $request = Services::request();
+        $diliburkan = new Diliburkan_model($request);
+        if ($request->getMethod(true) == "POST") {
+            $lists = $diliburkan->get_datatablesdiliburkan();
+            $data = [];
+            $no = $request->getPost("start");
+            foreach ($lists as $dkaryawan) {
+                $no++;
+                $row = [];
+                $row[] = $dkaryawan->tgl;
+                $row[] = $dkaryawan->unit;
+                $row[] = $dkaryawan->jumlah_orang;
+                $data[] = $row;
+            }
+            $output = [
+                "draw" => $request->getPost('draw'),
+                "recordsTotal" => $diliburkan->count_alldiliburkan(),
+                "recordsFiltered" => $diliburkan->count_filtereddiliburkan(),
+                "data" => $data
+            ];
+            echo json_encode($output);
         }
     }
 

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/jqvmap/jqvmap.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/summernote/summernote-bs4.min.css">
     <script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -27,10 +28,6 @@
     <script src="<?= base_url() ?>/assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?= base_url() ?>/assets/plugins/sweetalert2/sweetalert2.all.min.js"></script>
     <script src="<?= base_url() ?>/assets/plugins/select2/js/select2.min.js"></script>
-    <script src="<?= base_url() ?>/assets/plugins/daterangepicker/daterangepicker.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script src="<?= base_url() ?>/assets/plugins/jszip/jszip.min.js"></script>
     <script src="<?= base_url() ?>/assets/plugins/pdfmake/pdfmake.min.js"></script>
     <script src="<?= base_url() ?>/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -258,14 +255,14 @@
                                         <p>KARYAWAN</p>
                                     </a>
                                 </li>
-                                <?php endif ?>
-                                <!-- <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/diliburkan" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>VENDOR</p>
+                                        <p>DILIBURKAN</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <?php endif ?>
+                                <!-- <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>TAGIHAN HARI KERJA</p>
@@ -375,11 +372,13 @@
     <script src="<?= base_url() ?>/assets/plugins/sparklines/sparkline.js"></script>
     <!-- JQVMap -->
     <script src="<?= base_url() ?>/assets/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="<?= base_url() ?>/assets/plugins/daterangepicker/daterangepicker.js"></script>
     <script src="<?= base_url() ?>/assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
     <!-- jQuery Knob Chart -->
     <script src="<?= base_url() ?>/assets/plugins/jquery-knob/jquery.knob.min.js"></script>
     <!-- daterangepicker -->
     <script src="<?= base_url() ?>/assets/plugins/moment/moment.min.js"></script>
+    <script src="<?= base_url() ?>/assets/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Summernote -->
     <script src="<?= base_url() ?>/assets/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- overlayScrollbars -->

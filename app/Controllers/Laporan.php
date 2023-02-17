@@ -81,6 +81,7 @@ class Laporan extends BaseController
 
             $vendor = $this->request->getPost('vendor');
             $bulan2 = $this->request->getPost('tgl');
+
             $tgl = date('Y-m-26', strtotime(date($bulan2) . '- 1 month'));
             $datapegawaiinput = [
                 'vendor' => $vendor,
@@ -125,21 +126,21 @@ class Laporan extends BaseController
                     'tbls' => $tbls
                 ];
                 $tbldataabsen[] = $this->laporanmodel->Dataabsen($form);
-                $data = [
-                    'vendor' => $vendorall,
-                    'bulan' => $bulan,
-                    'tagihanawal' => $tagihanawal,
-                    'tagihanakhir' => $tagihanakhir,
-                    'tglt' => $tglt,
-                    'jkm' => $jkm,
-                    'tblalllaporan' => $tblalllaporan,
-                    'tbldataabsen' => $tbldataabsen
-                ];
-
-                $tampiltabel = [
-                    'sukses' => view('laporan/tabelbulanan', $data)
-                ];
             }
+            $data = [
+                'vendor' => $vendorall,
+                'bulan' => $bulan,
+                'tagihanawal' => $tagihanawal,
+                'tagihanakhir' => $tagihanakhir,
+                'tglt' => $tglt,
+                'jkm' => $jkm,
+                'tblalllaporan' => $tblalllaporan,
+                'tbldataabsen' => $tbldataabsen
+            ];
+
+            $tampiltabel = [
+                'sukses' => view('laporan/tabelbulanan', $data)
+            ];
 
             echo json_encode($tampiltabel);
         }

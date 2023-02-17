@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Diliburkan_model;
 use App\Controllers\BaseController;
 use App\Models\Pegawai_Model;
 use App\Models\Jabatan_model;
@@ -16,6 +17,7 @@ use Config\Services;
 class Rekap extends BaseController
 {
 
+    protected $diliburkan;
     protected $pegawaimodel;
     protected $jabatan;
     protected $rekapall;
@@ -26,6 +28,7 @@ class Rekap extends BaseController
 
     public function __construct()
     {
+        $this->diliburkan = new Diliburkan_model();
         $this->pegawaimodel = new Pegawai_Model();
         $this->jabatan = new Jabatan_model();
         $this->divisi = new Divisi_model();
@@ -100,6 +103,7 @@ class Rekap extends BaseController
 
 
 
+            $rdiliburkan = $this->diliburkan->where('tgl', $data['tanggal'])->findAll();
             $dkpharian = $this->rekapall->DKPHarian($data);
             $dkpmasuk = $this->rekapall->DKPMasuk($data);
 
@@ -113,6 +117,7 @@ class Rekap extends BaseController
             $tnsd = $this->rekapall->TerlambatNS2($data);
 
             $data = [
+                'rdiliburkan' => $rdiliburkan,
                 'dkpharian' => $dkpharian,
                 'dkpmasuk' => $dkpmasuk,
                 'stm' => $stm,

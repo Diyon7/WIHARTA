@@ -182,7 +182,7 @@ class RekapAll_model extends Model
 
     public function DKPHarian($data)
     {
-        return $this->db->query("SELECT pembagian2.`pembagian2_nama`, pembagian4.`pembagian4_nama`, COUNT(pembagian4.`pembagian4_nama`) AS dkp, mk, sh0 FROM pegawai
+        return $this->db->query("SELECT pembagian2.`pembagian2_nama`, pembagian4.`pembagian4_nama`, pembagian4.`pembagian4_id`, COUNT(pembagian4.`pembagian4_nama`) AS dkp, mk, sh0 FROM pegawai
         JOIN pembagian4 ON pembagian4.`pembagian4_id`=pegawai.`pembagian4_id`
         LEFT JOIN pembagian2 ON pegawai.`pembagian2_id`=pembagian2.`pembagian2_id`
         LEFT JOIN tb_jadwal ON tb_jadwal.`grupass`=pegawai.`grup_jam_kerja`

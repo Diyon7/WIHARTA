@@ -45,19 +45,28 @@ thead th {
         <?php $tmnsa2 = '0'; ?>
         <tbody>
             <?php foreach ($dkpharian as $dh => $value) : ?>
+            <?php $jp = 0; ?>
             <tr>
                 <td class="column"><?= $dkpharian[$dh]['pembagian2_nama'] ?></td>
                 <td class="column"><?= $dkpharian[$dh]['pembagian4_nama'] ?></td>
                 <td><?= $dkp = $dkpharian[$dh]['dkp'] ?></td>
+                <?php $pembagian4dkpharian = $dkpharian[$dh]['pembagian4_id'] ?>
                 <td></td>
                 <td></td>
                 <?php $dkp2 = $dkp2 + $dkp; ?>
                 <td><?= $libur = $dkpharian[$dh]['sh0'] ?></td>
-                <td></td>
+                <?php foreach ($rdiliburkan as $rdlk) : ?>
+                <?php if ($dkpharian[$dh]['pembagian4_id'] == $rdlk['pembagian4_id']) { ?>
+                <?php $jp = $rdlk['jumlah_orang']; ?>
+                <?php } else {
+                        } ?>
+                <?php endforeach ?>
+                <td><?= $jp ?></td>
                 <td><?= $dkpshs = $dkpmasuk[$dh]['mk'] ?></td>
                 <?php $dkpshs2 = $dkpshs2 + $dkpshs; ?>
-                <td><?= $tmsh1 = $dkpharian[$dh]['mk'] - $dkpmasuk[$dh]['mk'] ?></td>
-                <td style="font-weight: bold;"><?= $dkpharian[$dh]['mk'] ?></td>
+                <?php $tmsh1 = ($dkpharian[$dh]['mk'] - $dkpmasuk[$dh]['mk']) - $jp ?>
+                <td><?= $jpn = $tmsh1  ?></td>
+                <td style="font-weight: bold;"><?= $dkpshs + $jpn ?></td>
                 <?php $tmsh12 = $tmsh12 + $tmsh1; ?>
                 <?php $tms =   $tmsh1 ?>
                 <?php $dl = $dkp - $libur ?>

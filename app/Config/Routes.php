@@ -88,6 +88,9 @@ $routes->group('admin/', ['filter' => 'permission:datakaryawan'], function ($rou
     $routes->add('karyawan/edit', 'Karyawan::Edit');
     $routes->add('karyawan/save', 'Karyawan::Save');
     $routes->add('karyawan/keluar', 'Karyawan::Keluar');
+    $routes->add('diliburkan', 'Karyawan::Diliburkan');
+    $routes->add('adddiliburkan', 'Karyawan::Adddiliburkan');
+    $routes->add('diliburkan/datatables', 'Karyawan::Datatablesdiliburkan');
 });
 
 
