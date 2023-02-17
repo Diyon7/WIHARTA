@@ -28,6 +28,7 @@ thead th {
                 <th>DILIBURKAN</th>
                 <th>M</th>
                 <th>TM</th>
+                <th>TA</th>
                 <th>DKP</th>
                 <th>%</th>
             </tr>
@@ -64,8 +65,9 @@ thead th {
                 <td><?= $jp ?></td>
                 <td><?= $dkpshs = $dkpmasuk[$dh]['mk'] ?></td>
                 <?php $dkpshs2 = $dkpshs2 + $dkpshs; ?>
-                <?php $tmsh1 = ($dkpharian[$dh]['mk'] - $dkpmasuk[$dh]['mk']) - $jp ?>
+                <?php $tmsh1 = (($dkpharian[$dh]['mk'] - $dkpmasuk[$dh]['mk']) + $libur) - $jp ?>
                 <td><?= $jpn = $tmsh1  ?></td>
+                <td><?= $dkpharian[$dh]['mk'] - $dkpmasuk[$dh['mk']] ?></td>
                 <td style="font-weight: bold;"><?= $dkpshs + $jpn ?></td>
                 <?php $tmsh12 = $tmsh12 + $tmsh1; ?>
                 <?php $tms =   $tmsh1 ?>
