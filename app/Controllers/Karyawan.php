@@ -386,6 +386,28 @@ class Karyawan extends BaseController
         }
     }
 
+    public function Deletediliburkan()
+    {
+        helper('form');
+        if ($this->request->isAJAX()) {
+
+            $iddiliburkan = htmlspecialchars($this->request->getPost('iddiliburkan'));
+
+            if ($iddiliburkan) {
+                $delete = $this->diliburkan->delete($iddiliburkan);
+            }
+
+            if ($delete) {
+                $msg = [
+                    'sukses' => 'berhasil'
+                ];
+            }
+
+
+            echo json_encode($msg);
+        }
+    }
+
     public function Datatablesdiliburkan()
     {
         $request = Services::request();
@@ -400,6 +422,7 @@ class Karyawan extends BaseController
                 $row[] = $dkaryawan->tgl;
                 $row[] = $dkaryawan->unit;
                 $row[] = $dkaryawan->jumlah_orang;
+                $row[] = "<a class=\"btn btn-danger btn-delete btn-sm\" data-deletediliburkan=\"$dkaryawan->iddiliburkan\">Delete</a>";
                 $data[] = $row;
             }
             $output = [

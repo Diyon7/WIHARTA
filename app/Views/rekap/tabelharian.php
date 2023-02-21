@@ -36,11 +36,14 @@ thead th {
         <?php $dkp2 = '0'; ?>
         <?php $dkpmnssl2 = '0'; ?>
         <?php $tmns12 = '0'; ?>
+        <?php $libur2 = '0'; ?>
         <?php $dkpshs2 = '0'; ?>
         <?php $tmsh12 = '0'; ?>
         <?php $dkpshd2 = '0'; ?>
+        <?php $jp2 = '0'; ?>
         <?php $tmsh22 = '0'; ?>
         <?php $dkpsht2 = '0'; ?>
+        <?php $tap2 = '0'; ?>
         <?php $tmsh32 = '0'; ?>
         <?php $mnsa2 = '0'; ?>
         <?php $tmnsa2 = '0'; ?>
@@ -56,6 +59,7 @@ thead th {
                 <td></td>
                 <?php $dkp2 = $dkp2 + $dkp; ?>
                 <td><?= $libur = $dkpharian[$dh]['sh0'] ?></td>
+                <?php $libur2 = $libur2 + $libur; ?>
                 <?php foreach ($rdiliburkan as $rdlk) : ?>
                 <?php if ($dkpharian[$dh]['pembagian4_id'] == $rdlk['pembagian4_id']) { ?>
                 <?php $jp = $rdlk['jumlah_orang']; ?>
@@ -63,17 +67,19 @@ thead th {
                         } ?>
                 <?php endforeach ?>
                 <td><?= $jp ?></td>
+                <?php $jp2 = $jp2 + $jp ?>
                 <td><?= $dkpshs = $dkpmasuk[$dh]['mk'] ?></td>
                 <?php $dkpshs2 = $dkpshs2 + $dkpshs; ?>
                 <?php $tmsh1 = (($dkpharian[$dh]['mk'] - $dkpmasuk[$dh]['mk']) + $libur) - $jp ?>
                 <td><?= $jpn = $tmsh1  ?></td>
-                <td><?= $dkpharian[$dh]['mk'] - $dkpmasuk[$dh['mk']] ?></td>
+                <td><?= $tap = $dkpharian[$dh]['mk'] - $dkpmasuk[$dh]['mk'] ?></td>
+                <?php $tap2 = $tap2 + $tap ?>
                 <td style="font-weight: bold;"><?= $dkpshs + $jpn ?></td>
                 <?php $tmsh12 = $tmsh12 + $tmsh1; ?>
                 <?php $tms =   $tmsh1 ?>
                 <?php $dl = $dkp - $libur ?>
                 <?php if ($tms != "0" && $dl != "0") { ?>
-                <td><?= ceil((($tmsh1) / ($dkp - $libur)) * 100) ?>%</td>
+                <td><?= ceil((($tmsh1) / ($dkp)) * 100) ?>%</td>
                 <?php } else { ?>
                 <td>0%</td>
                 <?php } ?>
@@ -85,12 +91,13 @@ thead th {
                 <td><?= $dkp2 ?></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td><?= $libur2 ?></td>
+                <td><?= $jp2 ?></td>
                 <td><?= $dkpshs2 ?></td>
                 <td><?= $tmsh12 ?></td>
-                <td></td>
+                <td><?= $tap2 ?></td>
                 <td><?= $mnsa2 ?></td>
-                <td><?= $tmnsa2 ?></td>
+                <td><?= ceil(($tmsh12 * 100) / $dkp2) ?>%</td>
             </tr>
         </tbody>
         <!-- <tfoot>

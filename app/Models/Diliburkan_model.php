@@ -25,11 +25,11 @@ class Diliburkan_model extends Model
 
     public function _get_datatables_querydiliburkan()
     {
-        $column_order = array('tgl', 'jumlah_orang', 'pembagian4.pembagian4_nama');
-        $column_search = array('tgl', 'jumlah_orang', 'pembagian4.pembagian4_nama');
+        $column_order = array('tgl', 'jumlah_orang', 'pembagian4.pembagian4_nama', 'id_diliburkan');
+        $column_search = array('tgl', 'jumlah_orang', 'pembagian4.pembagian4_nama', 'id_diliburkan');
         $order = array('tgl' => 'desc');
 
-        $this->select("tgl AS tgl, jumlah_orang AS jumlah_orang, pembagian4.pembagian4_nama AS unit");
+        $this->select("tgl AS tgl, jumlah_orang AS jumlah_orang, pembagian4.pembagian4_nama AS unit, id_diliburkan AS iddiliburkan");
         $this->join('pembagian4', 'pembagian4.pembagian4_id=diliburkan.pembagian4_id');
 
         $i = 0;

@@ -30,6 +30,7 @@
                                         <th>TANGGAL</th>
                                         <th>UNIT</th>
                                         <th>JUMLAH ORANG</th>
+                                        <th>AKSI</th>
                                     </thead>
                                     <tbody class="text-sm">
                                     </tbody>
@@ -90,6 +91,7 @@
 const flashDataa = "<?= session()->getFlashdata('success') ?>";
 
 $(document).ready(function() {
+
     var tajp3 = $('#diliburkantabel').DataTable({
         "destroy": true,
         "processing": true,
@@ -104,7 +106,7 @@ $(document).ready(function() {
             [5, 10, 25, 100]
         ],
         "columnDefs": [{
-            "targets": 0,
+            "targets": 3,
             "orderable": false,
         }],
     })
@@ -119,6 +121,14 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+
+    const Toasts = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 15000
+    });
 
     $('.diliburkan').submit(function(e) {
         e.preventDefault();
@@ -136,6 +146,7 @@ $(document).ready(function() {
                 $('.btntampil').html('Submit');
             },
             success: function(response) {
+                console.log(response.success);
                 if (response.success) {
                     $('#diliburkan').modal('hide');
                     Toasts.fire({
@@ -143,7 +154,7 @@ $(document).ready(function() {
                         title: 'Data Berhasil',
                         type: 'success',
                     });
-                    $("#diliburkantabel").Datatable().ajax.reload()
+                    $("#diliburkantabel").DataTable().ajax.reload();
                 } else {
                     $('#diliburkan').modal('show');
                 }
@@ -153,6 +164,48 @@ $(document).ready(function() {
             }
         })
     })
+
+    $('#diliburkantabel tbody').on('click', '.btn-delete', function(e) {
+        const iddiliburkan = $(this).data('deletediliburkan');
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "<?= site_url('admin/deletediliburkan') ?>",
+                    method: "post",
+                    data: {
+                        iddiliburkan: iddiliburkan
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.sukses) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            );
+                            $('#diliburkantabel').DataTable().ajax.reload();
+                        }
+                        $('input[name=csrf_test_name]').val(response
+                            .csrf_test_name);
+                    },
+                    error: function(xhr, ajaxOption, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" +
+                            thrownError);
+                    }
+                });
+
+            }
+        })
+    });
 
 })
 </script>

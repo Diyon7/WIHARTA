@@ -96,16 +96,30 @@ class Rekap extends BaseController
     {
         if ($this->request->isAJAX()) {
 
+            $postday = $this->request->getPost('tgl');
+
             $data = [
-                'tanggal' => $this->request->getPost('tgl'),
+                'tanggal' => $postday,
                 'divisi' => $this->request->getPost('divisi')
             ];
 
+            $timeawal = date('Y-m-26', strtotime(date($postday) . '- 1 month'));
+            $timeakhir = date('Y-m-25', strtotime(date($postday) . '- 0 month'));
 
+            $tagihanawal = new DateTime($timeawal);
+            $tagihanakhir = new DateTime($timeakhir);
 
-            $rdiliburkan = $this->diliburkan->where('tgl', $data['tanggal'])->findAll();
-            $dkpharian = $this->rekapall->DKPHarian($data);
-            $dkpmasuk = $this->rekapall->DKPMasuk($data);
+            for ($a = $tagihanawal; $a <= $tagihanakhir; $a->modify('+ 1 day')) {
+
+                $datadkp = [
+                    'tanggal' => $postday,
+                    'divisi' => $this->request->getPost('divisi')
+                ];
+
+                $rdiliburkan[] = $this->diliburkan->where('tgl_d', $datadkp['tanggal'])->findAll();
+                $dkpharian[] = $this->rekapall->DKPHarian($datadkp);
+                $dkpmasuk[] = $this->rekapall->DKPMasuk($datadkp);
+            }
 
             $stm = $this->rekapall->TidakmasukNS1($data);
             $sm = $this->rekapall->TidakmasukNS2($data);
