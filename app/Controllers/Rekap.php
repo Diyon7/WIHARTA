@@ -112,13 +112,14 @@ class Rekap extends BaseController
             for ($a = $tagihanawal; $a <= $tagihanakhir; $a->modify('+ 1 day')) {
 
                 $datadkp = [
-                    'tanggal' => $postday,
+                    'tanggal' => $timeawal,
                     'divisi' => $this->request->getPost('divisi')
                 ];
 
-                $rdiliburkan[] = $this->diliburkan->where('tgl_d', $datadkp['tanggal'])->findAll();
-                $dkpharian[] = $this->rekapall->DKPHarian($datadkp);
-                $dkpmasuk[] = $this->rekapall->DKPMasuk($datadkp);
+                // $rdiliburkan[] = $this->diliburkan->where('tgl_d', $datadkp['tanggal'])->findAll();
+                $dkpharian = $this->rekapall->DKPHarian($data);
+                $dkpmasuk = $this->rekapall->DKPMasuk($data);
+                $timeawal = date('Y-m-d', strtotime('+1 days', strtotime($timeawal)));
             }
 
             $stm = $this->rekapall->TidakmasukNS1($data);
@@ -127,11 +128,13 @@ class Rekap extends BaseController
             $s2 = $this->rekapall->Shift2($data);
             $s3 = $this->rekapall->Shift3($data);
 
+            $dkpharian = $dkpharian + $dkpmasuk;
+
             $tnss = array_merge($this->rekapall->TerlambatNS1($data), $this->rekapall->TerlambatNS2($data));
             $tnsd = $this->rekapall->TerlambatNS2($data);
 
             $data = [
-                'rdiliburkan' => $rdiliburkan,
+                // 'rdiliburkan' => $rdiliburkan,
                 'dkpharian' => $dkpharian,
                 'dkpmasuk' => $dkpmasuk,
                 'stm' => $stm,

@@ -1,0 +1,306 @@
+ERROR - 2023-02-22 10:36:53 --> mysqli_sql_exception: Unknown column 'diliburkan.tgl_d' in 'where clause' in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT pembagia...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT pembagia...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT pembagia...')
+#3 C:\xampp\htdocs\wiharta\app\Models\RekapAll_model.php(227): CodeIgniter\Database\BaseConnection->query('SELECT pembagia...')
+#4 C:\xampp\htdocs\wiharta\app\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk(Array)
+#5 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+#6 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+#7 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\wiharta\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\wiharta\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-02-22 10:36:53 --> Call to a member function getResultArray() on bool
+in APPPATH\Models\RekapAll_model.php on line 227.
+ 1 APPPATH\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk([...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2023-02-22 10:36:56 --> mysqli_sql_exception: Unknown column 'diliburkan.tgl_d' in 'where clause' in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT pembagia...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT pembagia...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT pembagia...')
+#3 C:\xampp\htdocs\wiharta\app\Models\RekapAll_model.php(227): CodeIgniter\Database\BaseConnection->query('SELECT pembagia...')
+#4 C:\xampp\htdocs\wiharta\app\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk(Array)
+#5 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+#6 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+#7 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\wiharta\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\wiharta\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-02-22 10:36:56 --> Call to a member function getResultArray() on bool
+in APPPATH\Models\RekapAll_model.php on line 227.
+ 1 APPPATH\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk([...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2023-02-22 10:37:04 --> mysqli_sql_exception: Unknown column 'diliburkan.tgl_d' in 'where clause' in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT pembagia...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT pembagia...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT pembagia...')
+#3 C:\xampp\htdocs\wiharta\app\Models\RekapAll_model.php(227): CodeIgniter\Database\BaseConnection->query('SELECT pembagia...')
+#4 C:\xampp\htdocs\wiharta\app\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk(Array)
+#5 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+#6 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+#7 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\wiharta\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\wiharta\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-02-22 10:37:04 --> Call to a member function getResultArray() on bool
+in APPPATH\Models\RekapAll_model.php on line 227.
+ 1 APPPATH\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk([...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2023-02-22 10:38:02 --> mysqli_sql_exception: Unknown column 'diliburkan.tgl_d' in 'where clause' in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT pembagia...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT pembagia...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT pembagia...')
+#3 C:\xampp\htdocs\wiharta\app\Models\RekapAll_model.php(227): CodeIgniter\Database\BaseConnection->query('SELECT pembagia...')
+#4 C:\xampp\htdocs\wiharta\app\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk(Array)
+#5 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+#6 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+#7 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\wiharta\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\wiharta\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-02-22 10:38:02 --> Call to a member function getResultArray() on bool
+in APPPATH\Models\RekapAll_model.php on line 227.
+ 1 APPPATH\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk([...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2023-02-22 10:38:04 --> mysqli_sql_exception: Unknown column 'diliburkan.tgl_d' in 'where clause' in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT pembagia...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT pembagia...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT pembagia...')
+#3 C:\xampp\htdocs\wiharta\app\Models\RekapAll_model.php(227): CodeIgniter\Database\BaseConnection->query('SELECT pembagia...')
+#4 C:\xampp\htdocs\wiharta\app\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk(Array)
+#5 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+#6 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+#7 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\wiharta\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\wiharta\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-02-22 10:38:04 --> Call to a member function getResultArray() on bool
+in APPPATH\Models\RekapAll_model.php on line 227.
+ 1 APPPATH\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk([...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2023-02-22 10:38:06 --> mysqli_sql_exception: Unknown column 'diliburkan.tgl_d' in 'where clause' in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT pembagia...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT pembagia...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT pembagia...')
+#3 C:\xampp\htdocs\wiharta\app\Models\RekapAll_model.php(227): CodeIgniter\Database\BaseConnection->query('SELECT pembagia...')
+#4 C:\xampp\htdocs\wiharta\app\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk(Array)
+#5 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+#6 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+#7 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\wiharta\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\wiharta\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-02-22 10:38:06 --> Call to a member function getResultArray() on bool
+in APPPATH\Models\RekapAll_model.php on line 227.
+ 1 APPPATH\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk([...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2023-02-22 10:38:07 --> mysqli_sql_exception: Unknown column 'diliburkan.tgl_d' in 'where clause' in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT pembagia...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT pembagia...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT pembagia...')
+#3 C:\xampp\htdocs\wiharta\app\Models\RekapAll_model.php(227): CodeIgniter\Database\BaseConnection->query('SELECT pembagia...')
+#4 C:\xampp\htdocs\wiharta\app\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk(Array)
+#5 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+#6 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+#7 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\wiharta\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\wiharta\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-02-22 10:38:07 --> Call to a member function getResultArray() on bool
+in APPPATH\Models\RekapAll_model.php on line 227.
+ 1 APPPATH\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk([...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2023-02-22 10:39:46 --> mysqli_sql_exception: Unknown column 'diliburkan.tgl_d' in 'where clause' in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT pembagia...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT pembagia...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT pembagia...')
+#3 C:\xampp\htdocs\wiharta\app\Models\RekapAll_model.php(227): CodeIgniter\Database\BaseConnection->query('SELECT pembagia...')
+#4 C:\xampp\htdocs\wiharta\app\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk(Array)
+#5 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+#6 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+#7 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\wiharta\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\wiharta\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-02-22 10:39:46 --> Call to a member function getResultArray() on bool
+in APPPATH\Models\RekapAll_model.php on line 227.
+ 1 APPPATH\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk([...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2023-02-22 10:41:41 --> mysqli_sql_exception: Unknown column 'diliburkan.tgl_d' in 'where clause' in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT pembagia...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT pembagia...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT pembagia...')
+#3 C:\xampp\htdocs\wiharta\app\Models\RekapAll_model.php(227): CodeIgniter\Database\BaseConnection->query('SELECT pembagia...')
+#4 C:\xampp\htdocs\wiharta\app\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk(Array)
+#5 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+#6 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+#7 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\wiharta\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\wiharta\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-02-22 10:41:41 --> Call to a member function getResultArray() on bool
+in APPPATH\Models\RekapAll_model.php on line 227.
+ 1 APPPATH\Controllers\Rekap.php(121): App\Models\RekapAll_model->DKPMasuk([...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2023-02-22 10:45:51 --> mysqli_sql_exception: Unknown column 'tgl_d' in 'where clause' in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\wiharta\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\wiharta\system\Model.php(223): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\wiharta\system\BaseModel.php(585): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\wiharta\app\Controllers\Rekap.php(106): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+#8 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+#9 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\wiharta\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\wiharta\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2023-02-22 10:45:51 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 224.
+ 1 SYSTEMPATH\BaseModel.php(585): CodeIgniter\Model->doFindAll(0, 0)
+ 2 APPPATH\Controllers\Rekap.php(106): CodeIgniter\BaseModel->findAll()
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2023-02-22 10:46:48 --> mysqli_sql_exception: Unknown column 'tgl_d' in 'where clause' in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\wiharta\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\wiharta\system\Model.php(223): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\wiharta\system\BaseModel.php(585): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\wiharta\app\Controllers\Rekap.php(106): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+#8 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+#9 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\wiharta\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\wiharta\system\Commands\Server\rewrite.php(46): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2023-02-22 10:46:48 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 224.
+ 1 SYSTEMPATH\BaseModel.php(585): CodeIgniter\Model->doFindAll(0, 0)
+ 2 APPPATH\Controllers\Rekap.php(106): CodeIgniter\BaseModel->findAll()
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2023-02-22 11:27:21 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`fin_pro`.`auth_groups_users`, CONSTRAINT `auth_groups_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE) in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `au...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 C:\xampp\htdocs\wiharta\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 C:\xampp\htdocs\wiharta\vendor\myth\auth\src\Models\GroupModel.php(52): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\wiharta\app\Database\Seeds\UserSeeder.php(24): Myth\Auth\Models\GroupModel->addUserToGroup(0, 1)
+#6 C:\xampp\htdocs\wiharta\system\Database\Seeder.php(146): App\Database\Seeds\UserSeeder->run()
+#7 C:\xampp\htdocs\wiharta\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\xampp\htdocs\wiharta\system\CLI\Commands.php(63): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\xampp\htdocs\wiharta\system\CLI\CommandRunner.php(65): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\xampp\htdocs\wiharta\system\CLI\CommandRunner.php(51): CodeIgniter\CLI\CommandRunner->index(Array)
+#11 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(920): CodeIgniter\CLI\CommandRunner->_remap('index', Array)
+#12 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#13 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(347): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\wiharta\system\CLI\Console.php(48): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\wiharta\spark(98): CodeIgniter\CLI\Console->run()
+#16 {main}
+ERROR - 2023-02-22 11:29:37 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`fin_pro`.`auth_groups_users`, CONSTRAINT `auth_groups_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE) in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `au...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 C:\xampp\htdocs\wiharta\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 C:\xampp\htdocs\wiharta\vendor\myth\auth\src\Models\GroupModel.php(52): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\wiharta\app\Database\Seeds\UserSeeder.php(24): Myth\Auth\Models\GroupModel->addUserToGroup(0, 1)
+#6 C:\xampp\htdocs\wiharta\system\Database\Seeder.php(146): App\Database\Seeds\UserSeeder->run()
+#7 C:\xampp\htdocs\wiharta\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\xampp\htdocs\wiharta\system\CLI\Commands.php(63): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\xampp\htdocs\wiharta\system\CLI\CommandRunner.php(65): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\xampp\htdocs\wiharta\system\CLI\CommandRunner.php(51): CodeIgniter\CLI\CommandRunner->index(Array)
+#11 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(920): CodeIgniter\CLI\CommandRunner->_remap('index', Array)
+#12 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#13 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(347): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\wiharta\system\CLI\Console.php(48): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\wiharta\spark(98): CodeIgniter\CLI\Console->run()
+#16 {main}
+ERROR - 2023-02-22 11:30:58 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`fin_pro`.`auth_groups_users`, CONSTRAINT `auth_groups_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE) in C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\wiharta\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `au...', 0)
+#1 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 C:\xampp\htdocs\wiharta\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 C:\xampp\htdocs\wiharta\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 C:\xampp\htdocs\wiharta\vendor\myth\auth\src\Models\GroupModel.php(52): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\wiharta\app\Database\Seeds\UserSeeder.php(24): Myth\Auth\Models\GroupModel->addUserToGroup(0, 1)
+#6 C:\xampp\htdocs\wiharta\system\Database\Seeder.php(146): App\Database\Seeds\UserSeeder->run()
+#7 C:\xampp\htdocs\wiharta\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\xampp\htdocs\wiharta\system\CLI\Commands.php(63): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\xampp\htdocs\wiharta\system\CLI\CommandRunner.php(65): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\xampp\htdocs\wiharta\system\CLI\CommandRunner.php(51): CodeIgniter\CLI\CommandRunner->index(Array)
+#11 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(920): CodeIgniter\CLI\CommandRunner->_remap('index', Array)
+#12 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#13 C:\xampp\htdocs\wiharta\system\CodeIgniter.php(347): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\wiharta\system\CLI\Console.php(48): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\wiharta\spark(98): CodeIgniter\CLI\Console->run()
+#16 {main}
+CRITICAL - 2023-02-22 11:57:53 --> Undefined array key "pembagian2_nama"
+in APPPATH\Views\rekap\tabelharian.php on line 54.
+ 1 APPPATH\Views\rekap\tabelharian.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pembagian2_nama"', 'APPPATH\\Views\\rekap\\tabelharian.php', 54)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\rekap\\tabelharian.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('rekap/tabelharian', [], true)
+ 5 APPPATH\Controllers\Rekap.php(151): view('rekap/tabelharian', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
