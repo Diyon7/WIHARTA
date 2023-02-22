@@ -182,7 +182,9 @@ class RekapAll_model extends Model
 
     public function DKPHarian($data)
     {
-        return $this->db->query("SELECT pembagian2.`pembagian2_nama`, pembagian4.`pembagian4_nama`, pembagian4.`pembagian4_id`, COUNT(pembagian4.`pembagian4_nama`) AS dkp, mk, sh0 FROM pegawai
+        $tanggal = $data['tanggal'];
+        $time = date('Y-m-d H:i:s', strtotime(' +14 hours', strtotime($tanggal . ' 11:00:00')));
+        return $this->db->query("SELECT pembagian2.`pembagian2_nama`, pembagian4.`pembagian4_nama`, pembagian4.`pembagian4_id`, COUNT(pembagian4.`pembagian4_nama`) AS dkp, mk, mk2, dlk, sh0 FROM pegawai
         JOIN pembagian4 ON pembagian4.`pembagian4_id`=pegawai.`pembagian4_id`
         LEFT JOIN pembagian2 ON pegawai.`pembagian2_id`=pembagian2.`pembagian2_id`
         LEFT JOIN tb_jadwal ON tb_jadwal.`grupass`=pegawai.`grup_jam_kerja`
@@ -191,6 +193,17 @@ class RekapAll_model extends Model
         LEFT JOIN pembagian2 ON pegawai.`pembagian2_id`=pembagian2.`pembagian2_id`
         JOIN pembagian4 ON pembagian4.`pembagian4_id`=pegawai.`pembagian4_id`
         WHERE (pegawai.`tgl_resign`='0000-00-00' OR pegawai.`tgl_resign`>='" . $data['tanggal'] . "' OR pegawai.`tgl_resign` IS NULL) AND pegawai.`tgl_mulai_kerja`<='" . $data['tanggal'] . "' AND tb_jadwal.`shift`!=0 AND tgl='" . $data['tanggal'] . "' AND pembagian2.`pembagian2_nama` LIKE '" . $data['divisi'] . "' GROUP BY pegawai.`pembagian4_id`) AS jns1 ON jns1.pembagian4_id=pembagian4.`pembagian4_id`
+        LEFT JOIN(SELECT pembagian4.`pembagian4_nama`, pegawai.`pembagian4_id`, COUNT(pembagian4.`pembagian4_nama`) AS mk2 FROM pegawai
+        LEFT JOIN tb_jadwal ON tb_jadwal.`grupass`=pegawai.`grup_jam_kerja`
+        LEFT JOIN pembagian2 ON pegawai.`pembagian2_id`=pembagian2.`pembagian2_id`
+        JOIN pembagian4 ON pembagian4.`pembagian4_id`=pegawai.`pembagian4_id`
+        JOIN (SELECT pin FROM att_log WHERE att_log.`scan_date` BETWEEN '" . $data['tanggal'] . " 11:00:00' AND '2023-02-17 01:00:00' GROUP BY pin) AS pin ON pegawai.`pegawai_pin`=pin.`pin`
+        WHERE (pegawai.`tgl_resign`='0000-00-00' OR pegawai.`tgl_resign`>='" . $data['tanggal'] . "' OR pegawai.`tgl_resign` IS NULL) AND pegawai.`tgl_mulai_kerja`<='" . $data['tanggal'] . "' AND tb_jadwal.`tgl`='" . $data['tanggal'] . "' AND shift!=0 AND pembagian2.`pembagian2_nama` LIKE '" . $data['divisi'] . "' GROUP BY pembagian4.`pembagian4_nama`) AS s1 ON s1.pembagian4_id=pembagian4.`pembagian4_id`
+        LEFT JOIN(SELECT pembagian4.`pembagian4_nama`, pegawai.`pembagian4_id`, diliburkan.`jumlah_orang` dlk FROM pegawai
+        LEFT JOIN pembagian2 ON pegawai.`pembagian2_id`=pembagian2.`pembagian2_id`
+        JOIN pembagian4 ON pembagian4.`pembagian4_id`=pegawai.`pembagian4_id`
+        JOIN diliburkan ON pembagian4.`pembagian4_id`=diliburkan.`pembagian4_id`
+        WHERE (pegawai.`tgl_resign`='0000-00-00' OR pegawai.`tgl_resign`>='" . $data['tanggal'] . "' OR pegawai.`tgl_resign` IS NULL) AND pegawai.`tgl_mulai_kerja`<='" . $data['tanggal'] . "' AND diliburkan.`tgl_d`='" . $data['tanggal'] . "' AND pembagian2.`pembagian2_nama` LIKE '" . $data['divisi'] . "' GROUP BY pembagian4.`pembagian4_nama`) AS dl ON dl.pembagian4_id=pembagian4.`pembagian4_id`
         LEFT JOIN(SELECT pembagian4.`pembagian4_nama`, pegawai.`pembagian4_id`, COUNT(pembagian4.`pembagian4_nama`) AS sh0 FROM pegawai
         LEFT JOIN tb_jadwal ON tb_jadwal.`grupass`=pegawai.`grup_jam_kerja`
         LEFT JOIN pembagian2 ON pegawai.`pembagian2_id`=pembagian2.`pembagian2_id`
