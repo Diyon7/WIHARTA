@@ -51,32 +51,19 @@ thead th {
             <?php foreach ($dkpharian as $dh) : ?>
             <?php $jp = 0; ?>
             <tr>
-                <td class="column"><?= $dh['pembagian2_nama'] ?></td>
-                <td class="column"><?= $dh['pembagian4_nama'] ?></td>
-                <td><?= $dkp = $dh['dkp'] ?></td>
-                <?php $pembagian4dkpharian = $dh['pembagian4_id'] ?>
+                <td class="column"><?php var_dump($dh) ?></td>
+                <td class="column"></td>
                 <td></td>
                 <td></td>
-                <?php $dkp2 = $dkp2 + $dkp; ?>
-                <td><?= $libur = $dh['sh0'] ?></td>
-                <?php $libur2 = $libur2 + $libur; ?>
-                <td><?= $jp = $dh['dlk'] ?></td>
-                <?php $jp2 = $jp2 + $jp ?>
-                <td><?= $dkpshs = $dh['mk2'] ?></td>
-                <?php $dkpshs2 = $dkpshs2 + $dkpshs; ?>
-                <?php $tmsh1 = (($dh['mk'] - $dh['mk2']) + $libur) - $jp ?>
-                <td><?= $jpn = $tmsh1  ?></td>
-                <td><?= $tap = $dh['mk'] - $dh['mk2'] ?></td>
-                <?php $tap2 = $tap2 + $tap ?>
-                <td style="font-weight: bold;"><?= $dkpshs + $jpn ?></td>
-                <?php $tmsh12 = $tmsh12 + $tmsh1; ?>
-                <?php $tms =   $tmsh1 ?>
-                <?php $dl = $dkp - $libur ?>
-                <?php if ($tms != "0" && $dl != "0") { ?>
-                <td><?= ceil((($tmsh1) / ($dkp)) * 100) ?>%</td>
-                <?php } else { ?>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="font-weight: bold;"></td>
+                <td></td>
                 <td>0%</td>
-                <?php } ?>
             </tr>
             <?php endforeach ?>
             <tr>
@@ -91,7 +78,7 @@ thead th {
                 <td><?= $tmsh12 ?></td>
                 <td><?= $tap2 ?></td>
                 <td><?= $mnsa2 ?></td>
-                <td><?= ceil(($tmsh12 * 100) / $dkp2) ?>%</td>
+                <td></td>
             </tr>
         </tbody>
         <!-- <tfoot>

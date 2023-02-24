@@ -76,30 +76,30 @@ $(document).ready(function() {
         });
     });
 });
-$('.formtabelkaryawan').submit(function(e) {
-    e.preventDefault();
-    $.ajax({
-        type: "POST",
-        url: $(this).attr('action'),
-        data: $(this).serialize(),
-        dataType: "json",
-        beforeSend: function() {
-            $('.btntampil').attr('disable', 'disabled');
-            $('.btntampil').html('<i class="fa fa-spin fa-spinner"></i>');
-        },
-        complete: function() {
-            $('.btntampil').removeAttr('disable');
-            $('.btntampil').html('Submit');
-        },
-        success: function(response) {
-            $('.listtabelkaryawan').html(response.sukses);
-            // $('.tabel1').show();
-        },
-        error: function(xhr, ajaxOption, thrownError) {
-            alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-        }
-    })
-})
+// $('.formtabelkaryawan').submit(function(e) {
+//     e.preventDefault();
+//     $.ajax({
+//         type: "POST",
+//         url: $(this).attr('action'),
+//         data: $(this).serialize(),
+//         dataType: "json",
+//         beforeSend: function() {
+//             $('.btntampil').attr('disable', 'disabled');
+//             $('.btntampil').html('<i class="fa fa-spin fa-spinner"></i>');
+//         },
+//         complete: function() {
+//             $('.btntampil').removeAttr('disable');
+//             $('.btntampil').html('Submit');
+//         },
+//         success: function(response) {
+//             $('.listtabelkaryawan').html(response.sukses);
+//             // $('.tabel1').show();
+//         },
+//         error: function(xhr, ajaxOption, thrownError) {
+//             alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+//         }
+//     })
+// })
 </script>
 
 <?= $this->endSection() ?>

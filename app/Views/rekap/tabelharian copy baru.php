@@ -48,25 +48,25 @@ thead th {
         <?php $mnsa2 = '0'; ?>
         <?php $tmnsa2 = '0'; ?>
         <tbody>
-            <?php foreach ($dkpharian as $dh => $value) : ?>
+            <?php foreach ($dkpharian as $dh) : ?>
             <?php $jp = 0; ?>
             <tr>
-                <td class="column"><?= $dkpharian[$dh]['pembagian2_nama'] ?></td>
-                <td class="column"><?= $dkpharian[$dh]['pembagian4_nama'] ?></td>
-                <td><?= $dkp = $dkpharian[$dh]['dkp'] ?></td>
-                <?php $pembagian4dkpharian = $dkpharian[$dh]['pembagian4_id'] ?>
+                <td class="column"><?= $dh['pembagian2_nama'] ?></td>
+                <td class="column"><?= $dh['pembagian4_nama'] ?></td>
+                <td><?= $dkp = $dh['dkp'] ?></td>
+                <?php $pembagian4dkpharian = $dh['pembagian4_id'] ?>
                 <td></td>
                 <td></td>
                 <?php $dkp2 = $dkp2 + $dkp; ?>
-                <td><?= $libur = $dkpharian[$dh]['sh0'] ?></td>
+                <td><?= $libur = $dh['sh0'] ?></td>
                 <?php $libur2 = $libur2 + $libur; ?>
-                <td><?= $jp = $dkpmasuk[$dh]['dlk'] ?></td>
+                <td><?= $jp = $dh['dlk'] ?></td>
                 <?php $jp2 = $jp2 + $jp ?>
-                <td><?= $dkpshs = $dkpmasuk[$dh]['mk'] ?></td>
+                <td><?= $dkpshs = $dh['mk2'] ?></td>
                 <?php $dkpshs2 = $dkpshs2 + $dkpshs; ?>
-                <?php $tmsh1 = (($dkpharian[$dh]['mk'] - $dkpmasuk[$dh]['mk']) + $libur) - $jp ?>
+                <?php $tmsh1 = (($dh['mk'] - $dh['mk2']) + $libur) - $jp ?>
                 <td><?= $jpn = $tmsh1  ?></td>
-                <td><?= $tap = $dkpharian[$dh]['mk'] - $dkpmasuk[$dh]['mk'] ?></td>
+                <td><?= $tap = $dh['mk'] - $dh['mk2'] ?></td>
                 <?php $tap2 = $tap2 + $tap ?>
                 <td style="font-weight: bold;"><?= $dkpshs + $jpn ?></td>
                 <?php $tmsh12 = $tmsh12 + $tmsh1; ?>

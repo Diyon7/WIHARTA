@@ -94,64 +94,51 @@ class Rekap extends BaseController
 
     public function Tabelabsenlaporanharian()
     {
-        if ($this->request->isAJAX()) {
+        // if ($this->request->isAJAX()) {
 
-            $postday = $this->request->getPost('tgl');
+        $postday = $this->request->getPost('tgl');
 
-            $data = [
-                'tanggal' => $postday,
-                'divisi' => $this->request->getPost('divisi')
-            ];
+        $data = [
+            'tanggal' => $postday,
+            'divisi' => $this->request->getPost('divisi')
+        ];
 
-            $timeawal = date('Y-m-26', strtotime(date($postday) . '- 1 month'));
-            $timeakhir = date('Y-m-25', strtotime(date($postday) . '- 0 month'));
 
-            $tagihanawal = new DateTime($timeawal);
-            $tagihanakhir = new DateTime($timeakhir);
 
-            // for ($a = $tagihanawal; $a <= $tagihanakhir; $a->modify('+ 1 day')) {
+        // $rdiliburkan[] = $this->diliburkan->where('tgl_d', $datadkp['tanggal'])->findAll();
+        $dkpharian = $this->rekapall->DKPHarian($data);
+        // $dkpmasuk = $this->rekapall->DKPMasuk($data);
 
-            //     $datadkp = [
-            //         'tanggal' => $timeawal,
-            //         'divisi' => $this->request->getPost('divisi')
-            //     ];
+        $stm = $this->rekapall->TidakmasukNS1($data);
+        $sm = $this->rekapall->TidakmasukNS2($data);
+        $s1 = $this->rekapall->Shift1($data);
+        $s2 = $this->rekapall->Shift2($data);
+        $s3 = $this->rekapall->Shift3($data);
 
-            // $rdiliburkan[] = $this->diliburkan->where('tgl_d', $datadkp['tanggal'])->findAll();
-            $dkpharian = $this->rekapall->DKPHarian($data);
-            $dkpmasuk = $this->rekapall->DKPMasuk($data);
-            $timeawal = date('Y-m-d', strtotime('+1 days', strtotime($timeawal)));
-            // }
+        // $dkpharian = $dkpharian + $dkpmasuk;
 
-            $stm = $this->rekapall->TidakmasukNS1($data);
-            $sm = $this->rekapall->TidakmasukNS2($data);
-            $s1 = $this->rekapall->Shift1($data);
-            $s2 = $this->rekapall->Shift2($data);
-            $s3 = $this->rekapall->Shift3($data);
+        $tnss = array_merge($this->rekapall->TerlambatNS1($data), $this->rekapall->TerlambatNS2($data));
+        $tnsd = $this->rekapall->TerlambatNS2($data);
 
-            // $dkpharian = $dkpharian + $dkpmasuk;
+        $data = [
+            // 'rdiliburkan' => $rdiliburkan,
+            'dkpharian' => $dkpharian,
+            // 'dkpmasuk' => $dkpmasuk,
+            'stm' => $stm,
+            'sm' => $sm,
+            's1' => $s1,
+            's2' => $s2,
+            's3' => $s3,
+            'tnss' => $tnss,
+            'tnsd' => $tnsd,
+            'data' => $data
+        ];
 
-            $tnss = array_merge($this->rekapall->TerlambatNS1($data), $this->rekapall->TerlambatNS2($data));
-            $tnsd = $this->rekapall->TerlambatNS2($data);
+        // $tampiltabel = [
+        return view('rekap/tabelharian', $data);
+        // ];
 
-            $data = [
-                // 'rdiliburkan' => $rdiliburkan,
-                'dkpharian' => $dkpharian,
-                'dkpmasuk' => $dkpmasuk,
-                'stm' => $stm,
-                'sm' => $sm,
-                's1' => $s1,
-                's2' => $s2,
-                's3' => $s3,
-                'tnss' => $tnss,
-                'tnsd' => $tnsd,
-                'data' => $data
-            ];
-
-            $tampiltabel = [
-                'sukses' => view('rekap/tabelharian', $data)
-            ];
-
-            echo json_encode($tampiltabel);
-        }
+        // echo json_encode($tampiltabel);
+        // }
     }
 }

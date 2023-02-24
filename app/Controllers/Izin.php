@@ -51,6 +51,8 @@ class Izin extends BaseController
     public function Index()
     {
 
+
+
         $daftarkaryawanjp3 = $this->pegawaimodel->Daftarkaryawanajp3();
         $djnsizin = $this->jnsizin->findAll();
         $shfjamkerja = $this->jamkerja->findAll();

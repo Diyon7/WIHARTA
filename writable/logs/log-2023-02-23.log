@@ -1,0 +1,127 @@
+CRITICAL - 2023-02-23 11:35:42 --> Undefined variable $2023-02-16
+in APPPATH\Models\RekapAll_model.php on line 187.
+ 1 APPPATH\Models\RekapAll_model.php(187): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $2023-02-16', 'APPPATH\\Models\\RekapAll_model.php', 187)
+ 2 APPPATH\Controllers\Rekap.php(109): App\Models\RekapAll_model->DKPHarian([...])
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-23 11:36:57 --> Undefined variable $2023-02-16
+in APPPATH\Models\RekapAll_model.php on line 187.
+ 1 APPPATH\Models\RekapAll_model.php(187): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $2023-02-16', 'APPPATH\\Models\\RekapAll_model.php', 187)
+ 2 APPPATH\Controllers\Rekap.php(109): App\Models\RekapAll_model->DKPHarian([...])
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-23 11:38:03 --> Call to undefined method App\Models\RekapAll_model::DKPMasuk
+in SYSTEMPATH\Model.php on line 774.
+ 1 APPPATH\Controllers\Rekap.php(110): CodeIgniter\Model->__call('DKPMasuk', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-23 14:13:03 --> Undefined variable $query
+in APPPATH\Models\RekapAll_model.php on line 235.
+ 1 APPPATH\Models\RekapAll_model.php(235): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $query', 'APPPATH\\Models\\RekapAll_model.php', 235)
+ 2 APPPATH\Controllers\Rekap.php(109): App\Models\RekapAll_model->DKPHarian([...])
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-23 14:35:43 --> Undefined array key "pembagian2_nama"
+in APPPATH\Views\rekap\tabelharian.php on line 55.
+ 1 APPPATH\Views\rekap\tabelharian.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pembagian2_nama"', 'APPPATH\\Views\\rekap\\tabelharian.php', 55)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\rekap\\tabelharian.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('rekap/tabelharian', [], true)
+ 5 APPPATH\Controllers\Rekap.php(138): view('rekap/tabelharian', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-23 14:39:25 --> Division by zero
+in APPPATH\Views\rekap\tabelharian.php on line 87.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('rekap/tabelharian', [], true)
+ 4 APPPATH\Controllers\Rekap.php(138): view('rekap/tabelharian', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 6 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 7 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-23 14:42:00 --> Undefined array key "pembagian2_nama"
+in APPPATH\Views\rekap\tabelharian.php on line 55.
+ 1 APPPATH\Views\rekap\tabelharian.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pembagian2_nama"', 'APPPATH\\Views\\rekap\\tabelharian.php', 55)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\rekap\\tabelharian.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('rekap/tabelharian', [], true)
+ 5 APPPATH\Controllers\Rekap.php(138): view('rekap/tabelharian', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-23 14:43:03 --> Undefined variable $query
+in APPPATH\Models\RekapAll_model.php on line 235.
+ 1 APPPATH\Models\RekapAll_model.php(235): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $query', 'APPPATH\\Models\\RekapAll_model.php', 235)
+ 2 APPPATH\Controllers\Rekap.php(109): App\Models\RekapAll_model->DKPHarian([...])
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-23 14:45:01 --> Undefined array key "pembagian2_nama"
+in APPPATH\Views\rekap\tabelharian.php on line 55.
+ 1 APPPATH\Views\rekap\tabelharian.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pembagian2_nama"', 'APPPATH\\Views\\rekap\\tabelharian.php', 55)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\rekap\\tabelharian.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('rekap/tabelharian', [], true)
+ 5 APPPATH\Controllers\Rekap.php(138): view('rekap/tabelharian', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-23 14:45:27 --> Undefined array key "pembagian2_nama"
+in APPPATH\Views\rekap\tabelharian.php on line 55.
+ 1 APPPATH\Views\rekap\tabelharian.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pembagian2_nama"', 'APPPATH\\Views\\rekap\\tabelharian.php', 55)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\rekap\\tabelharian.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('rekap/tabelharian', [], true)
+ 5 APPPATH\Controllers\Rekap.php(138): view('rekap/tabelharian', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-23 16:42:02 --> Undefined array key 0
+in APPPATH\Views\rekap\tabelharian.php on line 55.
+ 1 APPPATH\Views\rekap\tabelharian.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'APPPATH\\Views\\rekap\\tabelharian.php', 55)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\rekap\\tabelharian.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('rekap/tabelharian', [], true)
+ 5 APPPATH\Controllers\Rekap.php(138): view('rekap/tabelharian', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-23 16:42:30 --> Undefined array key "pembagian4_nama"
+in APPPATH\Views\rekap\tabelharian.php on line 55.
+ 1 APPPATH\Views\rekap\tabelharian.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pembagian4_nama"', 'APPPATH\\Views\\rekap\\tabelharian.php', 55)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\rekap\\tabelharian.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('rekap/tabelharian', [], true)
+ 5 APPPATH\Controllers\Rekap.php(138): view('rekap/tabelharian', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
