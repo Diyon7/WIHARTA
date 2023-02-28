@@ -53,44 +53,44 @@ class Rekap extends BaseController
         return view('rekap/cekabsen', $data);
     }
 
-    public function Printrekapunit()
-    {
-        if ($this->request->isAJAX()) {
+    // public function Printrekapunit()
+    // {
+    //     if ($this->request->isAJAX()) {
 
-            $tanggal = $this->request->getPost('tglno');
+    //         $tanggal = $this->request->getPost('tglno');
 
-            $dkpharian = $this->rekapall->DKPHarian($tanggal);
-            $dkpmasuk = $this->rekapall->DKPMasuk($tanggal);
+    //         $dkpharian = $this->rekapall->DKPHarian($tanggal);
+    //         $dkpmasuk = $this->rekapall->DKPMasuk($tanggal);
 
-            $stm = $this->rekapall->TidakmasukNS1($tanggal);
-            $sm = $this->rekapall->TidakmasukNS2($tanggal);
-            $s1 = $this->rekapall->Shift1($tanggal);
-            $s2 = $this->rekapall->Shift2($tanggal);
-            $s3 = $this->rekapall->Shift3($tanggal);
+    //         $stm = $this->rekapall->TidakmasukNS1($tanggal);
+    //         $sm = $this->rekapall->TidakmasukNS2($tanggal);
+    //         $s1 = $this->rekapall->Shift1($tanggal);
+    //         $s2 = $this->rekapall->Shift2($tanggal);
+    //         $s3 = $this->rekapall->Shift3($tanggal);
 
-            $tnss = $this->rekapall->TerlambatNS1($tanggal);
-            $tnsd = $this->rekapall->TerlambatNS2($tanggal);
+    //         $tnss = $this->rekapall->TerlambatNS1($tanggal);
+    //         $tnsd = $this->rekapall->TerlambatNS2($tanggal);
 
-            $data = [
-                'dkpharian' => $dkpharian,
-                'dkpmasuk' => $dkpmasuk,
-                'stm' => $stm,
-                // 'sm' => $sm,
-                's1' => $s1,
-                's2' => $s2,
-                's3' => $s3,
-                'tnss' => $tnss,
-                'tnsd' => $tnsd,
-                'tanggal' => $tanggal
-            ];
+    //         $data = [
+    //             'dkpharian' => $dkpharian,
+    //             'dkpmasuk' => $dkpmasuk,
+    //             'stm' => $stm,
+    //             // 'sm' => $sm,
+    //             's1' => $s1,
+    //             's2' => $s2,
+    //             's3' => $s3,
+    //             'tnss' => $tnss,
+    //             'tnsd' => $tnsd,
+    //             'tanggal' => $tanggal
+    //         ];
 
-            $tampiltabel = [
-                'sukses' => view('rekap/exportexcel', $data)
-            ];
+    //         $tampiltabel = [
+    //             'sukses' => view('rekap/exportexcel', $data)
+    //         ];
 
-            echo json_encode($tampiltabel);
-        }
-    }
+    //         echo json_encode($tampiltabel);
+    //     }
+    // }
 
     public function Tabelabsenlaporanharian()
     {
@@ -98,15 +98,24 @@ class Rekap extends BaseController
 
         $postday = $this->request->getPost('tgl');
 
+        $tglt = date('m/26', strtotime(date($postday) . '- 1 month'));
+
         $data = [
+            'tglt' => $tglt,
             'tanggal' => $postday,
             'divisi' => $this->request->getPost('divisi')
         ];
 
-
+        $dkpharianpembagian2 = $this->rekapall->DKPharianpembagian2($data);
+        $datas = [
+            'tglt' => $tglt,
+            'tanggal' => $postday,
+            'divisi' => $this->request->getPost('divisi'),
+            'queryunit' => $dkpharianpembagian2
+        ];
 
         // $rdiliburkan[] = $this->diliburkan->where('tgl_d', $datadkp['tanggal'])->findAll();
-        $dkpharian = $this->rekapall->DKPHarian($data);
+        $dkpharian = $this->rekapall->DKPHarian($datas);
         // $dkpmasuk = $this->rekapall->DKPMasuk($data);
 
         $stm = $this->rekapall->TidakmasukNS1($data);

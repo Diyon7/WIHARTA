@@ -198,9 +198,12 @@ class RekapAll_model extends Model
 
         $tagihanawal = new DateTime($timeawal);
         $tagihanakhir = new DateTime($timeakhir);
+        $tglt = $data['tglt'];
 
         foreach ($data['queryunit'] as $qu) {
             for ($a = $tagihanawal; $a <= $tagihanakhir; $a->modify('+ 1 day')) {
+                $tglrekap[] = $tglt;
+                $tglt = date('m/d', strtotime(' +1 days', strtotime($tglt)));
                 $time = date('Y-m-d H:i:s', strtotime(' +14 hours', strtotime($timeawal . ' 11:00:00')));
                 $query[] = $this->db->query("SELECT pembagian4.`pembagian4_id`, COUNT(pembagian4.`pembagian4_nama`) AS dkp2, mk, mk2, dlk, sh0 FROM pegawai
                 JOIN pembagian4 ON pembagian4.`pembagian4_id`=pegawai.`pembagian4_id`
@@ -236,11 +239,11 @@ class RekapAll_model extends Model
 
 
         $data = [
-            // 'datanama' => $queryunit3,
+            'tglrekap' => $tglrekap,
             'data' => $query
         ];
 
-        return $data;
+        return $query;
     }
 
     // public function DKPMasuk($data)

@@ -49,9 +49,10 @@ thead th {
         <?php $tmnsa2 = '0'; ?>
         <tbody>
             <?php foreach ($dkpharian as $dh) : ?>
+            <?php foreach ($dh as $dh2) : ?>
             <?php $jp = 0; ?>
             <tr>
-                <td class="column"><?php var_dump($dh) ?></td>
+                <td class="column"><?php var_dump($dh2) ?></td>
                 <td class="column"></td>
                 <td></td>
                 <td></td>
@@ -65,6 +66,7 @@ thead th {
                 <td></td>
                 <td>0%</td>
             </tr>
+            <?php endforeach ?>
             <?php endforeach ?>
             <tr>
                 <td>TOTAL</td>
