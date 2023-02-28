@@ -52,7 +52,7 @@ thead th {
             <?php foreach ($dh as $dh2) : ?>
             <?php $jp = 0; ?>
             <tr>
-                <td class="column"><?php var_dump($dh2) ?></td>
+                <td class="column"><?php var_dump($dh) ?></td>
                 <td class="column"></td>
                 <td></td>
                 <td></td>

@@ -243,7 +243,7 @@ class RekapAll_model extends Model
             'data' => $query
         ];
 
-        return $query;
+        return $data;
     }
 
     // public function DKPMasuk($data)
