@@ -14,21 +14,21 @@ class UserSeeder extends Seeder
         $users = new UserModel();
         $groups = new GroupModel();
 
-        // $users->insert([
-        //     'username' => 'yusufsdm',
-        //     'email' => 'yusufsdm@wkag.id',
-        //     'password_hash' => Password::hash('yusufpersonaliawka2023'),
-        //     'active' => 1
-        // ]);
+        $users->insert([
+            'username' => 'jarotsdm',
+            'email' => 'jarot@sdm.wiharta.com',
+            'password_hash' => Password::hash('jarotpersonaliawka2023'),
+            'active' => 1
+        ]);
 
         $groups->addUserToGroup($users->getInsertID(), 1);
 
-        $users->insert([
-            'username' => 'haa',
-            'email' => 'haa@wiharta.com',
-            'password_hash' => Password::hash('haawkagresik2023'),
-            'active' => 1
-        ]);
+        // $users->insert([
+        //     'username' => 'haa',
+        //     'email' => 'haa@wiharta.com',
+        //     'password_hash' => Password::hash('haawkagresik2023'),
+        //     'active' => 1
+        // ]);
 
         // $users->insert([
         //     'username' => 'sakti',

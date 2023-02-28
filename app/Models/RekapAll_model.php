@@ -180,6 +180,15 @@ class RekapAll_model extends Model
             ->get()->getResultArray();
     }
 
+    public function DKPharianpembagian2($data)
+    {
+        return $this->db->query("SELECT pembagian2.`pembagian2_nama`, pembagian4.`pembagian4_nama`, pembagian4.`pembagian4_id`, COUNT(pembagian4.`pembagian4_nama`) AS dkp FROM pegawai
+        JOIN pembagian4 ON pembagian4.`pembagian4_id`=pegawai.`pembagian4_id`
+        LEFT JOIN pembagian2 ON pegawai.`pembagian2_id`=pembagian2.`pembagian2_id`
+        LEFT JOIN tb_jadwal ON tb_jadwal.`grupass`=pegawai.`grup_jam_kerja`
+        WHERE (pegawai.`tgl_resign`='0000-00-00' OR pegawai.`tgl_resign`>='" . $data['tanggal'] . "' OR pegawai.`tgl_resign` IS NULL) AND pegawai.`tgl_mulai_kerja`<='" . $data['tanggal'] . "' AND  tgl='" . $data['tanggal'] . "' AND pembagian2.`pembagian2_nama` LIKE '" . $data['divisi'] . "' GROUP BY pembagian4.`pembagian4_id`")->getResultArray();
+    }
+
     public function DKPHarian($data)
     {
         $tanggal = $data['tanggal'];
@@ -190,13 +199,7 @@ class RekapAll_model extends Model
         $tagihanawal = new DateTime($timeawal);
         $tagihanakhir = new DateTime($timeakhir);
 
-        $queryunit = $this->db->query("SELECT pembagian2.`pembagian2_nama`, pembagian4.`pembagian4_nama`, pembagian4.`pembagian4_id`, COUNT(pembagian4.`pembagian4_nama`) AS dkp FROM pegawai
-        JOIN pembagian4 ON pembagian4.`pembagian4_id`=pegawai.`pembagian4_id`
-        LEFT JOIN pembagian2 ON pegawai.`pembagian2_id`=pembagian2.`pembagian2_id`
-        LEFT JOIN tb_jadwal ON tb_jadwal.`grupass`=pegawai.`grup_jam_kerja`
-        WHERE (pegawai.`tgl_resign`='0000-00-00' OR pegawai.`tgl_resign`>='" . $data['tanggal'] . "' OR pegawai.`tgl_resign` IS NULL) AND pegawai.`tgl_mulai_kerja`<='" . $data['tanggal'] . "' AND  tgl='" . $data['tanggal'] . "' AND pembagian2.`pembagian2_nama` LIKE '" . $data['divisi'] . "' GROUP BY pembagian4.`pembagian4_id`")->getResultArray();
-
-        foreach ($queryunit as $qu) {
+        foreach ($data['queryunit'] as $qu) {
             for ($a = $tagihanawal; $a <= $tagihanakhir; $a->modify('+ 1 day')) {
                 $time = date('Y-m-d H:i:s', strtotime(' +14 hours', strtotime($timeawal . ' 11:00:00')));
                 $query[] = $this->db->query("SELECT pembagian4.`pembagian4_id`, COUNT(pembagian4.`pembagian4_nama`) AS dkp2, mk, mk2, dlk, sh0 FROM pegawai
@@ -227,13 +230,13 @@ class RekapAll_model extends Model
                 WHERE (pegawai.`tgl_resign`='0000-00-00' OR pegawai.`tgl_resign`>='" . $timeawal . "' OR pegawai.`tgl_resign` IS NULL) AND pegawai.`tgl_mulai_kerja`<='" . $timeawal . "' AND  tgl='" . $timeawal . "' AND pembagian2.`pembagian2_nama` LIKE '" . $data['divisi'] . "' AND pembagian4.`pembagian4_id`='" . $qu['pembagian4_id'] . "' GROUP BY pembagian4.`pembagian4_id`")->getResultArray();
                 $timeawal = date('Y-m-d', strtotime('+1 days', strtotime($timeawal)));
 
-                $queryunit3 = $queryunit;
+                // $queryunit3 = $queryunit;
             }
         }
 
 
-        $data[] = [
-            'datanama' => $queryunit3,
+        $data = [
+            // 'datanama' => $queryunit3,
             'data' => $query
         ];
 
