@@ -46,3 +46,24 @@ in APPPATH\Views\rekap\tabelharian.php on line 54.
  8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-28 16:18:11 --> Array to string conversion
+in APPPATH\Views\rekap\tabelharian.php on line 29.
+ 1 APPPATH\Views\rekap\tabelharian.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Views\\rekap\\tabelharian.php', 29)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\rekap\\tabelharian.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('rekap/tabelharian', [], true)
+ 5 APPPATH\Controllers\Rekap.php(147): view('rekap/tabelharian', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-02-28 16:37:44 --> Undefined variable $tglrekap
+in APPPATH\Models\RekapAll_model.php on line 242.
+ 1 APPPATH\Models\RekapAll_model.php(242): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tglrekap', 'APPPATH\\Models\\RekapAll_model.php', 242)
+ 2 APPPATH\Controllers\Rekap.php(118): App\Models\RekapAll_model->DKPHarian([...])
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')

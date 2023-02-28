@@ -24,6 +24,11 @@ thead th {
                 <th>DK</th>
                 <th>LIBUR</th>
                 <th>DILIBURKAN</th>
+                <?php foreach ($dkpharian as $dh) : ?>
+                <?php foreach ($dh as $dh2) : ?>
+                <?= var_dump($dh[0]); ?>
+                <?php endforeach; ?>
+                <?php endforeach; ?>
                 <th>M</th>
                 <th>TM</th>
                 <th>TA</th>
@@ -50,7 +55,7 @@ thead th {
             <?php foreach ($dh as $dh2) : ?>
             <?php $jp = 0; ?>
             <tr>
-                <td class="column"><?php var_dump($dh) ?></td>
+                <td class="column"></td>
                 <td class="column"></td>
                 <td></td>
                 <td></td>
