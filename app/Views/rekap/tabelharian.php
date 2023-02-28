@@ -22,8 +22,6 @@ thead th {
                 <th class="column freeze">DIVISI</th>
                 <th class="column freeze">UNIT</th>
                 <th>DK</th>
-                <th>DSP</th>
-                <th>DKP</th>
                 <th>LIBUR</th>
                 <th>DILIBURKAN</th>
                 <th>M</th>
@@ -60,8 +58,6 @@ thead th {
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
                 <td style="font-weight: bold;"></td>
                 <td></td>
                 <td>0%</td>
@@ -72,8 +68,6 @@ thead th {
                 <td>TOTAL</td>
                 <td></td>
                 <td><?= $dkp2 ?></td>
-                <td></td>
-                <td></td>
                 <td><?= $libur2 ?></td>
                 <td><?= $jp2 ?></td>
                 <td><?= $dkpshs2 ?></td>
