@@ -26,7 +26,7 @@ thead th {
                 <th>DILIBURKAN</th>
                 <?php foreach ($dkpharian as $dh) : ?>
                 <?php foreach ($dh as $dh2) : ?>
-                <?= var_dump($dh[0]); ?>
+                <?= var_dump($dh); ?>
                 <?php endforeach; ?>
                 <?php endforeach; ?>
                 <th>M</th>

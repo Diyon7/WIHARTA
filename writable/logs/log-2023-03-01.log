@@ -1,0 +1,9 @@
+CRITICAL - 2023-03-01 14:15:16 --> Undefined variable $tglrekap
+in APPPATH\Models\RekapAll_model.php on line 242.
+ 1 APPPATH\Models\RekapAll_model.php(242): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tglrekap', 'APPPATH\\Models\\RekapAll_model.php', 242)
+ 2 APPPATH\Controllers\Rekap.php(118): App\Models\RekapAll_model->DKPHarian([...])
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Rekap->Tabelabsenlaporanharian()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rekap))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
