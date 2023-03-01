@@ -172,7 +172,12 @@ class Izin extends BaseController
         // $now = new DateTime();
         // $datenow = $now->format('Y-m-d 00:00:00');
 
-        $datenow = date("Y-m-d 00:00:00", strtotime("- 30 day"));
+        if (in_groups('vendor')) {
+            $datenow = date("Y-m-d 00:00:00", strtotime("- 3 day"));
+        } else {
+            $datenow = date("Y-m-d 00:00:00", strtotime("- 30 day"));
+        }
+
         if ($this->request->isAJAX()) {
 
             if ($this->request->getMethod() == 'post') {
