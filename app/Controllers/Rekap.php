@@ -107,15 +107,17 @@ class Rekap extends BaseController
         ];
 
         $dkpharianpembagian2 = $this->rekapall->DKPharianpembagian2($data);
-        $datas = [
-            'tglt' => $tglt,
-            'tanggal' => $postday,
-            'divisi' => $this->request->getPost('divisi'),
-            'queryunit' => $dkpharianpembagian2
-        ];
 
         // $rdiliburkan[] = $this->diliburkan->where('tgl_d', $datadkp['tanggal'])->findAll();
-        $dkpharian = $this->rekapall->DKPHarian($datas);
+        foreach ($dkpharianpembagian2 as $qu) {
+            $datas = [
+                'tglt' => $tglt,
+                'tanggal' => $postday,
+                'divisi' => $this->request->getPost('divisi'),
+                'qu' => $qu['pembagian4_id']
+            ];
+            $dkpharian[] = $this->rekapall->DKPHarian($datas);
+        }
         // $dkpmasuk = $this->rekapall->DKPMasuk($data);
 
         $stm = $this->rekapall->TidakmasukNS1($data);
@@ -132,6 +134,7 @@ class Rekap extends BaseController
         $data = [
             // 'rdiliburkan' => $rdiliburkan,
             'dkpharian' => $dkpharian,
+            'dkpharianpembagian2' => $dkpharianpembagian2,
             // 'dkpmasuk' => $dkpmasuk,
             'stm' => $stm,
             'sm' => $sm,
