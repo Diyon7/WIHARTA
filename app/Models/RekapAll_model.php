@@ -193,8 +193,8 @@ class RekapAll_model extends Model
     {
         $tanggal = $data['tanggal'];
 
-        $timeawal = date('Y-m-26', strtotime(date($tanggal) . '- 1 month'));
-        $timeakhir = date('Y-m-25', strtotime(date($tanggal) . '- 0 month'));
+        $timeawal = date('Y-m-d', strtotime(date($tanggal) . '- 3 day'));
+        $timeakhir = date('Y-m-d', strtotime(date($tanggal) . '+ 3 day'));
 
         $tagihanawal = new DateTime($timeawal);
         $tagihanakhir = new DateTime($timeakhir);

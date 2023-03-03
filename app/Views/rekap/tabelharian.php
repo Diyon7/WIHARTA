@@ -25,6 +25,9 @@ thead th {
                 <th>LIBUR</th>
                 <th>DILIBURKAN</th>
                 <?php foreach ($dkpharian as $dh) : ?>
+                <?php foreach ($dh as $dh2) : ?>
+                <?php var_dump($dh2) ?>
+                <?php endforeach; ?>
                 <?php endforeach; ?>
                 <th>M</th>
                 <th>TM</th>
@@ -48,7 +51,6 @@ thead th {
         <?php $mnsa2 = '0'; ?>
         <?php $tmnsa2 = '0'; ?>
         <tbody>
-            <?php var_dump($dkpharian) ?>
             <?php foreach ($dkpharian as $dha) : ?>
             <?php $jp = 0; ?>
             <tr>
