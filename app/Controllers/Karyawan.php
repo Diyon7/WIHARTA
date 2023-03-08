@@ -512,7 +512,7 @@ class Karyawan extends BaseController
                 $row[] = $karyawana->bagian;
                 $row[] = $karyawana->tmt;
                 $row[] = $karyawana->tgl_resign;
-                $row[] = "<button class=\"btn btn-success\">Detail</button>";
+                $row[] = "<button class=\"btn btn-success\"></button>";
                 $data[] = $row;
             }
             $output = [
