@@ -1,0 +1,13 @@
+CRITICAL - 2023-03-08 12:10:00 --> Undefined variable $adminname
+in APPPATH\Views\layouts\main_master.php on line 127.
+ 1 APPPATH\Views\layouts\main_master.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $adminname', 'APPPATH\\Views\\layouts\\main_master.php', 127)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\layouts\\main_master.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('layouts/main_master', [], true)
+ 5 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('laporan/bulanan', [], true)
+ 6 APPPATH\Controllers\Laporan.php(71): view('laporan/bulanan', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Laporan->Laporanbulanan()
+ 8 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+ 9 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')

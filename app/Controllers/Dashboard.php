@@ -35,7 +35,7 @@ class Dashboard extends BaseController
             'title' => 'WKA INFORMATION SYSTEM',
             'devisi' => 'Dashboard SDM',
             'jumlahpervendor' => $jumlahdatapervendor,
-            'halaman' => 'Dashboard SDM',
+            'halaman' => 'Dashboard',
             'tanggalsekarang' => $datenow
         ];
 

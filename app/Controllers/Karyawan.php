@@ -531,7 +531,7 @@ class Karyawan extends BaseController
         $data = [
             'title' => 'WKA INFORMATION SYSTEM',
             'devisi' => 'Karyawan',
-            'halaman' => 'Karyawan'
+            'halaman' => 'Log Karyawan'
         ];
 
         return view('karyawan/logkaryawan', $data);

@@ -40,7 +40,7 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed sidebar-collapse nav-compact nav-child-indent">
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -108,12 +108,12 @@
                         <!-- <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> -->
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#"
-                        role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li>
+                <!--<li class="nav-item">-->
+                <!--    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#"-->
+                <!--        role="button">-->
+                <!--        <i class="fas fa-th-large"></i>-->
+                <!--    </a>-->
+                <!--</li>-->
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -124,32 +124,32 @@
             <a href="<?= base_url() ?>" class="brand-link">
                 <img src="<?= base_url() ?>/assets/dist/img/avatar.png" alt="WIHARTA"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light"><?= $devisi ? $devisi : 'WIHARTA' ?></span>
+                <span class="brand-text font-weight-light"><?= $devisi ? $devisi : 'DASHBOARD SDM' ?></span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
 
                 <!-- SidebarSearch Form -->
-                <div class="form-inline">
+                <!-- <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <?php if (has_permission('dashboard')) : ?>
-                        <li class="nav-item menu-open">
-                            <a href="<?= base_url() ?>/admin" class="nav-link active">
+                        <li class="nav-item">
+                            <a href="<?= base_url() ?>/admin"
+                                class="nav-link <?= $halaman == 'Dashboard' ? 'active' : 'DASHBOARD SDM' ?>">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     HOME
@@ -159,7 +159,7 @@
                         <?php endif ?>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-form"></i>
+                                <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     LAPORAN
                                     <i class="fas fa-angle-left right"></i>
@@ -168,24 +168,27 @@
                             <ul class="nav nav-treeview">
                                 <?php if (has_permission('laporanbulanan')) : ?>
                                 <li class="nav-item">
-                                    <a href="<?= base_url() ?>/admin/laporanbulanan" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    <a href="<?= base_url() ?>/admin/laporanbulanan"
+                                        class="nav-link <?= $halaman == 'Laporan Bulanan' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        <i class="far fa-file nav-icon"></i>
                                         <p>LAPORAN BULANAN</p>
                                     </a>
                                 </li>
                                 <?php endif ?>
                                 <?php if (has_permission('logkaryawan')) : ?>
                                 <li class="nav-item">
-                                    <a href="<?= base_url() ?>/admin/logkaryawan" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    <a href="<?= base_url() ?>/admin/logkaryawan"
+                                        class="nav-link <?= $halaman == 'Log Karyawan' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        <i class="far fa-file nav-icon"></i>
                                         <p>LOG KARYAWAN</p>
                                     </a>
                                 </li>
                                 <?php endif ?>
                                 <?php if (has_permission('laporanharian')) : ?>
                                 <li class="nav-item">
-                                    <a href="<?= base_url() ?>/admin/rekap" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    <a href="<?= base_url() ?>/admin/rekap"
+                                        class="nav-link <?= $halaman == 'Dashboard' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        <i class="far fa-file nav-icon"></i>
                                         <p>LAPORAN HARIAN</p>
                                     </a>
                                 </li>
@@ -194,7 +197,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-comment"></i>
+                                <i class="nav-icon fas fa-inbox"></i>
                                 <p>
                                     PENGECUALIAN
                                     <i class="fas fa-angle-left right"></i>
@@ -204,7 +207,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="<?= base_url() ?>/admin/izin" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-file nav-icon"></i>
                                         <p>izin</p>
                                     </a>
                                 </li>
@@ -214,7 +217,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="<?= base_url() ?>/admin/validasi" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-file nav-icon"></i>
                                         <p>validasi izin</p>
                                     </a>
                                 </li>
@@ -223,7 +226,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="<?= base_url() ?>/admin/logizin" class="nav-link">
-                                        <i class="far fa-history nav-icon"></i>
+                                        <i class="far fa-file nav-icon"></i>
                                         <p>log izin</p>
                                     </a>
                                 </li>
@@ -232,7 +235,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="<?= base_url() ?>/admin/gantigrupsementara" class="nav-link">
-                                        <i class="fas fa-group nav-icon"></i>
+                                        <i class="far fa-file nav-icon"></i>
                                         <p>Ganti Grup Sementara</p>
                                     </a>
                                 </li>
@@ -251,13 +254,13 @@
                                 <?php if (has_permission('datakaryawan')) : ?>
                                 <li class="nav-item">
                                     <a href="<?= base_url() ?>/admin/karyawan" class="nav-link">
-                                        <i class="far fa-people-carry nav-icon"></i>
+                                        <i class="far fa-file nav-icon"></i>
                                         <p>KARYAWAN</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="<?= base_url() ?>/admin/diliburkan" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-file nav-icon"></i>
                                         <p>DILIBURKAN</p>
                                     </a>
                                 </li>
@@ -272,7 +275,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tree"></i>
+                                <i class="nav-icon fas fa-calendar"></i>
                                 <p>
                                     Jadwal
                                     <i class="fas fa-angle-left right"></i>
@@ -346,7 +349,7 @@
             <strong>Made By ❤️ WIHARTA KARYA AGUNG</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                Theme &copy; <a href="#">AdminLTE</a>.
+                Theme &copy; <a href="#"> AdminLTE</a>.
             </div>
         </footer>
 
@@ -381,12 +384,12 @@
     <script src="<?= base_url() ?>/assets/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Summernote -->
     <script src="<?= base_url() ?>/assets/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- overlayScrollbars --
+    <!-- overlayScrollbars -->
     <script src="<?= base_url() ?>/assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url() ?>/assets/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <!-- <script src="<?= base_url() ?>/assets/dist/js/demo.js"></script> -->
+    <!--<script src="<?= base_url() ?>/assets/dist/js/demo.js"></script>-->
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="<?= base_url() ?>/assets/dist/js/pages/dashboard.js"></script>
 </body>
