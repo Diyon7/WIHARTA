@@ -187,7 +187,7 @@
                                 <?php if (has_permission('laporanharian')) : ?>
                                 <li class="nav-item">
                                     <a href="<?= base_url() ?>/admin/rekap"
-                                        class="nav-link <?= $halaman == 'Dashboard' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        class="nav-link <?= $halaman == 'Laporan Harian' ? 'active' : 'DASHBOARD SDM' ?>">
                                         <i class="far fa-file nav-icon"></i>
                                         <p>LAPORAN HARIAN</p>
                                     </a>
@@ -206,7 +206,8 @@
                             <?php if (has_permission('izin')) : ?>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?= base_url() ?>/admin/izin" class="nav-link">
+                                    <a href="<?= base_url() ?>/admin/izin"
+                                        class="nav-link <?= $halaman == 'Izin' ? 'active' : 'DASHBOARD SDM' ?>">
                                         <i class="far fa-file nav-icon"></i>
                                         <p>izin</p>
                                     </a>
@@ -216,7 +217,8 @@
                             <?php if (has_permission('validasiizin')) : ?>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?= base_url() ?>/admin/validasi" class="nav-link">
+                                    <a href="<?= base_url() ?>/admin/validasi"
+                                        class="nav-link <?= $halaman == 'Validasi Izin' ? 'active' : 'DASHBOARD SDM' ?>">
                                         <i class="far fa-file nav-icon"></i>
                                         <p>validasi izin</p>
                                     </a>
@@ -225,7 +227,8 @@
                             <?php endif ?>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?= base_url() ?>/admin/logizin" class="nav-link">
+                                    <a href="<?= base_url() ?>/admin/logizin"
+                                        class="nav-link <?= $halaman == 'Log Izin' ? 'active' : 'DASHBOARD SDM' ?>">
                                         <i class="far fa-file nav-icon"></i>
                                         <p>log izin</p>
                                     </a>
@@ -253,7 +256,8 @@
                             <ul class="nav nav-treeview">
                                 <?php if (has_permission('datakaryawan')) : ?>
                                 <li class="nav-item">
-                                    <a href="<?= base_url() ?>/admin/karyawan" class="nav-link">
+                                    <a href="<?= base_url() ?>/admin/karyawan"
+                                        class="nav-link <?= $halaman == 'Karyawan' ? 'active' : 'DASHBOARD SDM' ?>">
                                         <i class="far fa-file nav-icon"></i>
                                         <p>KARYAWAN</p>
                                     </a>
@@ -274,13 +278,13 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <!-- <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-calendar"></i>
                                 <p>
                                     Jadwal
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
-                            </a>
+                            </a> -->
                             <ul class="nav nav-treeview">
                                 <!-- <li class="nav-item">
                                     <a href="#" class="nav-link">

@@ -60,7 +60,7 @@ class Izin extends BaseController
         $data = [
             'title' => 'WKA INFORMATION SYSTEM',
             'devisi' => 'Karyawan',
-            'halaman' => 'Karyawan',
+            'halaman' => 'Izin',
             'daftarkaryawanjp3' => $daftarkaryawanjp3,
             'jnsizin' => $djnsizin,
             'jam_kerja' => $shfjamkerja
@@ -75,7 +75,7 @@ class Izin extends BaseController
         $data = [
             'title' => 'WKA INFORMATION SYSTEM',
             'devisi' => 'Karyawan',
-            'halaman' => 'Karyawan'
+            'halaman' => 'Validasi Izin'
         ];
 
         return view('izin/verifikasi', $data);
@@ -157,7 +157,7 @@ class Izin extends BaseController
         $data = [
             'title' => 'WKA INFORMATION SYSTEM',
             'devisi' => 'Karyawan',
-            'halaman' => 'Karyawan'
+            'halaman' => 'Log Izin'
         ];
 
         return view('izin/logizin', $data);

@@ -46,7 +46,7 @@ class Rekap extends BaseController
         $data = [
             'title' => 'WKA INFORMATION SYSTEM',
             'devisi' => 'Dashboard SDM',
-            'halaman' => 'Rekap Harian',
+            'halaman' => 'Laporan Harian',
             'divisi' => $divisi
         ];
 
