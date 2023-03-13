@@ -88,22 +88,28 @@ class Karyawan extends BaseController
         return view('karyawan/tambahpegawai', $data);
     }
 
-    public function Detailakaryawanjp3()
+    public function Detaikaryawan()
     {
-        if ($this->request->isAJAX()) {
-            $nippegaw = $this->request->getPost('idnip');
+        helper('form');
 
-            $detailkarya = $this->pegawaimodel->Detailkaryawana($nippegaw);
+        $vendor = $this->vendormodel->findAll();
+        $jabatan = $this->jabatan->findAll();
+        $divisi = $this->divisi->findAll();
+        $unit = $this->unitmodel->findAll();
+        $subunit = $this->subunit->findAll();
 
-            $data = [
-                'detailkaryawana' => $detailkarya
-            ];
-            $msg = [
-                'sukses' => view('karyawan/detail', $data)
-            ];
+        $data = [
+            'vendor' => $vendor,
+            'jabatan' => $jabatan,
+            'divisi' => $divisi,
+            'unit' => $unit,
+            'title' => 'WKA INFORMATION SYSTEM',
+            'devisi' => 'Karyawan',
+            'halaman' => 'Karyawan',
+            'subunit' => $subunit,
+        ];
 
-            echo json_encode($msg);
-        }
+        return view('karyawan/detail', $data);
     }
 
     public function Pembagian()
@@ -453,7 +459,7 @@ class Karyawan extends BaseController
                 $row[] = $karyawana->unit;
                 $row[] = $karyawana->tmt;
                 $row[] = $karyawana->grup_t;
-                $row[] = "<a onclick=\"detailkaryawana('$karyawana->idkar')\" class=\"btn btn-xs btn-outline-success\">Detail</a><a class=\"btn-xs btn-edit btn btn-outline-success\" data-editkarid=\"$karyawana->idkar\">Edit</a><a class=\"btn-xs btn-keluar btn btn-outline-success\" data-keluarid=\"$karyawana->idkar\">Keluar</a>";
+                $row[] = "<a href='" . base_url() . "/admin/karyawan/detail' class=\"btn btn-xs btn-outline-success\">Detail</a><a class=\"btn-xs btn-edit btn btn-outline-success\" data-editkarid=\"$karyawana->idkar\">Edit</a><a class=\"btn-xs btn-keluar btn btn-outline-success\" data-keluarid=\"$karyawana->idkar\">Keluar</a>";
                 $data[] = $row;
             }
             $output = [

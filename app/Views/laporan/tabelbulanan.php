@@ -29,7 +29,7 @@
                 <th>TIDAK HADIR</th>
                 <th>TERLAMBAT</th>
                 <th>KELEBIHAN JAM</th>
-                <th>PULANG CEPAT</th>
+                <!-- <th>PULANG CEPAT</th> -->
             </tr>
         </thead>
         <tbody>
@@ -68,11 +68,6 @@
                 <?php } ?>
                 <?php if ($tblk2['kelebihanjam'] != 0) { ?>
                 <td><?= $tblk2['kelebihanjam'] / count($tblk2['m'])  ?></td>
-                <?php  } else { ?>
-                <td>0</td>
-                <?php } ?>
-                <?php if ($tblk2['pcepat'] != 0) { ?>
-                <td><?= $tblk2['pcepat'] / count($tblk2['m'])  ?></td>
                 <?php  } else { ?>
                 <td>0</td>
                 <?php } ?>

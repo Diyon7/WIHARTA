@@ -82,7 +82,7 @@ $routes->group('admin/', ['filter' => 'permission:datakaryawan'], function ($rou
     $routes->add('karyawanjp3a/datatables', 'Karyawan::datatablesjp3a');
     $routes->add('karyawanjp3k/datatables', 'Karyawan::datatablesjp3k');
     $routes->add('karyawanjp3a/add', 'Karyawan::tambahkaryawanjp3');
-    $routes->add('karyawanjp3a/detaila', 'Karyawan::detailakaryawanjp3');
+    $routes->add('karyawan/detail', 'Karyawan::Detaikaryawan');
     $routes->add('karyawan/tambahkaryawan', 'Karyawan::Add');
     $routes->add('karyawan/idpembagian', 'Karyawan::Pembagian');
     $routes->add('karyawan/edit', 'Karyawan::Edit');
