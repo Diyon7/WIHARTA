@@ -8,6 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                <?= $edetail ?>
                 <?= form_open('admin/karyawan/save', ['class' => 'save']) ?>
                 <?= csrf_field() ?>
 
@@ -17,44 +18,39 @@
                         <option value="<?= $editkaryawanall['pembagian3id'] ?>" selected>
                             <?= $editkaryawanall['asal'] ?></option>
                         <?php foreach ($vendor as $vd) : ?>
-                        <option value="<?= $vd['pembagian3_id'] ?>"><?= $vd['pembagian3_nama'] ?></option>
+                            <option value="<?= $vd['pembagian3_id'] ?>"><?= $vd['pembagian3_nama'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group row">
                     <label for="input" class="col-sm-2 col-form-label">No Induk Karyawan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nip" id="nip"
-                            value="<?= $editkaryawanall['nip'] ?>" readonly>
+                        <input type="text" class="form-control" name="nip" id="nip" value="<?= $editkaryawanall['nip'] ?>" readonly>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="input" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" value="<?= $editkaryawanall['nama'] ?>" name="nama"
-                            id="namakaryawan">
+                        <input type="text" class="form-control" value="<?= $editkaryawanall['nama'] ?>" name="nama" id="namakaryawan">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="input" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" name="tgllahir"
-                            value="<?= $editkaryawanall['tgllahir'] ?>" id="tgllahir">
+                        <input type="date" class="form-control" name="tgllahir" value="<?= $editkaryawanall['tgllahir'] ?>" id="tgllahir">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
                     <div class="col-sm-10">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="jk" id="laki-laki" value="1"
-                                <?= ($editkaryawanall['gender'] == '1') ?  "checked" : "" ?>>
+                            <input class="form-check-input" type="radio" name="jk" id="laki-laki" value="1" <?= ($editkaryawanall['gender'] == '1') ?  "checked" : "" ?>>
                             <label class="form-check-label" for="laki-laki">
                                 Laki - laki
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="jk" id="perempuan" value="2"
-                                <?= ($editkaryawanall['gender'] == '2') ? "checked" : "" ?>>
+                            <input class="form-check-input" type="radio" name="jk" id="perempuan" value="2" <?= ($editkaryawanall['gender'] == '2') ? "checked" : "" ?>>
                             <label class="form-check-label" for="perempuan">
                                 Perempuan
                             </label>
@@ -64,15 +60,13 @@
                 <div class="form-group row">
                     <label for="input" class="col-sm-2 col-form-label">Telepon</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" value="<?= $editkaryawanall['telepon'] ?>"
-                            name="telepon" id="telp">
+                        <input type="number" class="form-control" value="<?= $editkaryawanall['telepon'] ?>" name="telepon" id="telp">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="input" class="col-sm-2 col-form-label">Alamat</label>
                     <div class="col-sm-10">
-                        <textarea type="date" class="form-control" value="<?= $editkaryawanall['alamat'] ?>"
-                            name="alamat" id="alamat"></textarea>
+                        <textarea type="date" class="form-control" value="<?= $editkaryawanall['alamat'] ?>" name="alamat" id="alamat"></textarea>
                     </div>
                 </div>
                 <!-- <div class="form-group row">
@@ -89,7 +83,7 @@
                         <option value="<?= $editkaryawanall['pembagian2id'] ?>" id="divisi" selected>
                             <?= $editkaryawanall['divisi'] ?></option>
                         <?php foreach ($divisi as $dvs) : ?>
-                        <option value="<?= $dvs['pembagian2_id'] ?>"><?= $dvs['pembagian2_nama'] ?></option>
+                            <option value="<?= $dvs['pembagian2_id'] ?>"><?= $dvs['pembagian2_nama'] ?></option>
                         <?php endforeach; ?>
                     </select>
                     <label class="col-sm-1 col-form-label">Unit</label>
@@ -97,7 +91,7 @@
                         <option value="<?= $editkaryawanall['pembagian4id'] ?>" id="unit" selected>
                             <?= $editkaryawanall['unit'] ?></option>
                         <?php foreach ($unit as $unt) : ?>
-                        <option value="<?= $unt['pembagian4_id'] ?>"><?= $unt['pembagian4_nama'] ?></option>
+                            <option value="<?= $unt['pembagian4_id'] ?>"><?= $unt['pembagian4_nama'] ?></option>
                         <?php endforeach; ?>
                     </select>
                     <label class="col-sm-1 col-form-label">Sub Unit</label>
@@ -105,7 +99,7 @@
                         <option value="<?= $editkaryawanall['pembagian5id'] ?>" selected>
                             <?= $editkaryawanall['subunit'] ?></option>
                         <?php foreach ($subunit as $sbunt) : ?>
-                        <option value="<?= $sbunt['pembagian5_id'] ?>"><?= $sbunt['pembagian5_nama'] ?></option>
+                            <option value="<?= $sbunt['pembagian5_id'] ?>"><?= $sbunt['pembagian5_nama'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -121,7 +115,7 @@
                         <option value="<?= $editkaryawanall['grupt'] ?>" selected><?= $editkaryawanall['grupt'] ?>
                         </option>
                         <?php foreach ($grup_t as $gp) : ?>
-                        <option value="<?= $gp['grup_t'] ?>"><?= $gp['grup_t'] ?></option>
+                            <option value="<?= $gp['grup_t'] ?>"><?= $gp['grup_t'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -132,7 +126,7 @@
                             <?= $editkaryawanall['jabatan'] ?>
                             <?php foreach ($jabatan as $jbn) : ?>
                         <option value="<?= $jbn['pembagian1_id'] ?>"><?= $jbn['pembagian1_nama'] ?></option>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group row">
@@ -141,15 +135,14 @@
                         <option value="<?= $editkaryawanall['golongan'] ?>" selected>
                             <?= $editkaryawanall['golongan'] ?></option>
                         <?php foreach ($golongan as $go) : ?>
-                        <option value="<?= $go['golongan'] ?>"><?= $go['golongan'] ?></option>
+                            <option value="<?= $go['golongan'] ?>"><?= $go['golongan'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group row">
                     <label for="input" class="col-sm-2 col-form-label">TMT</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" value="<?= $editkaryawanall['tmt'] ?>" name="tmt"
-                            id="tmt">
+                        <input type="date" class="form-control" value="<?= $editkaryawanall['tmt'] ?>" name="tmt" id="tmt">
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -163,118 +156,118 @@
 </div>
 
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
 
-    const Toasts = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timerProgressBar: true,
-        timer: 15000
+        const Toasts = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timerProgressBar: true,
+            timer: 15000
+        });
+
+        $('.save').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                dataType: "json",
+                beforeSend: function() {
+                    $('.btntampil').attr('disable', 'disabled');
+                    $('.btntampil').html('<i class="fa fa-spin fa-spinner"></i>');
+                },
+                complete: function() {
+                    $('.btntampil').removeAttr('disable');
+                    $('.btntampil').html('Submit');
+                },
+                success: function(response) {
+                    console.log(response.success);
+                    if (response.success) {
+                        $('#editdata').modal('hide');
+                        $('#karyawanjp3a').DataTable().ajax.reload()
+                        Toasts.fire({
+                            icon: 'success',
+                            title: 'Edit Berhasil',
+                            type: 'success',
+                        });
+                    }
+                },
+                error: function(xhr, ajaxOption, thrownError) {
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                }
+            })
+        })
+
+        $('.hapus').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                dataType: "json",
+                beforeSend: function() {
+                    $('.btntampil').attr('disable', 'disabled');
+                    $('.btntampil').html('<i class="fa fa-spin fa-spinner"></i>');
+                },
+                complete: function() {
+                    $('.btntampil').removeAttr('disable');
+                    $('.btntampil').html('Submit');
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.success) {
+                        $('#editdata').modal('hide');
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timerProgressBar: true,
+                            timer: 15000
+                        });
+                        Toasts.fire({
+                            icon: 'success',
+                            title: 'Edit Berhasil',
+                            type: 'success',
+                        });
+                    }
+                },
+                error: function(xhr, ajaxOption, thrownError) {
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                }
+            })
+        })
+
+        // $("#subunit").change(function() {
+        //     var subunit = $(this).val();
+
+        //     $.ajax({
+        //         url: '<?= site_url('admin/karyawan/idpembagian') ?>',
+        //         type: 'post',
+        //         data: {
+        //             subunit: subunit
+        //         },
+        //         dataType: 'json',
+        //         success: function(response) {
+
+        //             var namadivisi = response.namadivisi;
+        //             var pembagian2id = response.pembagian2id;
+        //             var namaunit = response.namaunit;
+        //             var pembagian4id = response.pembagian4id;
+        //             var namasubunit = response.namasubunit;
+        //             var pembagian5id = response.pembagian5id;
+
+        //             $("#divisi").val(pembagian2id);
+        //             $("#divisi").html(namadivisi);
+        //             $("#unit").val(pembagian4id);
+        //             $("#unit").html(namaunit);
+
+        //         },
+        //         error: function(xhr, ajaxOption, thrownError) {
+        //             alert(xhr.status + "\n\n\n" + thrownError);
+        //         }
+        //     });
+        // });
+        $('.pilihkaryawan').select2();
     });
-
-    $('.save').submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            dataType: "json",
-            beforeSend: function() {
-                $('.btntampil').attr('disable', 'disabled');
-                $('.btntampil').html('<i class="fa fa-spin fa-spinner"></i>');
-            },
-            complete: function() {
-                $('.btntampil').removeAttr('disable');
-                $('.btntampil').html('Submit');
-            },
-            success: function(response) {
-                console.log(response.success);
-                if (response.success) {
-                    $('#editdata').modal('hide');
-                    $('#karyawanjp3a').DataTable().ajax.reload()
-                    Toasts.fire({
-                        icon: 'success',
-                        title: 'Edit Berhasil',
-                        type: 'success',
-                    });
-                }
-            },
-            error: function(xhr, ajaxOption, thrownError) {
-                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-            }
-        })
-    })
-
-    $('.hapus').submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            dataType: "json",
-            beforeSend: function() {
-                $('.btntampil').attr('disable', 'disabled');
-                $('.btntampil').html('<i class="fa fa-spin fa-spinner"></i>');
-            },
-            complete: function() {
-                $('.btntampil').removeAttr('disable');
-                $('.btntampil').html('Submit');
-            },
-            success: function(response) {
-                console.log(response);
-                if (response.success) {
-                    $('#editdata').modal('hide');
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timerProgressBar: true,
-                        timer: 15000
-                    });
-                    Toasts.fire({
-                        icon: 'success',
-                        title: 'Edit Berhasil',
-                        type: 'success',
-                    });
-                }
-            },
-            error: function(xhr, ajaxOption, thrownError) {
-                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-            }
-        })
-    })
-
-    // $("#subunit").change(function() {
-    //     var subunit = $(this).val();
-
-    //     $.ajax({
-    //         url: '<?= site_url('admin/karyawan/idpembagian') ?>',
-    //         type: 'post',
-    //         data: {
-    //             subunit: subunit
-    //         },
-    //         dataType: 'json',
-    //         success: function(response) {
-
-    //             var namadivisi = response.namadivisi;
-    //             var pembagian2id = response.pembagian2id;
-    //             var namaunit = response.namaunit;
-    //             var pembagian4id = response.pembagian4id;
-    //             var namasubunit = response.namasubunit;
-    //             var pembagian5id = response.pembagian5id;
-
-    //             $("#divisi").val(pembagian2id);
-    //             $("#divisi").html(namadivisi);
-    //             $("#unit").val(pembagian4id);
-    //             $("#unit").html(namaunit);
-
-    //         },
-    //         error: function(xhr, ajaxOption, thrownError) {
-    //             alert(xhr.status + "\n\n\n" + thrownError);
-    //         }
-    //     });
-    // });
-    $('.pilihkaryawan').select2();
-});
 </script>

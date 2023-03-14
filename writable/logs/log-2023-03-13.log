@@ -11,3 +11,118 @@ in APPPATH\Views\layouts\main_master.php on line 7.
  9 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
 11 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 11:06:12 --> Encrypter needs a starter key.
+in SYSTEMPATH\Encryption\Encryption.php on line 124.
+ 1 SYSTEMPATH\Encryption\Encryption.php(124): CodeIgniter\Encryption\Exceptions\EncryptionException::forNeedsStarterKey()
+ 2 SYSTEMPATH\Config\Services.php(240): CodeIgniter\Encryption\Encryption->initialize(Object(Config\Encryption))
+ 3 SYSTEMPATH\Config\BaseService.php(253): CodeIgniter\Config\Services::encrypter()
+ 4 APPPATH\Controllers\Karyawan.php(43): CodeIgniter\Config\BaseService::__callStatic('encrypter', [])
+ 5 SYSTEMPATH\CodeIgniter.php(889): App\Controllers\Karyawan->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 11:16:27 --> Encrypter needs a starter key.
+in SYSTEMPATH\Encryption\Encryption.php on line 124.
+ 1 SYSTEMPATH\Encryption\Encryption.php(124): CodeIgniter\Encryption\Exceptions\EncryptionException::forNeedsStarterKey()
+ 2 SYSTEMPATH\Config\Services.php(240): CodeIgniter\Encryption\Encryption->initialize(Object(Config\Encryption))
+ 3 SYSTEMPATH\Config\BaseService.php(253): CodeIgniter\Config\Services::encrypter()
+ 4 APPPATH\Controllers\Karyawan.php(43): CodeIgniter\Config\BaseService::__callStatic('encrypter', [])
+ 5 SYSTEMPATH\CodeIgniter.php(889): App\Controllers\Karyawan->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 11:17:00 --> Encrypter needs a starter key.
+in SYSTEMPATH\Encryption\Encryption.php on line 124.
+ 1 SYSTEMPATH\Encryption\Encryption.php(124): CodeIgniter\Encryption\Exceptions\EncryptionException::forNeedsStarterKey()
+ 2 SYSTEMPATH\Config\Services.php(240): CodeIgniter\Encryption\Encryption->initialize(Object(Config\Encryption))
+ 3 SYSTEMPATH\Config\BaseService.php(253): CodeIgniter\Config\Services::encrypter()
+ 4 APPPATH\Controllers\Karyawan.php(43): CodeIgniter\Config\BaseService::__callStatic('encrypter', [])
+ 5 SYSTEMPATH\CodeIgniter.php(889): App\Controllers\Karyawan->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 11:22:27 --> openssl_encrypt(): Argument #1 ($data) must be of type string, array given
+in SYSTEMPATH\Encryption\Handlers\OpenSSLHandler.php on line 62.
+ 1 SYSTEMPATH\Encryption\Handlers\OpenSSLHandler.php(62): openssl_encrypt([...], 'AES-256-CTR', '[tÚ"ÁQ·(‚/ÉÏ¼ÎßØøgMuŸøÆ±ë‹¤jÔÎ®+ïûÉ5ýÊhÉ~Qœ’‚}Øª£ñ’·¢', 1, '£òõÙAðòÒ‡¡@')
+ 2 APPPATH\Controllers\Karyawan.php(158): CodeIgniter\Encryption\Handlers\OpenSSLHandler->encrypt([...])
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Karyawan->Edit()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Karyawan))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 11:22:42 --> openssl_encrypt(): Argument #1 ($data) must be of type string, array given
+in SYSTEMPATH\Encryption\Handlers\OpenSSLHandler.php on line 62.
+ 1 SYSTEMPATH\Encryption\Handlers\OpenSSLHandler.php(62): openssl_encrypt([...], 'AES-256-CTR', '[tÚ"ÁQ·(‚/ÉÏ¼ÎßØøgMuŸøÆ±ë‹¤jÔÎ®+ïûÉ5ýÊhÉ~Qœ’‚}Øª£ñ’·¢', 1, '|MÕêF ®!p‰¿®K¬')
+ 2 APPPATH\Controllers\Karyawan.php(158): CodeIgniter\Encryption\Handlers\OpenSSLHandler->encrypt([...])
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Karyawan->Edit()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Karyawan))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 11:25:09 --> openssl_encrypt(): Argument #1 ($data) must be of type string, array given
+in SYSTEMPATH\Encryption\Handlers\OpenSSLHandler.php on line 62.
+ 1 SYSTEMPATH\Encryption\Handlers\OpenSSLHandler.php(62): openssl_encrypt([...], 'AES-256-CTR', '\\t.†Ë2e‘y§Ò¬F”šÓã1‰¸M¦ûöÞMnk¬Ë=ÑJhÐ*Žd6Ê„mYövh³TžðÉ®ŠS·K–Ãj', 1, 'GÑ·:2¨F~¶Ct‹¼¦lY')
+ 2 APPPATH\Controllers\Karyawan.php(158): CodeIgniter\Encryption\Handlers\OpenSSLHandler->encrypt([...])
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Karyawan->Edit()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Karyawan))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 11:25:12 --> openssl_encrypt(): Argument #1 ($data) must be of type string, array given
+in SYSTEMPATH\Encryption\Handlers\OpenSSLHandler.php on line 62.
+ 1 SYSTEMPATH\Encryption\Handlers\OpenSSLHandler.php(62): openssl_encrypt([...], 'AES-256-CTR', '\\t.†Ë2e‘y§Ò¬F”šÓã1‰¸M¦ûöÞMnk¬Ë=ÑJhÐ*Žd6Ê„mYövh³TžðÉ®ŠS·K–Ãj', 1, 'ú¼b2Fe‹¡jºEùÅ')
+ 2 APPPATH\Controllers\Karyawan.php(158): CodeIgniter\Encryption\Handlers\OpenSSLHandler->encrypt([...])
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Karyawan->Edit()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Karyawan))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 11:25:19 --> openssl_encrypt(): Argument #1 ($data) must be of type string, array given
+in SYSTEMPATH\Encryption\Handlers\OpenSSLHandler.php on line 62.
+ 1 SYSTEMPATH\Encryption\Handlers\OpenSSLHandler.php(62): openssl_encrypt([...], 'AES-256-CTR', '\\t.†Ë2e‘y§Ò¬F”šÓã1‰¸M¦ûöÞMnk¬Ë=ÑJhÐ*Žd6Ê„mYövh³TžðÉ®ŠS·K–Ãj', 1, 'üq†ß.°
+;ÉI§9O†')
+ 2 APPPATH\Controllers\Karyawan.php(158): CodeIgniter\Encryption\Handlers\OpenSSLHandler->encrypt([...])
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Karyawan->Edit()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Karyawan))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 11:53:47 --> Constant expression contains invalid operations
+in APPPATH\Config\Encryption.php on line 26.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-13 12:03:24 --> hex2bin(): Hexadecimal input string must have an even length
+in APPPATH\Controllers\Karyawan.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Hexadecimal input string must have an even length', 'APPPATH\\Controllers\\Karyawan.php', 36)
+ 2 APPPATH\Controllers\Karyawan.php(36): hex2bin('12345')
+ 3 SYSTEMPATH\CodeIgniter.php(889): App\Controllers\Karyawan->__construct()
+ 4 SYSTEMPATH\CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 12:14:21 --> Unable to find an available Sodium encryption handler.
+in SYSTEMPATH\Encryption\Encryption.php on line 96.
+ 1 SYSTEMPATH\Encryption\Encryption.php(96): CodeIgniter\Encryption\Exceptions\EncryptionException::forNoHandlerAvailable('Sodium')
+ 2 SYSTEMPATH\Config\Services.php(238): CodeIgniter\Encryption\Encryption->__construct(Object(Config\Encryption))
+ 3 SYSTEMPATH\Config\BaseService.php(253): CodeIgniter\Config\Services::encrypter(Object(Config\Encryption))
+ 4 APPPATH\Controllers\Karyawan.php(48): CodeIgniter\Config\BaseService::__callStatic('encrypter', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(889): App\Controllers\Karyawan->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 16:14:00 --> Undefined variable $title
+in APPPATH\Views\layouts\main_master.php on line 7.
+ 1 APPPATH\Views\layouts\main_master.php(7): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'APPPATH\\Views\\layouts\\main_master.php', 7)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\layouts\\main_master.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('layouts/main_master', [], true)
+ 5 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('karyawan/tambahpegawai', [], true)
+ 6 APPPATH\Controllers\Karyawan.php(95): view('karyawan/tambahpegawai', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Karyawan->Add()
+ 8 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Karyawan))
+ 9 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')

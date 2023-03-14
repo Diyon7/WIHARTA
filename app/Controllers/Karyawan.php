@@ -27,9 +27,15 @@ class Karyawan extends BaseController
     protected $group;
     protected $subunit;
     protected $vendormodel;
+    protected $encrypter;
 
     public function __construct()
     {
+
+        $config         = new \Config\Encryption();
+        $config->key    = 'd8578edf8458ce06fbc5bb76a58c5ca4';
+        $config->driver = 'OpenSSL';
+
         $this->pegawaimodel = new Pegawai_Model();
         $this->jabatan = new Jabatan_model();
         $this->group = new Group_model();
@@ -39,6 +45,7 @@ class Karyawan extends BaseController
         $this->diliburkan = new Diliburkan_model();
         $this->subunit = new Subunit_model();
         $this->vendormodel = new Vendor_model();
+        $this->encrypter = \Config\Services::encrypter($config);
     }
 
     public function Index()
@@ -46,7 +53,7 @@ class Karyawan extends BaseController
         $data = [
             'title' => 'WKA INFORMATION SYSTEM',
             'devisi' => 'Karyawan',
-            'halaman' => 'Karyawan',
+            'halaman' => 'Karyawan'
         ];
 
         return view('karyawan/index', $data);
@@ -149,6 +156,7 @@ class Karyawan extends BaseController
 
 
             $editkarya = $this->pegawaimodel->Edit($nippegaw);
+            // $edetail = $this->encrypter->encrypt('hyw');
 
             $data = [
                 'editkaryawanall' => $editkarya,
@@ -160,7 +168,8 @@ class Karyawan extends BaseController
                 'divisi' => $divisi,
                 'unit' => $unit,
                 'subunit' => $subunit,
-                'nip' => $nippegaw
+                'nip' => $nippegaw,
+                // 'edetail' => $edetail
             ];
             $msg = [
                 'sukses' => view('karyawan/edit', $data)
@@ -451,6 +460,7 @@ class Karyawan extends BaseController
             $no = $request->getPost("start");
             foreach ($lists as $karyawana) {
                 $no++;
+                $edetail = $this->encrypter->encrypt($karyawana->idkar);
                 $row = [];
                 $row[] = $karyawana->idkar;
                 $row[] = $karyawana->vendor;
@@ -459,7 +469,7 @@ class Karyawan extends BaseController
                 $row[] = $karyawana->unit;
                 $row[] = $karyawana->tmt;
                 $row[] = $karyawana->grup_t;
-                $row[] = "<a href='" . base_url() . "/admin/karyawan/detail' class=\"btn btn-xs btn-outline-success\">Detail</a><a class=\"btn-xs btn-edit btn btn-outline-success\" data-editkarid=\"$karyawana->idkar\">Edit</a><a class=\"btn-xs btn-keluar btn btn-outline-success\" data-keluarid=\"$karyawana->idkar\">Keluar</a>";
+                $row[] = "<a href='" . base_url() . "/admin/karyawan/detail/" . $karyawana->idkar . "' class=\"btn btn-xs btn-outline-success\">Detail</a><a class=\"btn-xs btn-edit btn btn-outline-success\" data-editkarid=\"$karyawana->idkar\">Edit</a><a class=\"btn-xs btn-keluar btn btn-outline-success\" data-keluarid=\"$karyawana->idkar\">Keluar</a>";
                 $data[] = $row;
             }
             $output = [
