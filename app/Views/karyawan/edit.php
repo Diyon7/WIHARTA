@@ -8,7 +8,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <?= $edetail ?>
                 <?= form_open('admin/karyawan/save', ['class' => 'save']) ?>
                 <?= csrf_field() ?>
 

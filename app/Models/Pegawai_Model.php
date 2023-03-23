@@ -66,9 +66,9 @@ class Pegawai_Model extends Model
             ->get()->getResultArray();
     }
 
-    public function Detailkaryawana($nippegaw)
+    public function Detailkaryawan($nippegaw)
     {
-        return $this->select('pegawai.`pegawai_pin` AS idk, pembagian3.`pembagian3_nama` AS asal, pegawai.`pegawai_nama` AS nama, pegawai.`tgl_lahir` AS tgllahir, pegawai_d.`alamat` AS alamat, pendidikan.`pend_name` AS pendidikan, pembagian2.`pembagian2_nama` AS divisi, pembagian4.`pembagian4_nama` AS unit, pembagian5.`pembagian5_nama` AS subunit, pegawai.`grup` AS grup, pegawai.`grup_t` AS grup, pembagian1.`pembagian1_nama` AS jabatan, pegawai.`golongan` AS golongan, pegawai.`tgl_masuk_pertama` AS tmt')
+        return $this->select('pegawai.`pegawai_nip` AS nip, pembagian3.`pembagian3_nama` AS asal, pegawai.`pegawai_nama` AS nama, pegawai.`tgl_lahir` AS tgllahir, pegawai_d.`alamat` AS alamat, pendidikan.`pend_name` AS pendidikan, pembagian2.`pembagian2_nama` AS divisi, pembagian4.`pembagian4_nama` AS unit, pembagian5.`pembagian5_nama` AS subunit, pegawai.`grup` AS grup, pegawai.`grup_t` AS grup, pembagian1.`pembagian1_nama` AS jabatan, pegawai.`golongan` AS golongan, pegawai.`tgl_masuk_pertama` AS tmt')
             ->join('pembagian3', 'pembagian3.`pembagian3_id`=pegawai.`pembagian3_id`')
             ->join('pegawai_d', 'pegawai_d.`pegawai_pin`=pegawai.`pegawai_pin`', 'left')
             ->join('pendidikan', 'pendidikan.`pend_id`=pegawai_d.`pend_id`', 'left')
@@ -76,8 +76,8 @@ class Pegawai_Model extends Model
             ->join('pembagian4', 'pembagian4.`pembagian4_id`= pegawai.`pembagian4_id`')
             ->join('pembagian5', 'pembagian5.`pembagian5_id`=pegawai.`pembagian5_id`')
             ->join('pembagian1', 'pembagian1.`pembagian1_id`=pegawai.`pembagian1_id`')
-            ->where('pegawai.`pegawai_pin`', $nippegaw)
-            ->get()->getResultArray();
+            ->where('pegawai.`pegawai_nip`', $nippegaw)
+            ->get()->getRowArray();
     }
 
     public function Edit($nippegaw)

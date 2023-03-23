@@ -95,9 +95,11 @@ class Karyawan extends BaseController
         return view('karyawan/tambahpegawai', $data);
     }
 
-    public function Detaikaryawan()
+    public function Detaikaryawan($id = '')
     {
         helper('form');
+
+        $nonip = $this->pegawaimodel->Detailkaryawan(base64_decode($id));
 
         $vendor = $this->vendormodel->findAll();
         $jabatan = $this->jabatan->findAll();
@@ -106,6 +108,7 @@ class Karyawan extends BaseController
         $subunit = $this->subunit->findAll();
 
         $data = [
+            'nonip' => $nonip,
             'vendor' => $vendor,
             'jabatan' => $jabatan,
             'divisi' => $divisi,
@@ -469,7 +472,7 @@ class Karyawan extends BaseController
                 $row[] = $karyawana->unit;
                 $row[] = $karyawana->tmt;
                 $row[] = $karyawana->grup_t;
-                $row[] = "<a href='" . base_url() . "/admin/karyawan/detail/" . $karyawana->idkar . "' class=\"btn btn-xs btn-outline-success\">Detail</a><a class=\"btn-xs btn-edit btn btn-outline-success\" data-editkarid=\"$karyawana->idkar\">Edit</a><a class=\"btn-xs btn-keluar btn btn-outline-success\" data-keluarid=\"$karyawana->idkar\">Keluar</a>";
+                $row[] = "<a href='" . base_url() . "/admin/karyawan/detail/" . base64_encode($karyawana->idkar) . "' class=\"btn btn-xs btn-outline-success\">Detail</a><a class=\"btn-xs btn-keluar btn btn-outline-success\" data-keluarid=\"$karyawana->idkar\">Keluar</a>";
                 $data[] = $row;
             }
             $output = [

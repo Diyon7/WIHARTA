@@ -21,9 +21,11 @@
                 </h3>
                 <div class="card-tools">
                     <div class="btn-group mb-3" role="group" aria-label="Basic example">
-                        <a id="addkaryawan" href="<?= base_url() ?>/admin/karyawan/tambahkaryawan" class="btn btn-outline-success"><i class="fa fa-plus"></i>Tambah</a>
+                        <a id="addkaryawan" href="<?= base_url() ?>/admin/karyawan/tambahkaryawan"
+                            class="btn btn-outline-success"><i class="fa fa-plus"></i>Tambah</a>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="false">
                                 Fingerprint
                             </button>
                             <div class="dropdown-menu">
@@ -106,7 +108,8 @@
                 <input type="hidden" name="iidkar" id="iidkar">
                 <div class="form-group">
                     <label for="formGroupInput">Tanggal Keluar</label>
-                    <input type="date" class="form-control" id="formGroupInput" name="tglresign" placeholder="Masukkan Tanggal Keluar">
+                    <input type="date" class="form-control" id="formGroupInput" name="tglresign"
+                        placeholder="Masukkan Tanggal Keluar">
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-info float-right">Konfirmasi</button>
@@ -121,38 +124,18 @@
 <div class="vieweditdata" style="display: none;"></div>
 
 <script>
-    const flashDataa = "<?= session()->getFlashdata('success') ?>";
+const flashDataa = "<?= session()->getFlashdata('success') ?>";
 
-    $(document).ready(function() {
-        $("#kkjjp3").on('click', function(event) {
-            // tkjp3.destroy();
-            var tajp3 = $('#karyawanjp3k').DataTable({
-                "destroy": true,
-                "processing": true,
-                "serverSide": true,
-                "order": [],
-                "ajax": {
-                    "url": "<?= site_url('admin/karyawanjp3k/datatables') ?>",
-                    "type": "POST",
-                },
-                "lengthMenu": [
-                    [5, 10, 25, 100],
-                    [5, 10, 25, 100]
-                ],
-                "columnDefs": [{
-                    "targets": 6,
-                    "orderable": false,
-                }],
-            })
-        })
-        // tajp3.destroy();
-        var tkjp3 = $('#karyawanjp3a').DataTable({
+$(document).ready(function() {
+    $("#kkjjp3").on('click', function(event) {
+        // tkjp3.destroy();
+        var tajp3 = $('#karyawanjp3k').DataTable({
             "destroy": true,
             "processing": true,
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?= site_url('admin/karyawanjp3a/datatables') ?>",
+                "url": "<?= site_url('admin/karyawanjp3k/datatables') ?>",
                 "type": "POST",
             },
             "lengthMenu": [
@@ -164,33 +147,77 @@
                 "orderable": false,
             }],
         })
-        $("#akjjp3").on('click', function(event) {
-            $('#karyawanjp3a').DataTable().ajax.reload()
-        })
-        $('#addkaryawan').click(function(e) {
-            $.ajax({
-                url: "<?= site_url('admin/karyawanjp3a/add') ?>",
-                type: "POST",
-                dataType: "json",
-                success: function(response) {
-                    if (response.sukses) {
-                        $('.vieweditdata').html(response.sukses).show();
-                        $('#tambahdata').modal('show');
-                    }
-                    $('input[name=csrf_test_name]').val(response.csrf_test_name);
-                },
-            });
-        });
-
-        $('.detailkaryawan').on('click', function(event) {
-
+    })
+    // tajp3.destroy();
+    var tkjp3 = $('#karyawanjp3a').DataTable({
+        "destroy": true,
+        "processing": true,
+        "serverSide": true,
+        "order": [],
+        "ajax": {
+            "url": "<?= site_url('admin/karyawanjp3a/datatables') ?>",
+            "type": "POST",
+        },
+        "lengthMenu": [
+            [5, 10, 25, 100],
+            [5, 10, 25, 100]
+        ],
+        "columnDefs": [{
+            "targets": 6,
+            "orderable": false,
+        }],
+    })
+    $("#akjjp3").on('click', function(event) {
+        $('#karyawanjp3a').DataTable().ajax.reload()
+    })
+    $('#addkaryawan').click(function(e) {
+        $.ajax({
+            url: "<?= site_url('admin/karyawanjp3a/add') ?>",
+            type: "POST",
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.vieweditdata').html(response.sukses).show();
+                    $('#tambahdata').modal('show');
+                }
+                $('input[name=csrf_test_name]').val(response.csrf_test_name);
+            },
         });
     });
 
-    function detailkaryawana(id) {
+    $('.detailkaryawan').on('click', function(event) {
+
+    });
+});
+
+function detailkaryawana(id) {
+    $.ajax({
+        url: "<?= site_url('admin/karyawanjp3a/detaila') ?>",
+        type: "POST",
+        data: {
+            idnip: id
+        },
+        dataType: "json",
+        success: function(response) {
+            if (response.sukses) {
+                $('.vieweditdata').html(response.sukses).show();
+                $('#detaildata').modal('show');
+            }
+            $('input[name=csrf_test_name]').val(response.csrf_test_name);
+        },
+        error: function(xhr, ajaxOption, thrownError) {
+            alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+        }
+    });
+}
+
+$(document).ready(function() {
+    $('#karyawanjp3a tbody').on('click', '.btn-edit', function(e) {
+        const id = $(this).data('editkarid');
+
         $.ajax({
-            url: "<?= site_url('admin/karyawanjp3a/detaila') ?>",
-            type: "POST",
+            url: "<?= site_url('admin/karyawan/edit') ?>",
+            method: "post",
             data: {
                 idnip: id
             },
@@ -198,7 +225,7 @@
             success: function(response) {
                 if (response.sukses) {
                     $('.vieweditdata').html(response.sukses).show();
-                    $('#detaildata').modal('show');
+                    $('#editdata').modal('show');
                 }
                 $('input[name=csrf_test_name]').val(response.csrf_test_name);
             },
@@ -206,76 +233,52 @@
                 alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
             }
         });
-    }
+    });
 
-    $(document).ready(function() {
-        $('#karyawanjp3a tbody').on('click', '.btn-edit', function(e) {
-            const id = $(this).data('editkarid');
+    $('#karyawanjp3a tbody').on('click', '.btn-keluar', function(e) {
+        const id = $(this).data('keluarid');
 
-            $.ajax({
-                url: "<?= site_url('admin/karyawan/edit') ?>",
-                method: "post",
-                data: {
-                    idnip: id
-                },
-                dataType: "json",
-                success: function(response) {
-                    if (response.sukses) {
-                        $('.vieweditdata').html(response.sukses).show();
-                        $('#editdata').modal('show');
-                    }
-                    $('input[name=csrf_test_name]').val(response.csrf_test_name);
-                },
-                error: function(xhr, ajaxOption, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+        $('#hapuskaryawanmodal').modal('show');
+
+        $("#iidkar").val(id);
+
+    });
+
+    $('.idsg').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            dataType: "json",
+            beforeSend: function() {
+                $('.btntampil').attr('disable', 'disabled');
+                $('.btntampil').html('<i class="fa fa-spin fa-spinner"></i>');
+            },
+            complete: function() {
+                $('.btntampil').removeAttr('disable');
+                $('.btntampil').html('Submit');
+            },
+            success: function(response) {
+                if (response.success) {
+                    $('#hapuskaryawanmodal').modal('hide');
+                    $('#karyawanjp3a').DataTable().ajax.reload();
+                    Toasts.fire({
+                        icon: 'success',
+                        title: 'Data Berhasil',
+                        type: 'success',
+                    });
+                } else {
+                    $('#hapuskaryawanmodal').modal('show');
                 }
-            });
-        });
-
-        $('#karyawanjp3a tbody').on('click', '.btn-keluar', function(e) {
-            const id = $(this).data('keluarid');
-
-            $('#hapuskaryawanmodal').modal('show');
-
-            $("#iidkar").val(id);
-
-        });
-
-        $('.idsg').submit(function(e) {
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                dataType: "json",
-                beforeSend: function() {
-                    $('.btntampil').attr('disable', 'disabled');
-                    $('.btntampil').html('<i class="fa fa-spin fa-spinner"></i>');
-                },
-                complete: function() {
-                    $('.btntampil').removeAttr('disable');
-                    $('.btntampil').html('Submit');
-                },
-                success: function(response) {
-                    if (response.success) {
-                        $('#hapuskaryawanmodal').modal('hide');
-                        $('#karyawanjp3a').DataTable().ajax.reload();
-                        Toasts.fire({
-                            icon: 'success',
-                            title: 'Data Berhasil',
-                            type: 'success',
-                        });
-                    } else {
-                        $('#hapuskaryawanmodal').modal('show');
-                    }
-                },
-                error: function(xhr, ajaxOption, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                }
-            })
+            },
+            error: function(xhr, ajaxOption, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
         })
-
     })
+
+})
 </script>
 
 <?= $this->endSection() ?>
