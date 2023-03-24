@@ -49,6 +49,7 @@ class Laporan_model extends Model
     {
         // foreach ($form['tblslaporan'] as $tbls) {
         $terlambat = 0;
+        $pcepat = 0;
         $kelebihanjam = 0;
         $finger = '';
 
@@ -119,6 +120,7 @@ class Laporan_model extends Model
                                     LEFT JOIN jam_kerja ON jam_kerja.`jk_id` = jdw_kerja_d.`jk_id`
                                     WHERE jdw_kerja_m.`jdw_kerja_m_kode`='" . $jkmk['kodejk'] . "' AND jdw_kerja_d.`jdw_kerja_d_idx`='" . $n . "'")->getRowArray();
                             if ($tjk['libur'] === '0') {
+                            } elseif ($tjk['libur'] === '0') {
                                 // if ($dftizin['pegawai_nip'] != null) {
                                 //     $clor = "green";
                                 //     $izin++;
@@ -208,6 +210,30 @@ class Laporan_model extends Model
                                             $terlambat = $terlambat + 6;
                                         }
 
+                                        $ak = strtotime(date('H:i', strtotime($tjk['skeluar']))) - strtotime(date('H:i', strtotime($cekoutmax[0]['cout'])));
+                                        $lcepat = floor($ak  / 60);
+                                        if ($lcepat <= 0) {
+                                            $pcepat = $pcepat + 0;
+                                        } elseif ($lcepat <= 60) {
+                                            $clor = "orange";
+                                            $pcepat = $pcepat + 1;
+                                        } elseif ($lcepat <= 120) {
+                                            $clor = "orange";
+                                            $pcepat = $pcepat + 2;
+                                        } elseif ($lcepat <= 180) {
+                                            $clor = "orange";
+                                            $pcepat = $pcepat + 3;
+                                        } elseif ($lcepat <= 240) {
+                                            $clor = "orange";
+                                            $pcepat = $pcepat + 4;
+                                        } elseif ($lcepat <= 300) {
+                                            $clor = "orange";
+                                            $pcepat = $pcepat + 5;
+                                        } elseif ($lcepat <= 360) {
+                                            $clor = "orange";
+                                            $pcepat = $pcepat + 6;
+                                        }
+
                                         $kj = (strtotime(date('H:i', strtotime($cekoutmax[0]['cout']))))  - (strtotime(date('H:i', strtotime($tjk['skeluar']))));
                                         $tokelebih = floor($kj  / 60);
                                         if ($tokelebih >= 480) {
@@ -260,6 +286,7 @@ class Laporan_model extends Model
 
             $color[] = $clor;
 
+            $tpc = $pcepat;
             $trt = $terlambat;
 
             $kbhnj = $kelebihanjam;
@@ -272,6 +299,7 @@ class Laporan_model extends Model
         $alldata[] = [
             'idkar' => $form['idkar'],
             'timeawal3' => $timeawal3,
+            'pcepat' => $tpc,
             'terlambat' => $trt,
             'kelebihanjam' => $kbhnj,
             'm' => $mjkn2,

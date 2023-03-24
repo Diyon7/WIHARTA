@@ -51,8 +51,6 @@ class Izin extends BaseController
     public function Index()
     {
 
-
-
         $daftarkaryawanjp3 = $this->pegawaimodel->Daftarkaryawanajp3();
         $djnsizin = $this->jnsizin->findAll();
         $shfjamkerja = $this->jamkerja->findAll();
@@ -173,7 +171,7 @@ class Izin extends BaseController
         // $datenow = $now->format('Y-m-d 00:00:00');
 
         if (in_groups('vendor')) {
-            $datenow = date("Y-m-d 00:00:00", strtotime("- 3 day"));
+            $datenow = date("Y-m-d 00:00:00", strtotime("- 4 day"));
         } else {
             $datenow = date("Y-m-d 00:00:00", strtotime("- 30 day"));
         }
@@ -469,7 +467,7 @@ class Izin extends BaseController
                 $row[] = $izin->vendor;
                 $row[] = $izin->izin;
                 $row[] = $izin->createdat;
-                $row[] = "<a onclick=\"hapusdata('$izin->createdat')\" class=\"btn btn-danger btn-delete btn-sm\" data-deleteizin=\"$izin->idtblizin\">Delete</a>";
+                $row[] = "<a onclick=\"hapusdata('$izin->createdat')\" class=\"btn btn-danger btn-delete btn-sm\" data-deleteizin=\"$izin->idtblizin\">Delete</a> <a onclick=\"ubahbtdata('$izin->createdat')\" class=\"btn btn-danger btn-ubahbt btn-sm\" data-ubahbtizin=\"$izin->idtblizin\">Tolak</a>";
                 $data[] = $row;
             }
             $output = [

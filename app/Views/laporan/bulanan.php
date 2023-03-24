@@ -24,7 +24,7 @@ http://154.100.100.220/wiharta/public
                 <div class="card-tools">
                     <?= form_open('admin/laporan/tabellaporanbulanan', ['class' => 'formtabelkaryawan']) ?>
                     <div class="input-group input-group-sm mb-3">
-                        <input type="date" name="tgl" id="tgl" placeholder="Tanggal">
+                        <input type="month" name="tgl" id="tgl" placeholder="Tanggal">
                         <select name="vendor" id="vendor">
                             <!--<option value="%">Pilih Vendor</option>-->
                             <?php if (in_groups('vendor') != 'vendor') { ?>
