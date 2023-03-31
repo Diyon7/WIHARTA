@@ -20,7 +20,8 @@
         <div class="card card-primary card-outline">
             <div class="card-body box-profile">
                 <div class="text-center">
-                    <img class="profile-user-img img-fluid img-circle" src="<?= base_url() ?>/assets/dist/img/user2-160x160.jpg" alt="User profile picture">
+                    <img class="profile-user-img img-fluid img-circle"
+                        src="<?= base_url() ?>/assets/dist/img/user2-160x160.jpg" alt="User profile picture">
                 </div>
 
                 <h3 class="profile-username text-center"><?= $nonip['nama'] ?></h3>
@@ -98,25 +99,31 @@
                                         <b>Pendidikan Terakhir</b> <a class="float-right"><?= $nonip['nip'] ?></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Status</b> <a class="float-right"><?= date('d-m-Y', strtotime($nonip['tmt']))  ?></a>
+                                        <b>Status</b> <a
+                                            class="float-right"><?= date('d-m-Y', strtotime($nonip['tmt']))  ?></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Jumlah Anak</b> <a class="float-right"><?= date('d-m-Y', strtotime($nonip['tmt']))  ?></a>
+                                        <b>Jumlah Anak</b> <a
+                                            class="float-right"><?= date('d-m-Y', strtotime($nonip['tmt']))  ?></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Alamat</b> <a class="float-right"><?= date('d-m-Y', strtotime($nonip['tmt']))  ?></a>
+                                        <b>Alamat</b> <a
+                                            class="float-right"><?= date('d-m-Y', strtotime($nonip['tmt']))  ?></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Telepon </b> <a class="float-right"><?= date('d-m-Y', strtotime($nonip['tmt']))  ?></a>
+                                        <b>Telepon </b> <a
+                                            class="float-right"><?= date('d-m-Y', strtotime($nonip['tmt']))  ?></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Status</b> <a class="float-right"><?= date('d-m-Y', strtotime($nonip['tmt']))  ?></a>
+                                        <b>Status</b> <a
+                                            class="float-right"><?= date('d-m-Y', strtotime($nonip['tmt']))  ?></a>
                                     </li>
                                     <?php $date1 = date_create() ?>
                                     <?php $date2 = date_create($nonip['tmt']) ?>
                                     <?php $date3 = date_diff($date2, $date1) ?>
                                     <li class="list-group-item">
-                                        <b>Masa Kerja</b> <a class="float-right"><?= $date3->format("%y Tahun %m Bulan") ?></a>
+                                        <b>Masa Kerja</b> <a
+                                            class="float-right"><?= $date3->format("%y Tahun %m Bulan") ?></a>
                                     </li>
                                 </ul>
                             </div>
@@ -127,9 +134,56 @@
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="dataemployee">
                         <!-- The timeline -->
-                        <div class="timeline timeline-inverse">
-                            <!-- timeline time label -->
-
+                        <div class="row">
+                            <div class="card card-primary col-sm-6">
+                                <div class="card-header">
+                                    <h3 class="card-title">Data Kepesertaan</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <ul class="list-group list-group-unbordered mb-3">
+                                        <li class="list-group-item">
+                                            <b>Nomor Rekening</b> <a class="float-right"></a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Nomor BPJS</b> <a class="float-right"></a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Nomor KPJ</b> <a class="float-right"></a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Nomor NPWP</b> <a class="float-right"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <div class="card card-primary col-sm-6">
+                                <div class="card-header">
+                                    <h3 class="card-title">Bagian</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <ul class="list-group list-group-unbordered mb-3">
+                                        <li class="list-group-item">
+                                            <b>Departemen</b> <a class="float-right"></a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Divisi</b> <a class="float-right"></a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Unit</b> <a class="float-right"></a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Sub Unit</b> <a class="float-right"></a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Grup</b> <a class="float-right"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
                         </div>
                     </div>
                     <!-- /.tab-pane -->
@@ -157,7 +211,8 @@
                             <div class="form-group row">
                                 <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                                    <textarea class="form-control" id="inputExperience"
+                                        placeholder="Experience"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -198,17 +253,17 @@
 <div class="vieweditdata" style="display: none;"></div>
 
 <script>
-    const flashDataa = "<?= session()->getFlashdata('success') ?>";
+const flashDataa = "<?= session()->getFlashdata('success') ?>";
 
-    $(document).ready(function() {
+$(document).ready(function() {
 
-    });
+});
 
-    function detailkaryawana(id) {
+function detailkaryawana(id) {
 
-    }
+}
 
-    $(document).ready(function() {})
+$(document).ready(function() {})
 </script>
 
 <?= $this->endSection() ?>
