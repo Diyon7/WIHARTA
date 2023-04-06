@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Payroll;
 
 use App\Controllers\BaseController;
 use App\Models\Pegawai_Model;
@@ -8,6 +8,7 @@ use App\Models\Laporan_model;
 use App\Models\Jabatan_model;
 use App\Models\Divisi_model;
 use App\Models\Unit_model;
+use App\Models\Jadwalkerja_model;
 use App\Models\Subunit_model;
 use App\Models\Vendor_model;
 use \DateTime;
@@ -21,6 +22,7 @@ class Laporan extends BaseController
     protected $jabatan;
     protected $divisi;
     protected $unitmodel;
+    protected $jadwalkerjamodel;
     protected $subunit;
     protected $vendormodel;
 
@@ -31,6 +33,7 @@ class Laporan extends BaseController
         $this->jabatan = new Jabatan_model();
         $this->divisi = new Divisi_model();
         $this->unitmodel = new Unit_model();
+        $this->jadwalkerjamodel = new Jadwalkerja_model();
         $this->subunit = new Subunit_model();
         $this->vendormodel = new Vendor_model();
     }
@@ -72,40 +75,65 @@ class Laporan extends BaseController
     {
         if ($this->request->isAJAX()) {
 
-            $bulan = $this->request->getPost('tgl');
+
+            // ini_set('max_execution_time', 0);
+            // ini_set('memory_limit', '2048M');
+
             $vendor = $this->request->getPost('vendor');
+            $bulan2 = $this->request->getPost('tgl');
 
-            $timeawal = date('Y-m-26', strtotime(date($bulan) . '- 1 month'));
-            $timeakhir = date('Y-m-25', strtotime(date($bulan) . '- 0 month'));
-
-            $tagihanawal = new DateTime($timeawal);
-            $tagihanakhir = new DateTime($timeakhir);
-            $tglt = date('m/26', strtotime(date($bulan) . '- 1 month'));
-
-            $tblalllaporan = $this->laporanmodel->Alllaporan($vendor);
-
-            $form = [
-                'bulan' => $bulan,
+            $tgl = date('Y-m-26', strtotime(date($bulan2) . '- 1 month'));
+            $datapegawaiinput = [
                 'vendor' => $vendor,
-                'timeawal' => $timeawal,
-                'timeakhir' => $timeakhir,
-                'tagihanawal' => $tagihanawal,
-                'tagihanakhir' => $tagihanakhir,
-                'tglt' => $tglt,
-                'tblslaporan' => $tblalllaporan
+                'tgl' => $tgl
             ];
+            $tblalllaporan = $this->laporanmodel->Alllaporan($datapegawaiinput);
+
 
             $vendorall = $this->vendormodel->findAll();
+            $tglt = date('m/26', strtotime(date($bulan2) . '- 1 month'));
 
+            foreach ($tblalllaporan as $tbls) {
+                $bulan = $this->request->getPost('tgl');
 
-            $tbldataabsen = $this->laporanmodel->Dataabsen($form);
+                $jkm = $this->jadwalkerjamodel->Jadwalkerjanormal();
 
+                $timeawal = date('Y-m-26', strtotime(date($bulan) . '- 1 month'));
+                $timeakhir = date('Y-m-25', strtotime(date($bulan) . '- 0 month'));
+
+                $tagihanawal = new DateTime($timeawal);
+                $tagihanakhir = new DateTime($timeakhir);
+                $form = [
+                    'bulan' => $bulan,
+                    'vendor' => $vendor,
+                    'idkar' => $tbls['idkar'],
+                    'divisi' => $tbls['divisi'],
+                    'jkm' => $jkm,
+                    'nama' => $tbls['nama'],
+                    'golongan' => $tbls['golongan'],
+                    'unit' => $tbls['unit'],
+                    'subunit' => $tbls['subunit'],
+                    'asal' => $tbls['asal'],
+                    'tmt' => $tbls['tmt'],
+                    'grup' => $tbls['grup'],
+                    'grupt' => $tbls['grupt'],
+                    'timeawal' => $timeawal,
+                    'timeakhir' => $timeakhir,
+                    'tagihanawal' => $tagihanawal,
+                    'tagihanakhir' => $tagihanakhir,
+                    'tglt' => $tglt,
+                    'tblslaporan' => $tblalllaporan,
+                    'tbls' => $tbls
+                ];
+                $tbldataabsen[] = $this->laporanmodel->Dataabsen($form);
+            }
             $data = [
                 'vendor' => $vendorall,
                 'bulan' => $bulan,
                 'tagihanawal' => $tagihanawal,
                 'tagihanakhir' => $tagihanakhir,
                 'tglt' => $tglt,
+                'jkm' => $jkm,
                 'tblalllaporan' => $tblalllaporan,
                 'tbldataabsen' => $tbldataabsen
             ];

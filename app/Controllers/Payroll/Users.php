@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Payroll;
 
 use App\Controllers\BaseController;
 use App\Models\Pegawai_Model;
@@ -12,7 +12,7 @@ use App\Models\Vendor_model;
 use Config\Services;
 use App\Models\Logkaryawan_model;
 
-class Grup extends BaseController
+class Users extends BaseController
 {
 
     protected $pegawaimodel;
@@ -21,6 +21,7 @@ class Grup extends BaseController
     protected $unitmodel;
     protected $subunit;
     protected $vendormodel;
+    protected $cekaksesuser;
 
     public function __construct()
     {
@@ -30,6 +31,7 @@ class Grup extends BaseController
         $this->unitmodel = new Unit_model();
         $this->subunit = new Subunit_model();
         $this->vendormodel = new Vendor_model();
+        // $this->$cekaksesuser = Cekaksesuser();
     }
 
     public function Index()
@@ -37,11 +39,11 @@ class Grup extends BaseController
 
         $data = [
             'title' => 'WKA INFORMATION SYSTEM',
-            'devisi' => 'Grup',
-            'halaman' => 'Grup',
+            'devisi' => 'Karyawan',
+            'halaman' => 'Karyawan',
         ];
 
-        return view('grup/index', $data);
+        return view('karyawan/index', $data);
     }
 
     public function tambahkaryawanjp3()
@@ -134,8 +136,8 @@ class Grup extends BaseController
                 $row[] = $karyawana->vendor;
                 $row[] = $karyawana->nama;
                 $row[] = $karyawana->bagian;
-                $row[] = $karyawana->scandate;
-                $row[] = $karyawana->pin;
+                $row[] = $karyawana->tmt;
+                $row[] = $karyawana->grup_t;
                 $data[] = $row;
             }
             $output = [

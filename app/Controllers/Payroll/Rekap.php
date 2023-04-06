@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Payroll;
 
 use App\Models\Diliburkan_model;
 use App\Controllers\BaseController;
@@ -11,8 +11,6 @@ use App\Models\RekapAll_model;
 use App\Models\Unit_model;
 use App\Models\Subunit_model;
 use App\Models\Vendor_model;
-use \DateTime;
-use Config\Services;
 
 class Rekap extends BaseController
 {

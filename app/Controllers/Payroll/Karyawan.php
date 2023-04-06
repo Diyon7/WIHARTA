@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Payroll;
 
 use App\Controllers\BaseController;
 use App\Models\Pegawai_Model;

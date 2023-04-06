@@ -1,0 +1,47 @@
+CRITICAL - 2023-04-04 11:03:04 --> Undefined variable $title
+in APPPATH\Views\layouts\main_master.php on line 7.
+ 1 APPPATH\Views\layouts\main_master.php(7): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'APPPATH\\Views\\layouts\\main_master.php', 7)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\layouts\\main_master.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('layouts/main_master', [], true)
+ 5 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('gudang/formtambahproduksi', [], true)
+ 6 APPPATH\Controllers\Gudang\Produksi.php(63): view('gudang/formtambahproduksi', [])
+ 7 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Gudang\Produksi->InputProduksiBarang()
+ 8 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gudang\Produksi))
+ 9 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-04-04 11:08:33 --> syntax error, unexpected token ";", expecting "]"
+in APPPATH\Controllers\Gudang\Produksi.php on line 65.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Controllers\\Gudang\\Produksi.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Gudang\\Produksi')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Gudang\\Produksi')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\Gudang\\Produksi', true)
+ 5 SYSTEMPATH\CodeIgniter.php(469): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-04-04 14:44:08 --> Undefined variable $dkjp3
+in APPPATH\Views\gudang\formtambahproduksi.php on line 52.
+ 1 APPPATH\Views\gudang\formtambahproduksi.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dkjp3', 'APPPATH\\Views\\gudang\\formtambahproduksi.php', 52)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\gudang\\formtambahproduksi.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('gudang/formtambahproduksi', [], true)
+ 5 APPPATH\Controllers\Gudang\Produksi.php(67): view('gudang/formtambahproduksi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Gudang\Produksi->InputProduksiBarang()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gudang\Produksi))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-04-04 14:45:13 --> Undefined variable $daftarkaryawanjp3
+in APPPATH\Views\gudang\formtambahproduksi.php on line 49.
+ 1 APPPATH\Views\gudang\formtambahproduksi.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $daftarkaryawanjp3', 'APPPATH\\Views\\gudang\\formtambahproduksi.php', 49)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\gudang\\formtambahproduksi.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('gudang/formtambahproduksi', [], true)
+ 5 APPPATH\Controllers\Gudang\Produksi.php(67): view('gudang/formtambahproduksi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Gudang\Produksi->InputProduksiBarang()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gudang\Produksi))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')

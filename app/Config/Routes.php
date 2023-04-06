@@ -35,63 +35,58 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/',  'Dashboard::Index', ['filter' => 'permission:dashboard']);
+$routes->get('/',  'payroll\Dashboard::Index', ['filter' => 'permission:dashboard']);
 $routes->group('admin/', ['filter' => 'permission:laporanbulanan'], function ($routes) {
 
-    $routes->get('gantigrupsementara', 'Grup::Index');
+    // payroll
+    $routes->get('gantigrupsementara', 'payroll\Grup::Index');
+    $routes->get('laporanbulanan', 'payroll\Laporan::Laporanbulanan');
+    $routes->add('laporan/tabellaporanbulanan', 'payroll\Laporan::Tabelabsenlaporanbulanan');
+    $routes->get('rekap', 'payroll\Rekap::Index');
+    $routes->add('rekap/tabellaporanharian', 'payroll\Rekap::Tabelabsenlaporanharian');
+    $routes->add('rekap', 'payroll\Rekap::Addrekap');
+    $routes->add('izin', 'payroll\Izin::index');
+    $routes->add('validasi', 'payroll\Izin::validasi');
+    $routes->add('izin/tambahizin', 'payroll\Izin::Addizin');
+    $routes->add('logizin', 'payroll\Izin::Logizin');
+    $routes->add('logkaryawan', 'payroll\Karyawan::Logkaryawan');
+    $routes->add('logkaryawan/datatables', 'payroll\Karyawan::Datatableslogkaryawan');
+    $routes->add('logizin/datatables', 'payroll\Izin::Datatableslogizin');
+    $routes->add('izin/datanamaform', 'payroll\Izin::Ajaxform');
+    $routes->add('izin/delete', 'payroll\Izin::Delete');
+    $routes->add('izin/ubahbs', 'payroll\Izin::Ubahbs');
+    $routes->add('izin/ubahbt', 'payroll\Izin::Ubahbt');
+    $routes->add('izin/fio', 'payroll\Izin::Fio');
+    $routes->add('printrekap/rekapunit', 'payroll\Rekap::Printrekapunit');
+    $routes->add('formizin/datatables', 'payroll\Izin::Formizin');
+    $routes->add('formpizin/datatables', 'payroll\Izin::Formpizin');
+    $routes->add('formtizin/datatables', 'payroll\Izin::Formtizin');
 
-    $routes->get('laporanbulanan', 'Laporan::Laporanbulanan');
-    $routes->add('laporan/tabellaporanbulanan', 'Laporan::Tabelabsenlaporanbulanan');
-
-    $routes->get('rekap', 'Rekap::Index');
-
-    $routes->add('rekap/tabellaporanharian', 'Rekap::Tabelabsenlaporanharian');
-    $routes->add('rekap', 'Rekap::Addrekap');
-
-    $routes->add('izin', 'Izin::index');
-    $routes->add('validasi', 'Izin::validasi');
-    $routes->add('izin/tambahizin', 'Izin::Addizin');
-
-    $routes->add('logizin', 'Izin::Logizin');
-
-    $routes->add('logkaryawan', 'Karyawan::Logkaryawan');
-    $routes->add('logkaryawan/datatables', 'Karyawan::Datatableslogkaryawan');
-
-    $routes->add('logizin/datatables', 'Izin::Datatableslogizin');
-
-
-    $routes->add('izin/datanamaform', 'Izin::Ajaxform');
-    $routes->add('izin/delete', 'Izin::Delete');
-    $routes->add('izin/ubahbs', 'Izin::Ubahbs');
-    $routes->add('izin/ubahbt', 'Izin::Ubahbt');
-    $routes->add('izin/fio', 'Izin::Fio');
-
-    $routes->add('printrekap/rekapunit', 'Rekap::Printrekapunit');
-    $routes->add('formizin/datatables', 'Izin::Formizin');
-    $routes->add('formpizin/datatables', 'Izin::Formpizin');
-    $routes->add('formtizin/datatables', 'Izin::Formtizin');
+    // gudang
+    $routes->get('gudang/inputmutasipenerimaan', 'Gudang\Produksi::InputMutasiPenerimaanBarangJadi');
+    $routes->get('gudang/ajax/item', 'Gudang\Produksi::Searchitem');
 });
 
 $routes->group('admin/', ['filter' => 'permission:dashboard'], function ($routes) {
-    $routes->get('', 'Dashboard::Index');
-    $routes->add('dashboard/moreinfo', 'Dashboard::Detail');
+    $routes->get('', 'payroll\Dashboard::Index');
+    $routes->add('dashboard/moreinfo', 'payroll\Dashboard::Detail');
 });
 
 $routes->group('admin/', ['filter' => 'permission:datakaryawan'], function ($routes) {
-    $routes->get('karyawan', 'Karyawan::Index');
-    $routes->add('karyawanjp3a/datatables', 'Karyawan::datatablesjp3a');
-    $routes->add('karyawanjp3k/datatables', 'Karyawan::datatablesjp3k');
-    $routes->add('karyawanjp3a/add', 'Karyawan::tambahkaryawanjp3');
-    $routes->get('karyawan/detail/(:segment)', 'Karyawan::Detaikaryawan/$1');
-    $routes->add('karyawan/tambahkaryawan', 'Karyawan::Add');
-    $routes->add('karyawan/idpembagian', 'Karyawan::Pembagian');
-    $routes->add('karyawan/edit', 'Karyawan::Edit');
-    $routes->add('karyawan/save', 'Karyawan::Save');
-    $routes->add('karyawan/keluar', 'Karyawan::Keluar');
-    $routes->add('diliburkan', 'Karyawan::Diliburkan');
-    $routes->add('adddiliburkan', 'Karyawan::Adddiliburkan');
-    $routes->add('deletediliburkan', 'Karyawan::Deletediliburkan');
-    $routes->add('diliburkan/datatables', 'Karyawan::Datatablesdiliburkan');
+    $routes->get('karyawan', 'payroll\Karyawan::Index');
+    $routes->add('karyawanjp3a/datatables', 'payroll\Karyawan::datatablesjp3a');
+    $routes->add('karyawanjp3k/datatables', 'payroll\Karyawan::datatablesjp3k');
+    $routes->add('karyawanjp3a/add', 'payroll\Karyawan::tambahkaryawanjp3');
+    $routes->get('karyawan/detail/(:segment)', 'Payroll\Karyawan::Detaikaryawan/$1');
+    $routes->add('karyawan/tambahkaryawan', 'payroll\Karyawan::Add');
+    $routes->add('karyawan/idpembagian', 'payroll\Karyawan::Pembagian');
+    $routes->add('karyawan/edit', 'payroll\Karyawan::Edit');
+    $routes->add('karyawan/save', 'payroll\Karyawan::Save');
+    $routes->add('karyawan/keluar', 'payroll\Karyawan::Keluar');
+    $routes->add('diliburkan', 'payroll\Karyawan::Diliburkan');
+    $routes->add('adddiliburkan', 'payroll\Karyawan::Adddiliburkan');
+    $routes->add('deletediliburkan', 'payroll\Karyawan::Deletediliburkan');
+    $routes->add('diliburkan/datatables', 'payroll\Karyawan::Datatablesdiliburkan');
 });
 
 

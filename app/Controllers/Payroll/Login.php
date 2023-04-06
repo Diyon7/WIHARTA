@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Payroll;
 
 use App\Controllers\BaseController;
 use App\Models\Pegawai_Model;
 use App\Models\Unit_model;
 use App\Models\Vendor_model;
 use Config\Services;
-use DateTime;
 
 class Dashboard extends BaseController
 {
@@ -26,20 +25,13 @@ class Dashboard extends BaseController
     public function Index()
     {
 
-        $jumlahdatapervendor = $this->pegawaimodel->JAvendor();
-        $datenow = date("Y-m-d 00:00:00", strtotime("yesterday"));
-
-
-
         $data = [
             'title' => 'WKA INFORMATION SYSTEM',
             'devisi' => 'Dashboard SDM',
-            'jumlahpervendor' => $jumlahdatapervendor,
-            'halaman' => 'Dashboard',
-            'tanggalsekarang' => $datenow
+            'halaman' => 'Dashboard SDM',
         ];
 
-        return view('dashboard/home', $data);
+        return view('login', $data);
     }
 
     public function Detail()

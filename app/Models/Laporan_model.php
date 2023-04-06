@@ -28,11 +28,11 @@ class Laporan_model extends Model
     {
         $k = $data['tgl'];
         return $this->db->query("SELECT pegawai.`pegawai_nama` AS nama, pegawai.`pegawai_pin` AS idkar, pegawai.`golongan` AS golongan, pembagian2.`pembagian2_nama` AS divisi, pembagian4.`pembagian4_nama` AS unit, pembagian5.`pembagian5_nama` AS subunit, pegawai.`grup_jam_kerja` AS grupt, pembagian3.`pembagian3_nama` AS asal, pegawai.`golongan` AS golongan, pegawai.`tgl_mulai_kerja` AS tmt, pegawai.`grup` AS grup FROM pegawai
-        left JOIN pembagian2 ON pembagian2.`pembagian2_id`=pegawai.`pembagian2_id`
-        left JOIN pembagian4 ON pembagian4.`pembagian4_id`=pegawai.`pembagian4_id`
-        left JOIN pembagian5 ON pembagian5.`pembagian5_id`=pegawai.`pembagian5_id`
-        left JOIN pembagian3 ON pembagian3.`pembagian3_id`=pegawai.`pembagian3_id`
-        WHERE pembagian3.`pembagian3_nama` LIKE '" . $data['vendor'] . "' AND (tgl_resign >= '" . $data['tgl'] . "' OR tgl_resign IS NULL)")
+        JOIN pembagian2 ON pembagian2.`pembagian2_id`=pegawai.`pembagian2_id`
+        JOIN pembagian4 ON pembagian4.`pembagian4_id`=pegawai.`pembagian4_id`
+        JOIN pembagian5 ON pembagian5.`pembagian5_id`=pegawai.`pembagian5_id`
+        JOIN pembagian3 ON pembagian3.`pembagian3_id`=pegawai.`pembagian3_id`
+        WHERE pembagian3.`pembagian3_nama` LIKE '" . $data['vendor'] . "' AND pegawai.`pegawai_nip` REGEXP '^[0-9]+$' AND pegawai.`golongan`!='1' AND (tgl_resign >= '" . $data['tgl'] . "' OR tgl_resign IS NULL)")
             ->getResultArray();
         // return $this->select('pegawai.`pegawai_nama` AS nama, pegawai.`pegawai_pin` AS idkar, pegawai.`golongan` AS golongan, pembagian2.`pembagian2_nama` AS divisi, pembagian4.`pembagian4_nama` AS unit, pembagian5.`pembagian5_nama` AS subunit, pegawai.`grup_jam_kerja` AS grupt, pembagian3.`pembagian3_nama` AS asal, pegawai.`golongan` AS golongan, pegawai.`tgl_mulai_kerja` AS tmt, pegawai.`grup` AS grup')
         //     ->join('pembagian2', 'pembagian2.`pembagian2_id`=pegawai.`pembagian2_id`')
@@ -40,6 +40,7 @@ class Laporan_model extends Model
         //     ->join('pembagian5', 'pembagian5.`pembagian5_id`=pegawai.`pembagian5_id`')
         //     ->join('pembagian3', 'pembagian3.`pembagian3_id`=pegawai.`pembagian3_id`')
         //     ->like('pembagian3.`pembagian3_nama`', $data['vendor'])
+        //     ->where("pegawai.`pegawai_nip` REGEXP '^[0-9]+$'")
         //     ->where('pegawai.`golongan`!=', '1')
         //     ->where("(tgl_resign >= '" . $data['tgl'] . "' OR tgl_resign IS NULL)")
         //     ->get()->getResultArray();
@@ -51,7 +52,6 @@ class Laporan_model extends Model
         $terlambat = 0;
         $pcepat = 0;
         $kelebihanjam = 0;
-        $finger = '';
 
         $mjkn2 = $this->db->query("SELECT jdw_kerja_d.`jdw_kerja_d_idx` AS idx FROM jdw_kerja_m
                         JOIN jdw_kerja_d ON jdw_kerja_m.`jdw_kerja_m_id`=jdw_kerja_d.`jdw_kerja_m_id`
@@ -71,27 +71,134 @@ class Laporan_model extends Model
             $tgllaporan[] = $tglt;
             $tglt = date('m/d', strtotime(' +1 days', strtotime($tglt)));
 
-            $grup = $form['grupt'];
+            $input = ['1', '3', '5', '7', '9'];
+            $output = ['2', '4', '6', '8', '10'];
+
+            $timeakhir2 = date('Y-m-d', strtotime(' +1 days', strtotime($timeawal)));
+
+            $cekinmin = $this->select("MIN(DATE_FORMAT(att_log.`scan_date`, '%y-%m-%d %H:%i:%s')) AS cekin")
+                ->join('att_log', 'pegawai.`pegawai_pin`=att_log.`pin`', 'right')
+                ->where('pegawai.`pegawai_pin`', $form['idkar'])
+                ->where("scan_date BETWEEN '$timeawal 00:00:00' AND '$timeawal 23:59:59'")
+                ->whereIn('att_log.`inoutmode`', $input)
+                ->get()->getResultArray();
+
+            $cekoutmax2 = $this->select("MAX(DATE_FORMAT(att_log.`scan_date`, '%y-%m-%d %H:%i:%s')) AS cout, att_log.`inoutmode` AS inoutm")
+                ->join('att_log', 'pegawai.`pegawai_pin`=att_log.`pin`', 'right')
+                ->where('pegawai.`pegawai_pin`', $form['idkar'])
+                ->where("scan_date BETWEEN '$timeawal 00:00:00' AND '$timeawal 23:59:59'")
+                ->whereIn('att_log.`inoutmode`', $output)
+                ->get()->getResultArray();
+
+            $cekoutmax3 = $this->select("MIN(DATE_FORMAT(att_log.`scan_date`, '%y-%m-%d %H:%i:%s')) AS cout, att_log.`inoutmode` AS inoutm")
+                ->join('att_log', 'pegawai.`pegawai_pin`=att_log.`pin`', 'right')
+                ->where('pegawai.`pegawai_pin`', $form['idkar'])
+                ->where("scan_date BETWEEN '$timeakhir2 00:00:00' AND '$timeakhir2 23:59:59'")
+                ->whereIn('att_log.`inoutmode`', $output)
+                ->get()->getResultArray();
+
+
+            if ($form['unit'] == 'SATPAM') {
+                if (date('Hi', strtotime($cekinmin[0]['cekin'])) > '1700') {
+                    if (date('Hi', strtotime($cekoutmax3[0]['cout'])) < '0900') {
+                        $cekoutmax = $cekoutmax3;
+                    }
+                } else {
+                    $cekoutmax = $cekoutmax2;
+                }
+            } else {
+                if (date('Hi', strtotime($cekinmin[0]['cekin'])) > '2100') {
+                    $cekoutmax = $cekoutmax3;
+                } else {
+                    if (date('Hi', strtotime($cekinmin[0]['cekin'])) > '1400') {
+                        if ($cekoutmax2[0]['inoutm'] == null) {
+                            if (date('Hi', strtotime($cekoutmax3[0]['cout'])) < '0830') {
+                                $cekoutmax = $cekoutmax3;
+                            }
+                            // $cekoutmax = $this->select("MAX(DATE_FORMAT(att_log.`scan_date`, '%y-%m-%d %H:%i:%s')) AS cout, att_log.`inoutmode` AS inoutm")
+                            //     ->join('att_log', 'pegawai.`pegawai_pin`=att_log.`pin`', 'right')
+                            //     ->where('pegawai.`pegawai_pin`', $form['idkar'])
+                            // ->where('pegawai.`resign`', '0')
+                            //     ->where("scan_date BETWEEN '$timeakhir2 00:00:00' AND '$timeakhir2 23:59:59'")
+                            //     ->whereIn('att_log.`inoutmode`', $output)
+                            //     ->get()->getResultArray();
+                        } else {
+                            if (date('His', strtotime($cekinmin[0]['cekin'])) > '170000' && $cekoutmax2[0]['inoutm'] == null) {
+                                $cekoutmax = $cekoutmax3;
+                            } else {
+                                if (date('Hi', strtotime($cekoutmax2[0]['cout'])) > '1430') {
+                                    $cekoutmax = $cekoutmax2;
+                                } else {
+                                    if (date('Hi', strtotime($cekoutmax3[0]['cout'])) < '0830') {
+                                        $cekoutmax = $cekoutmax3;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        $cekoutmax = $cekoutmax2;
+                    }
+                }
+            }
+
+
 
             $izincekinmin = $this->select("DATE_FORMAT(tbl_izin.`in`, '%y-%m-%d %H:%i:%s') AS cekin, '1' AS inoutm")
                 ->join("tbl_izin", "pegawai.`pegawai_nip`=tbl_izin.`pegawai_nip`")
                 ->where("tbl_izin.`pegawai_nip`", $form['idkar'])
                 ->where("tbl_izin.`in` LIKE '$timeawal %'")
+                ->where('tbl_izin.verified', 'a')
                 ->get()->getResultArray();
 
             $izincekoutmax = $this->select("DATE_FORMAT(tbl_izin.`out`, '%y-%m-%d %H:%i:%s') AS cout, '2' AS inoutm")
                 ->join("tbl_izin", "pegawai.`pegawai_nip`=tbl_izin.`pegawai_nip`")
                 ->where("tbl_izin.`pegawai_nip`", $form['idkar'])
                 ->where("tbl_izin.`in` LIKE '$timeawal %'")
+                ->where('tbl_izin.verified', 'a')
                 ->get()->getResultArray();
+
+            if ($izincekinmin != null) {
+                $cekinmin = $izincekinmin;
+                $cekoutmax = $izincekoutmax;
+            }
+
+            $jamkerja = strtotime($cekoutmax[0]['cout']) - strtotime($cekinmin[0]['cekin']);
+            $jam = floor($jamkerja / (60 * 60));
+            $menit = $jamkerja - $jam * (60 * 60);
+
+            if ($cekinmin[0]['cekin'] == NULL) {
+                $finger = ' I : ';
+            } else {
+                $finger = ' I : ' . date('H:i', strtotime($cekinmin[0]['cekin']));
+            }
+
+            if ($cekoutmax[0]['cout'] == NULL) {
+                $finger .= ' O : ';
+            } else {
+                $finger .= ' O : ' . date('H:i', strtotime($cekoutmax[0]['cout']));
+            }
+
+            if ($cekinmin[0]['cekin'] == NULL) {
+                $finger .= ' JK : ';
+            } elseif ($cekoutmax[0]['cout'] == NULL) {
+                $finger .= ' JK : ';
+            } else {
+                $finger .= ' JK : ' . $jam . ':' . floor($menit / 60);
+            }
+
 
             $clor = "white";
 
             $day[] = date('D', strtotime($timeawal));
             $dayi = date('D', strtotime($timeawal));
 
+            // if ($dayi == "Sun") {
+            //     $clor = "orange";
+            // }
+
             $masuk = 0;
             $tidakmasuk = 0;
+            $totalhari = 0;
             $izin = 0;
             // $dftizin = $this->db->query("SELECT pegawai_nip FROM tbl_izin
             //                             WHERE tanggal='$timeawal' AND verified='a' AND pegawai_nip='" . $form['idkar'] . "'")->getRowArray();
@@ -100,7 +207,7 @@ class Laporan_model extends Model
             foreach ($form['jkm'] as $jkmk) {
                 $n = 0;
 
-                if ($grup == $jkmk['kodejk']) {
+                if ($form['grupt'] == $jkmk['kodejk']) {
 
                     $mjkn = $this->db->query("SELECT MAX(jdw_kerja_d.`jdw_kerja_d_idx`) AS idx FROM jdw_kerja_m
                         JOIN jdw_kerja_d ON jdw_kerja_m.`jdw_kerja_m_id`=jdw_kerja_d.`jdw_kerja_m_id`
@@ -120,66 +227,13 @@ class Laporan_model extends Model
                                     LEFT JOIN jam_kerja ON jam_kerja.`jk_id` = jdw_kerja_d.`jk_id`
                                     WHERE jdw_kerja_m.`jdw_kerja_m_kode`='" . $jkmk['kodejk'] . "' AND jdw_kerja_d.`jdw_kerja_d_idx`='" . $n . "'")->getRowArray();
                             if ($tjk['libur'] === '0') {
-                            } elseif ($tjk['libur'] === '0') {
                                 // if ($dftizin['pegawai_nip'] != null) {
                                 //     $clor = "green";
                                 //     $izin++;
                                 //     $izinf[] = $izin;
                                 // } else {
                                 if ($timeawal <= $datenow) {
-
-                                    // $duraw = $tjk['durasi'];
-                                    // $durak = $tjk['durasi'];
-
-                                    $inmin  = date('Y-m-d H:i:s', strtotime('-3 hours', strtotime($timeawal . ' ' . $tjk['smasuk'])));
-                                    $inmax = date('Y-m-d H:i:s', strtotime('+4 hours', strtotime($timeawal . ' ' . $tjk['smasuk'])));
-
-                                    $outmin = date('Y-m-d H:i:s', strtotime('+6 hours', strtotime($timeawal . ' ' . $tjk['smasuk'])));
-                                    $outmax = date('Y-m-d H:i:s', strtotime('+17 hours', strtotime($timeawal . ' ' . $tjk['smasuk'])));
-
-                                    $cekinmin = $this->select("pegawai.`pegawai_nip` AS idkar, pegawai.`pegawai_nama` AS nama, att_log.`inoutmode` AS inoutm, MIN(DATE_FORMAT(att_log.`scan_date`, '%y-%m-%d %H:%i:%s')) AS cekin")
-                                        ->join('att_log', 'pegawai.`pegawai_pin`=att_log.`pin`', 'right')
-                                        ->where('pegawai.`pegawai_pin`', $form['idkar'])
-                                        ->where('pegawai.`resign`', '0')
-                                        ->where("scan_date BETWEEN '$inmin' AND '$inmax'")
-                                        ->get()->getResultArray();
-
-                                    $cekoutmax = $this->select("MAX(DATE_FORMAT(att_log.`scan_date`, '%y-%m-%d %H:%i:%s')) AS cout, att_log.`inoutmode` AS inoutm")
-                                        ->join('att_log', 'pegawai.`pegawai_pin`=att_log.`pin`', 'right')
-                                        ->where('pegawai.`pegawai_pin`', $form['idkar'])
-                                        ->where('pegawai.`resign`', '0')
-                                        ->where("scan_date BETWEEN '$outmin' AND '$outmax'")
-                                        ->get()->getResultArray();
-
-                                    if ($izincekinmin != null) {
-                                        $cekinmin = $izincekinmin;
-                                        $cekoutmax = $izincekoutmax;
-                                    }
-
-                                    $jamkerja = strtotime($cekoutmax[0]['cout']) - strtotime($cekinmin[0]['cekin']);
-                                    $jam = floor($jamkerja / (60 * 60));
-                                    $menit = $jamkerja - $jam * (60 * 60);
-
-                                    if ($cekinmin[0]['cekin'] == NULL) {
-                                        $finger = ' I : ';
-                                    } else {
-                                        $finger = ' I : ' . date('H:i', strtotime($cekinmin[0]['cekin']));
-                                    }
-
-                                    if ($cekoutmax[0]['cout'] == NULL) {
-                                        $finger .= ' O : ';
-                                    } else {
-                                        $finger .= ' O : ' . date('H:i', strtotime($cekoutmax[0]['cout']));
-                                    }
-
-                                    if ($cekinmin[0]['cekin'] == NULL) {
-                                        $finger .= ' JK : ';
-                                    } elseif ($cekoutmax[0]['cout'] == NULL) {
-                                        $finger .= ' JK : ';
-                                    } else {
-                                        $finger .= ' JK : ' . $jam . ':' . floor($menit / 60);
-                                    }
-
+                                    $totalhari++;
                                     if ($cekinmin[0]['cekin'] == NULL || $cekoutmax[0]['cout'] == NULL) {
                                         $clor = "red";
                                         $tidakmasuk++;
@@ -265,15 +319,18 @@ class Laporan_model extends Model
                                         }
 
                                         $masuk++;
+                                        // // $thr[] = $totalhari;
+                                        // if ($totalhari > $jkmk['jdwtagihan']) {
+                                        //     $masuk2 = $totalhari - $jkmk['jdwtagihan'];
+                                        //     $masuk = $masuk2;
+                                        // }
                                         $msk[] = $masuk;
                                     }
                                 } else {
-                                    $finger = ' ';
                                     $clor = "white";
                                 }
                                 // }
                             } else {
-                                $finger = ' ';
                                 $clor = "yellow";
                             }
                         } else {
@@ -284,7 +341,28 @@ class Laporan_model extends Model
                 }
             }
 
+
             $color[] = $clor;
+
+            //jam kerja tetap
+            // if ($form['grup'] == $form['grupt'] && $form['day'] == $dayi && $form['kategori'] == '1') {
+
+            //     // 
+            // }
+
+
+            // // jamkerja berulang
+            // if ($form['grup'] == $form['grupt'] && $form['day'] == $dayi && $form['kategori'] == '1') {
+
+            //     // 
+            // }
+
+
+            // // jamkerja tertentu
+            // if ($form['grup'] == $form['grupt'] && $form['day'] == $dayi && $form['kategori'] == '1') {
+
+            //     // 
+            // }
 
             $tpc = $pcepat;
             $trt = $terlambat;
@@ -292,16 +370,17 @@ class Laporan_model extends Model
             $kbhnj = $kelebihanjam;
             $finger2[] = $finger;
 
-            $timeawal3[] = $timeawal;
+            // $timeawal3[] = $timeawal;
             $timeawal = date('Y-m-d', strtotime('+1 days', strtotime($timeawal)));
         }
         // }
         $alldata[] = [
             'idkar' => $form['idkar'],
-            'timeawal3' => $timeawal3,
+            // 'timeawal3' => $timeawal3,
             'pcepat' => $tpc,
             'terlambat' => $trt,
             'kelebihanjam' => $kbhnj,
+            // 'thr' => $thr,
             'm' => $mjkn2,
             'nama' => $form['nama'],
             'divisi' => $form['divisi'],

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $title; ?></title>
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/sweetalert2/sweetalert2.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -44,7 +45,8 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="<?= base_url() ?>/assets/dist/img/WIHARTA.png" alt="WIHARTA KARYA AGUNG" height="60" width="60">
+            <img class="animation__shake" src="<?= base_url() ?>/assets/dist/img/WIHARTA.png" alt="WIHARTA KARYA AGUNG"
+                height="60" width="60">
         </div>
 
         <!-- Navbar -->
@@ -120,7 +122,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="<?= base_url() ?>" class="brand-link">
-                <img src="<?= base_url() ?>/assets/dist/img/avatar.png" alt="WIHARTA" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?= base_url() ?>/assets/dist/img/avatar.png" alt="WIHARTA"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><?= $devisi ? $devisi : 'DASHBOARD SDM' ?></span>
             </a>
 
@@ -141,19 +144,21 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <?php if (in_groups('vendor') || in_groups('sdm') || in_groups('it')) : ?>
-                            <?php if (has_permission('dashboard')) : ?>
-                                <li class="nav-item">
-                                    <a href="<?= base_url() ?>/admin" class="nav-link <?= $halaman == 'Dashboard' ? 'active' : 'DASHBOARD SDM' ?>">
-                                        <i class="nav-icon fas fa-home"></i>
-                                        <p>
-                                            HOME
-                                        </p>
-                                    </a>
-                                </li>
-                            <?php endif ?>
-                            <!-- <li class="nav-item">
+                        <?php if (has_permission('dashboard')) : ?>
+                        <li class="nav-item">
+                            <a href="<?= base_url() ?>/admin"
+                                class="nav-link <?= $halaman == 'Dashboard' ? 'active' : 'DASHBOARD SDM' ?>">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    HOME
+                                </p>
+                            </a>
+                        </li>
+                        <?php endif ?>
+                        <!-- <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-people"></i>
                                 <p>
@@ -161,130 +166,170 @@
                                 </p>
                             </a>
                         </li> -->
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-book"></i>
-                                    <p>
-                                        LAPORAN
-                                        <i class="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <?php if (has_permission('laporanbulanan')) : ?>
-                                        <li class="nav-item">
-                                            <a href="<?= base_url() ?>/admin/laporanbulanan" class="nav-link <?= $halaman == 'Laporan Bulanan' ? 'active' : 'DASHBOARD SDM' ?>">
-                                                <i class="far fa-file nav-icon"></i>
-                                                <p>LAPORAN BULANAN</p>
-                                            </a>
-                                        </li>
-                                    <?php endif ?>
-                                    <?php if (has_permission('logkaryawan')) : ?>
-                                        <li class="nav-item">
-                                            <a href="<?= base_url() ?>/admin/logkaryawan" class="nav-link <?= $halaman == 'Log Karyawan' ? 'active' : 'DASHBOARD SDM' ?>">
-                                                <i class="far fa-file nav-icon"></i>
-                                                <p>LOG KARYAWAN</p>
-                                            </a>
-                                        </li>
-                                    <?php endif ?>
-                                    <?php if (has_permission('laporanharian')) : ?>
-                                        <li class="nav-item">
-                                            <a href="<?= base_url() ?>/admin/rekap" class="nav-link <?= $halaman == 'Laporan Harian' ? 'active' : 'DASHBOARD SDM' ?>">
-                                                <i class="far fa-file nav-icon"></i>
-                                                <p>LAPORAN HARIAN</p>
-                                            </a>
-                                        </li>
-                                    <?php endif ?>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-inbox"></i>
-                                    <p>
-                                        PENGECUALIAN
-                                        <i class="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <?php if (has_permission('izin')) : ?>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="<?= base_url() ?>/admin/izin" class="nav-link <?= $halaman == 'Izin' ? 'active' : 'DASHBOARD SDM' ?>">
-                                                <i class="far fa-file nav-icon"></i>
-                                                <p>izin</p>
-                                            </a>
-                                        </li>
-                                    </ul>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    LAPORAN
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <?php if (has_permission('laporanbulanan')) : ?>
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/laporanbulanan"
+                                        class="nav-link <?= $halaman == 'Laporan Bulanan' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>LAPORAN BULANAN</p>
+                                    </a>
+                                </li>
                                 <?php endif ?>
-                                <?php if (has_permission('validasiizin')) : ?>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="<?= base_url() ?>/admin/validasi" class="nav-link <?= $halaman == 'Validasi Izin' ? 'active' : 'DASHBOARD SDM' ?>">
-                                                <i class="far fa-file nav-icon"></i>
-                                                <p>validasi izin</p>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                <?php if (has_permission('logkaryawan')) : ?>
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/logkaryawan"
+                                        class="nav-link <?= $halaman == 'Log Karyawan' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>LOG KARYAWAN</p>
+                                    </a>
+                                </li>
                                 <?php endif ?>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="<?= base_url() ?>/admin/logizin" class="nav-link <?= $halaman == 'Log Izin' ? 'active' : 'DASHBOARD SDM' ?>">
-                                            <i class="far fa-file nav-icon"></i>
-                                            <p>log izin</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <?php if (has_permission('gantigrupsementara')) : ?>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="<?= base_url() ?>/admin/gantigrupsementara" class="nav-link">
-                                                <i class="far fa-file nav-icon"></i>
-                                                <p>Ganti Grup Sementara</p>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                <?php if (has_permission('laporanharian')) : ?>
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/rekap"
+                                        class="nav-link <?= $halaman == 'Laporan Harian' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>LAPORAN HARIAN</p>
+                                    </a>
+                                </li>
                                 <?php endif ?>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-chart-pie"></i>
-                                    <p>
-                                        DATA
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <?php if (has_permission('datakaryawan')) : ?>
-                                        <li class="nav-item">
-                                            <a href="<?= base_url() ?>/admin/karyawan" class="nav-link <?= $halaman == 'Karyawan' ? 'active' : 'DASHBOARD SDM' ?>">
-                                                <i class="far fa-file nav-icon"></i>
-                                                <p>KARYAWAN</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="<?= base_url() ?>/admin/diliburkan" class="nav-link">
-                                                <i class="far fa-file nav-icon"></i>
-                                                <p>DILIBURKAN</p>
-                                            </a>
-                                        </li>
-                                    <?php endif ?>
-                                    <!-- <li class="nav-item">
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-inbox"></i>
+                                <p>
+                                    PENGECUALIAN
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <?php if (has_permission('izin')) : ?>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/izin"
+                                        class="nav-link <?= $halaman == 'Izin' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>izin</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <?php endif ?>
+                            <?php if (has_permission('validasiizin')) : ?>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/validasi"
+                                        class="nav-link <?= $halaman == 'Validasi Izin' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>validasi izin</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <?php endif ?>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/logizin"
+                                        class="nav-link <?= $halaman == 'Log Izin' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>log izin</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <?php if (has_permission('gantigrupsementara')) : ?>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/gantigrupsementara" class="nav-link">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>Ganti Grup Sementara</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <?php endif ?>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    DATA
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <?php if (has_permission('datakaryawan')) : ?>
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/karyawan"
+                                        class="nav-link <?= $halaman == 'Karyawan' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>KARYAWAN</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/diliburkan" class="nav-link">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>DILIBURKAN</p>
+                                    </a>
+                                </li>
+                                <?php endif ?>
+                                <!-- <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>TAGIHAN HARI KERJA</p>
                                     </a>
                                 </li> -->
-                                </ul>
-                            </li>
+                            </ul>
+                        </li>
                         <?php endif ?>
                         <?php if (in_groups('qc')) { ?>
-                            <li class="nav-item">
-                                <a href="<?= base_url() ?>/admin" class="nav-link <?= $halaman == 'Dashboard' ? 'active' : 'DASHBOARD SDM' ?>">
-                                    <i class="nav-icon fas fa-home"></i>
-                                    <p>
-                                        QC
-                                    </p>
-                                </a>
-                            </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url() ?>/admin"
+                                class="nav-link <?= $halaman == 'Dashboard' ? 'active' : 'DASHBOARD SDM' ?>">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    QC
+                                </p>
+                            </a>
+                        </li>
                         <?php } ?>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-warehouse"></i>
+                                <p>
+                                    Keluar Masuk Gudang
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <?php if (has_permission('datakaryawan')) : ?>
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/gudang/inputmutasipenerimaan"
+                                        class="nav-link <?= $halaman == 'Karyawan' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>Mutasi Penerimaan B Jadi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/diliburkan" class="nav-link">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>DILIBURKAN</p>
+                                    </a>
+                                </li>
+                                <?php endif ?>
+                                <!-- <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>TAGIHAN HARI KERJA</p>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </li>
                         <li class="nav-item">
                             <!-- <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-calendar"></i>
@@ -377,7 +422,7 @@
 
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-        $.widget.bridge('uibutton', $.ui.button)
+    $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="<?= base_url() ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -406,46 +451,46 @@
     <script src="<?= base_url() ?>/assets/dist/js/pages/dashboard.js"></script>
 </body>
 <script type="text/javascript">
-    const flashData = $('.flash-data').data('flashdata');
-    if (flashData) {
-        $(function() {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timerProgressBar: true,
-                timer: 15000
-            });
-            Toast.fire({
-                icon: 'success',
-                title: flashData,
-                type: 'success',
-            });
-
-        });
-    }
-    const flashDatae = $('.flash-data-e').data('flashdata');
-    if (flashDatae) {
-        $(function() {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'center',
-                showConfirmButton: true,
-                timerProgressBar: true,
-                // timer: 10000
-            });
-            Toast.fire({
-                icon: 'error',
-                title: flashDatae,
-                type: 'success',
-            });
-
-        });
-    }
+const flashData = $('.flash-data').data('flashdata');
+if (flashData) {
     $(function() {
-        // Summernote
-        $('.textarea').summernote()
-    })
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timerProgressBar: true,
+            timer: 15000
+        });
+        Toast.fire({
+            icon: 'success',
+            title: flashData,
+            type: 'success',
+        });
+
+    });
+}
+const flashDatae = $('.flash-data-e').data('flashdata');
+if (flashDatae) {
+    $(function() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'center',
+            showConfirmButton: true,
+            timerProgressBar: true,
+            // timer: 10000
+        });
+        Toast.fire({
+            icon: 'error',
+            title: flashDatae,
+            type: 'success',
+        });
+
+    });
+}
+$(function() {
+    // Summernote
+    $('.textarea').summernote()
+})
 </script>
 
 </html>

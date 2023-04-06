@@ -52,10 +52,10 @@ class Database extends Config
 
     public $seconddb = [
         'DSN'      => '',
-        'hostname' => '154.100.100.9',
+        'hostname' => '154.100.100.3',
         'username' => 'root',
         'password' => '',
-        'database' => 'absen',
+        'database' => 'mps_mrp',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
