@@ -34,10 +34,8 @@
                         <label>Kode SPP</label>
                         <div class="row">
                             <div class="col-sm-9">
-                                <select class="form-control form-control-sm pilihkaryawan" name="nama" id="nama"
+                                <select class="form-control form-control-sm pilihkaryawan" name="kodespp" id="kodespp"
                                     aria-placeholder="Pilih Karyawan">
-                                    <option value="">Pilih kode</option>
-                                    <option value="#">gdfg</option>
                                 </select>
                             </div>
                             <div class="col-1">
@@ -70,14 +68,14 @@
                             <label>Kode Item</label>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <select class="form-control form-control-sm pilihkodeitem" name="item" id="item"
-                                        aria-placeholder="Ketik Item">
+                                    <select class="form-control form-control-sm pilihkodeitem" name="kodeitem"
+                                        id="kodeitem" aria-placeholder="Ketik Item">
 
                                     </select>
                                 </div>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control form-control-sm" name="kodespp"
-                                        id="inputkodespp" readonly>
+                                    <input type="text" class="form-control form-control-sm" name="namaitem"
+                                        id="namaitem" readonly>
                                 </div>
                             </div>
                         </div>
@@ -93,21 +91,19 @@
 
                 </div>
                 <div class="row">
-                    <!-- text input -->
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Customer</label>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <select class="form-control form-control-sm pilihkaryawan" name="nama" id="nama"
-                                        aria-placeholder="Pilih Karyawan">
-                                        <option value="">Pilih Customer</option>
-                                        <option value="#">gdfg</option>
+                                    <select class="form-control form-control-sm pilihnamacustomer" name="namacustomer"
+                                        id="namacustomer">
+
                                     </select>
                                 </div>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control form-control-sm" name="kodespp"
-                                        id="inputkodespp" readonly>
+                                    <input type="text" class="form-control form-control-sm" name="customeraddr"
+                                        id="customeraddr" readonly>
                                 </div>
                             </div>
                         </div>
@@ -140,13 +136,6 @@
                                 <div class="col-sm-5">
                                     <input type="number" class="form-control form-control-sm" name="kodespp"
                                         id="inputkodespp">
-                                </div>
-                                <div class="col-sm-5">
-                                    <select class="form-control form-control-sm pilihkaryawan" name="nama" id="nama"
-                                        aria-placeholder="Pilih Karyawan">
-                                        <option value="">Pilih Satuan</option>
-                                        <option value="#">gdfg</option>
-                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -196,11 +185,11 @@ const flashDataa = "<?= session()->getFlashdata('success') ?>";
 
 $(document).ready(function() {
 
-    let inputkodespp = $('#inputkodespp');
+    // let inputkodespp = $('#inputkodespp');
 
     $('.pilihkodeitem').select2({
         minimumInputLength: 2,
-        allowClear: true,
+        // allowClear: true,
         placeholder: 'Ketik Kode Item',
         ajax: {
             url: '<?= site_url('admin/gudang/ajax/item') ?>',
@@ -224,6 +213,80 @@ $(document).ready(function() {
                 };
             }
         }
+    });
+
+    $("#kodeitem").change(function() {
+        var kode = $(this).val();
+        console.log(kode);
+        $.ajax({
+            url: '<?= site_url('admin/gudang/ajax/carinamaitem') ?>',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                kodeitem: kode
+            },
+            success: function(response) {
+
+                var namaitem = response.namaitem;
+
+                console.log(namaitem);
+
+                $("#namaitem").val(namaitem);
+            },
+            error: function(xhr, ajaxOption, thrownError) {
+                alert(xhr.status + "\n\n\n" + thrownError);
+            }
+        });
+    });
+
+    $('.pilihnamacustomer').select2({
+        minimumInputLength: 2,
+        // allowClear: true,
+        placeholder: 'Ketik Nama Customer',
+        ajax: {
+            url: '<?= site_url('admin/gudang/ajax/namacustomer') ?>',
+            dataType: "json",
+            data: function(params) {
+
+                var queryParameters = {
+                    search: params.term
+                }
+                return queryParameters;
+            },
+            processResults: function(data, page) {
+                return {
+                    results: $.map(data, function(customer) {
+                        return {
+                            text: customer.customer_name,
+                            id: customer.customer_name
+                        }
+                    })
+                };
+            }
+        }
+    });
+
+    $("#namacustomer").change(function() {
+        var customerinput = $(this).val();
+        $.ajax({
+            url: '<?= site_url('admin/gudang/ajax/customeraddr') ?>',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                namacustomer: customerinput
+            },
+            success: function(response) {
+
+                var customeraddr = response.customeraddr;
+
+                console.log(customeraddr);
+
+                $("#customeraddr").val(customeraddr);
+            },
+            error: function(xhr, ajaxOption, thrownError) {
+                alert(xhr.status + "\n\n\n" + thrownError);
+            }
+        });
     });
 
     inputkodespp.bind('keyup', function(ev) {

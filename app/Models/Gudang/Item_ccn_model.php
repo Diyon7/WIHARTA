@@ -27,4 +27,10 @@ class Item_ccn_model extends Model
         return $this->db->query("select item from item_ccn where item like '%$data%'")
             ->getResult();
     }
+
+    public function Namaitem($data)
+    {
+        return $this->db->query("SELECT item_description FROM item_ccn WHERE item LIKE '%$data%'")
+            ->getRowArray();
+    }
 }

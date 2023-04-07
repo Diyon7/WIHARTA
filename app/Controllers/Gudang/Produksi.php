@@ -8,6 +8,7 @@ use App\Models\Pendidikan_model;
 use App\Models\Jabatan_model;
 use App\Models\Divisi_model;
 use App\Models\Gudang\Item_ccn_model;
+use App\Models\Gudang\Customer_model;
 use App\Models\Unit_model;
 use App\Models\Subunit_model;
 use App\Models\Vendor_model;
@@ -26,6 +27,7 @@ class Produksi extends BaseController
     protected $unitmodel;
     protected $diliburkan;
     protected $group;
+    protected $customer;
     protected $subunit;
     protected $item;
     protected $vendormodel;
@@ -38,6 +40,7 @@ class Produksi extends BaseController
         $this->jabatan = new Jabatan_model();
         $this->group = new Group_model();
         $this->item = new item_ccn_model();
+        $this->customer = new Customer_model();
         $this->pendidikan = new Pendidikan_model();
         $this->divisi = new Divisi_model();
         $this->unitmodel = new Unit_model();
@@ -93,220 +96,51 @@ class Produksi extends BaseController
         }
     }
 
-    public function Detaikaryawan($id = '')
+    public function Namaitem()
     {
         helper('form');
-
-        $nonip = $this->pegawaimodel->Detailkaryawan(base64_decode($id));
-
-        $vendor = $this->vendormodel->findAll();
-        $jabatan = $this->jabatan->findAll();
-        $divisi = $this->divisi->findAll();
-        $unit = $this->unitmodel->findAll();
-        $subunit = $this->subunit->findAll();
-
-        $data = [
-            'nonip' => $nonip,
-            'vendor' => $vendor,
-            'jabatan' => $jabatan,
-            'divisi' => $divisi,
-            'unit' => $unit,
-            'title' => 'WKA INFORMATION SYSTEM',
-            'devisi' => 'Karyawan',
-            'halaman' => 'Karyawan',
-            'subunit' => $subunit,
-        ];
-
-        return view('karyawan/detail', $data);
-    }
-
-    public function Pembagian()
-    {
-        if ($this->request->isAJAX()) {
-            $subunit = $this->request->getPost('subunit');
-
-            $all = $this->pegawaimodel->Pda_Pegawai($subunit);
-
-            $msg = [
-                'namadivisi' => $all['namadivisi'],
-                'pembagian2id' => $all['pembagian2id'],
-                'namaunit' => $all['namaunit'],
-                'pembagian4id' => $all['pembagian4id'],
-                'namasubunit' => $all['namasubunit'],
-                'pembagian5id' => $all['pembagian5id']
-            ];
-
-            echo json_encode($msg);
-        }
-    }
-
-    public function Edit()
-    {
         if ($this->request->isAJAX()) {
 
-            $pend = $this->pendidikan->findAll();
-            $vendor = $this->vendormodel->findAll();
-            $grupt = $this->pegawaimodel->Groupt();
-            $golongan = $this->pegawaimodel->Golongan();
-            $jabatan = $this->jabatan->findAll();
-            $divisi = $this->divisi->findAll();
-            $unit = $this->unitmodel->findAll();
-            $subunit = $this->subunit->findAll();
+            $kodeitem = $this->request->getPost("kodeitem");
 
-            $nippegaw = $this->request->getPost('idnip');
-
-
-            $editkarya = $this->pegawaimodel->Edit($nippegaw);
-            // $edetail = $this->encrypter->encrypt('hyw');
+            $dataitem = $this->item->Namaitem($kodeitem);
 
             $data = [
-                'editkaryawanall' => $editkarya,
-                'vendor' => $vendor,
-                'golongan' => $golongan,
-                'pend' => $pend,
-                'jabatan' => $jabatan,
-                'grup_t' => $grupt,
-                'divisi' => $divisi,
-                'unit' => $unit,
-                'subunit' => $subunit,
-                'nip' => $nippegaw,
-                // 'edetail' => $edetail
-            ];
-            $msg = [
-                'sukses' => view('karyawan/edit', $data)
+                'namaitem' => $dataitem['item_description']
             ];
 
-            echo json_encode($msg);
+            echo json_encode($data);
         }
     }
 
-    public function Save()
+    public function Customername()
     {
         if ($this->request->isAJAX()) {
-            if ($this->request->getMethod() == 'post') {
 
-                $rules = [
-                    'asal' => [
-                        'label'  => 'asal',
-                        'rules'  => 'required',
-                        'errors' => [
-                            'required' => 'Asal harus dipilih !',
-                        ],
-                    ],
-                    'nama' => [
-                        'label'  => 'nama',
-                        'rules'  => 'required',
-                        'errors' => [
-                            'required' => 'nama harus diisi',
-                        ],
-                    ],
-                    'jk' => [
-                        'label'  => 'jk',
-                        'rules'  => 'required',
-                        'errors' => [
-                            'required' => 'Jenis kelamin harus dipilih !',
-                        ],
-                    ],
-                    // 'pendidikan' => [
-                    //     'label'  => 'pendidikan',
-                    //     'rules'  => 'required',
-                    //     'errors' => [
-                    //         'required' => 'Pendidikan harus dipilih !',
-                    //     ],
-                    // ],
-                    'divisi' => [
-                        'label'  => 'divisi',
-                        'rules'  => 'required',
-                        'errors' => [
-                            'required' => 'Divisi harus dipilih !',
-                        ],
-                    ],
-                    'unit' => [
-                        'label'  => 'unit',
-                        'rules'  => 'required',
-                        'errors' => [
-                            'required' => 'Unit harus dipilih !',
-                        ],
-                    ],
-                    'subunit' => [
-                        'label'  => 'subunit',
-                        'rules'  => 'required',
-                        'errors' => [
-                            'required' => 'Sub Unit harus dipilih !',
-                        ],
-                    ],
-                    'grup_t' => [
-                        'label'  => 'grup_t',
-                        'rules'  => 'required',
-                        'errors' => [
-                            'required' => 'Grup harus dipilih !',
-                        ],
-                    ],
-                    'tmt' => [
-                        'label'  => 'tmt',
-                        'rules'  => 'required',
-                        'errors' => [
-                            'required' => 'Tmt harus dipilih !',
-                        ],
-                    ],
-                ];
+            helper('form');
 
-                if ($this->validate($rules)) {
-                    $asal = htmlspecialchars($this->request->getPost('asal'));
-                    $nip = $this->request->getPost('nip');
-                    $nama = htmlspecialchars($this->request->getPost('nama'));
-                    $tgllahir = htmlspecialchars($this->request->getPost('tgllahir'));
-                    $jk = htmlspecialchars($this->request->getPost('jk'));
-                    $telepon = htmlspecialchars($this->request->getPost('telepon'));
-                    $alamat = htmlspecialchars($this->request->getPost('alamat'));
-                    $pendidikan = htmlspecialchars($this->request->getPost('pendidikan'));
-                    $divisi = htmlspecialchars($this->request->getPost('divisi'));
-                    $unit = htmlspecialchars($this->request->getPost('unit'));
-                    $subunit = htmlspecialchars($this->request->getPost('subunit'));
-                    $grup_t = htmlspecialchars($this->request->getPost('grup_t'));
-                    $jabatan = htmlspecialchars($this->request->getPost('jabatan'));
-                    $golongan = htmlspecialchars($this->request->getPost('golongan'));
-                    $tmt = htmlspecialchars($this->request->getPost('tmt'));
+            $customernama = $this->request->getVar("search");
 
-                    $groupall = $this->group->where('group_k', $grup_t)->first();
+            $dataitem = $this->customer->Allcustomer($customernama);
 
-                    $pegawai = [
-                        'pembagian3_id' => $asal,
-                        'pegawai_nama' => $nama,
-                        'tgl_lahir' => $tgllahir,
-                        'gender' => $jk,
-                        'pegawai_telp' => $telepon,
-                        'pembagian2_id' => $divisi,
-                        'pembagian4_id' => $unit,
-                        'pembagian5_id' => $subunit,
-                        'grup' => $groupall['group'],
-                        'grup_t' => $groupall['group_k'],
-                        'grup_jam_kerja' => $groupall['group_jk'],
-                        'pembagian1_id' => $jabatan,
-                        'golongan' => $golongan,
-                        'tgl_mulai_kerja' => $tmt,
-                        'tgl_masuk_pertama' => $tmt
-                    ];
+            echo json_encode($dataitem);
+        }
+    }
 
-                    $dataupdate = $this->pegawaimodel->where('pegawai_nip', $nip)->set($pegawai)->update();
+    public function Customeraddr()
+    {
+        helper('form');
+        if ($this->request->isAJAX()) {
 
-                    if ($dataupdate) {
-                        session()->setFlashdata('success', 'Edit karyawan berhasil');
-                        $msg = [
-                            'success' => 'data sukses diedit'
-                        ];
-                    } else {
-                        $msg = [
-                            'error' => 'data error'
-                        ];
-                    }
-                } else {
-                    $msg = [
-                        'error' => $this->validator->listErrors()
-                    ];
-                }
-                echo json_encode($msg);
-            }
+            $namacustomer = $this->request->getPost("namacustomer");
+
+            $datacustomeraddr = $this->customer->Addrcustomer($namacustomer);
+
+            $data = [
+                'customeraddr' => $datacustomeraddr['customer_addr1']
+            ];
+
+            echo json_encode($data);
         }
     }
 
