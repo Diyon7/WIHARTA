@@ -9,6 +9,7 @@ use App\Models\Jabatan_model;
 use App\Models\Divisi_model;
 use App\Models\Gudang\Item_ccn_model;
 use App\Models\Gudang\Customer_model;
+use App\Models\Gudang\Mutasi_Barangjadi_model;
 use App\Models\Unit_model;
 use App\Models\Subunit_model;
 use App\Models\Vendor_model;
@@ -30,6 +31,7 @@ class Produksi extends BaseController
     protected $customer;
     protected $subunit;
     protected $item;
+    protected $mutasibarangjadi;
     protected $vendormodel;
     protected $encrypter;
 
@@ -46,6 +48,7 @@ class Produksi extends BaseController
         $this->unitmodel = new Unit_model();
         $this->diliburkan = new Diliburkan_model();
         $this->subunit = new Subunit_model();
+        $this->mutasibarangjadi = new Mutasi_Barangjadi_model();
         $this->vendormodel = new Vendor_model();
     }
 
@@ -60,21 +63,134 @@ class Produksi extends BaseController
         return view('karyawan/index', $data);
     }
 
+    public function SaveSPP()
+    {
+        if ($this->request->isAJAX()) {
+            if ($this->request->getMethod() == 'post') {
+
+                $rules = [
+                    'kodespp' => [
+                        'label'  => 'kodespp',
+                        'rules'  => 'required',
+                        'errors' => [
+                            'required' => 'Kodespp harus diisi !',
+                        ],
+                    ],
+                ];
+
+                if ($this->validate($rules)) {
+                    $kodespp = htmlspecialchars($this->request->getPost('kodespp'));
+
+                    $spp = [
+                        'no_spp' => $kodespp,
+                    ];
+
+                    $save = $this->mutasibarangjadi->insert($spp);
+
+                    if ($save) {
+                        $msg = [
+                            'success' => 'berhasil',
+                            'kode' => $kodespp
+                        ];
+                    } else {
+                        $msg = [
+                            'error' => 'data error'
+                        ];
+                    }
+                } else {
+                    $msg = [
+                        'error' => $this->validator->listErrors()
+                    ];
+                }
+                echo json_encode($msg);
+            }
+        }
+    }
+
     public function InputMutasiPenerimaanBarangJadi()
     {
         helper('form');
         $idata = "";
 
-        // $dataitem = $this->item->Allitem($idata);
-
+        $datakodespp = $this->mutasibarangjadi->AllMutasiBRJadi();
         $data = [
             'title' => 'WKA INFORMATION SYSTEM',
             'devisi' => 'Gudang',
-            // 'item' => $dataitem,
+            'kodespp' => $datakodespp,
             'halaman' => 'Gudang',
         ];
 
         return view('gudang/formmutasipenerimaanbarangjadi', $data);
+    }
+
+    public function Addspp()
+    {
+        if ($this->request->isAJAX()) {
+
+
+            $data = [];
+            $msg = [
+                'sukses' => view('gudang/tambahspp', $data)
+            ];
+
+            echo json_encode($msg);
+        }
+    }
+
+    public function Editmutasibarangjadi()
+    {
+        if ($this->request->isAJAX()) {
+            if ($this->request->getMethod() == 'post') {
+
+                $rules = [
+                    'kodeitem' => [
+                        'label'  => 'kodeitem',
+                        'rules'  => 'required',
+                        'errors' => [
+                            'required' => 'Kode Item harus dipilih !',
+                        ],
+                    ],
+                ];
+
+                if ($this->validate($rules)) {
+                    $kodespp = htmlspecialchars($this->request->getPost('kodespp'));
+                    $tglspp = htmlspecialchars($this->request->getPost('tglspp'));
+                    $tglrencanaspp = htmlspecialchars($this->request->getPost('tglrencanaspp'));
+                    $kodeitem = htmlspecialchars($this->request->getPost('kodeitem'));
+                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
+                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
+                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
+                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
+                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
+                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
+                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
+                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
+                    $nip = $this->request->getPost('iidkar');
+
+                    $pegawai = [
+                        'tgl_resign' => $tgl,
+                        'resign' => '1'
+                    ];
+
+                    $dataupdate = $this->pegawaimodel->where('pegawai_nip', $nip)->set($pegawai)->update();
+
+                    if ($dataupdate) {
+                        $msg = [
+                            'success' => 'karyawan keluar'
+                        ];
+                    } else {
+                        $msg = [
+                            'error' => 'data error'
+                        ];
+                    }
+                } else {
+                    $msg = [
+                        'error' => $this->validator->listErrors()
+                    ];
+                }
+                echo json_encode($msg);
+            }
+        }
     }
 
     public function Searchitem()

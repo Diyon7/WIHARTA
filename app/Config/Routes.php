@@ -67,6 +67,9 @@ $routes->group('admin/', ['filter' => 'permission:laporanbulanan'], function ($r
     $routes->get('gudang/ajax/item', 'Gudang\Produksi::Searchitem');
     $routes->add('gudang/ajax/carinamaitem', 'Gudang\Produksi::Namaitem');
     $routes->add('gudang/ajax/namacustomer', 'Gudang\Produksi::Customername');
+    $routes->add('gudang/ajax/nambahspp', 'Gudang\Produksi::Addspp');
+    $routes->add('gudang/ajax/savespp', 'Gudang\Produksi::Savespp');
+    $routes->add('gudang/ajax/editmutasibarangjadi', 'Gudang\Produksi::Editmutasibarangjadi');
     $routes->add('gudang/ajax/customeraddr', 'Gudang\Produksi::Customeraddr');
 });
 

@@ -15,9 +15,16 @@ class Mutasi_Barangjadi_model extends Model
 
     protected $request;
 
-    public function Allitem()
+    function __construct(RequestInterface $request = null)
     {
-        return $this->select('*')
-            ->get()->getResultArray();
+        parent::__construct();
+        $this->db = db_connect('seconddb');
+        $this->request = $request;
+    }
+
+    public function AllMutasiBRJadi()
+    {
+        return $this->db->query("Select no_spp from wh_mutasi_b_jadi")
+            ->getResultArray();
     }
 }

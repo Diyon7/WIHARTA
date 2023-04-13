@@ -24,23 +24,19 @@
                 <?= form_open() ?>
                 <?= csrf_field() ?>
                 <div class="row">
-                    <!-- <div class="col-sm-3">
-                        <div class="form-group">
-                            <label>Kode SPP</label>
-                            <input type="text" class="form-control form-control-sm" name="kodespp" id="inputkodespp" placeholder="Enter ...">
-                        </div>
-                    </div> -->
                     <div class="col-sm-6">
                         <label>Kode SPP</label>
                         <div class="row">
                             <div class="col-sm-9">
-                                <select class="form-control form-control-sm pilihkaryawan" name="kodespp" id="kodespp"
-                                    aria-placeholder="Pilih Karyawan">
+                                <select class="form-control form-control-sm pilihspp" name="kodespp" id="kodespp">
+                                    <option value="">Pilih Kode SPP</option>
+                                    <?php foreach ($kodespp as $kspp) { ?>
+                                        <option value="<?= $kspp['no_spp'] ?>"><?= $kspp['no_spp'] ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                             <div class="col-1">
-                                <button type="button" class="btn btn-sm btn-primary tambakkodespp"><i
-                                        class="fas fa-plus-circle"></i></button>
+                                <button type="button" class="btn btn-sm btn-primary tambahkodespp" id="tambahkodespp"><i class="fas fa-plus-circle"></i></button>
                             </div>
                         </div>
                     </div>
@@ -48,16 +44,13 @@
                         <!-- text input -->
                         <div class="form-group">
                             <label>Tanggal SPP</label>
-                            <input type="date" class="form-control form-control-sm" name="tglspp" id="inputkodespp"
-                                placeholder="Enter ...">
+                            <input type="date" class="form-control form-control-sm" name="tglspp" id="inputkodespp">
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <!-- text input -->
                         <div class="form-group">
                             <label>Tanggal Rencana Kirim SPP</label>
-                            <input type="date" class="form-control form-control-sm" name="tglspp" id="inputkodespp"
-                                placeholder="Enter ...">
+                            <input type="date" class="form-control form-control-sm" name="tglrencanaspp" id="inputrencanakodespp" placeholder="Enter ...">
                         </div>
                     </div>
                 </div>
@@ -68,14 +61,12 @@
                             <label>Kode Item</label>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <select class="form-control form-control-sm pilihkodeitem" name="kodeitem"
-                                        id="kodeitem" aria-placeholder="Ketik Item">
+                                    <select class="form-control form-control-sm pilihkodeitem" name="kodeitem" id="kodeitem" aria-placeholder="Ketik Item">
 
                                     </select>
                                 </div>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control form-control-sm" name="namaitem"
-                                        id="namaitem" readonly>
+                                    <input type="text" class="form-control form-control-sm" name="namaitem" id="namaitem" readonly>
                                 </div>
                             </div>
                         </div>
@@ -84,8 +75,7 @@
                         <!-- text input -->
                         <div class="form-group">
                             <label>Tgl Penerimaan Barang Jadi</label>
-                            <input type="date" class="form-control form-control-sm" name="tglspp" id="inputkodespp"
-                                placeholder="Enter ...">
+                            <input type="date" class="form-control form-control-sm" name="tglspp" id="inputkodespp" placeholder="Enter ...">
                         </div>
                     </div>
 
@@ -96,14 +86,12 @@
                             <label>Customer</label>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <select class="form-control form-control-sm pilihnamacustomer" name="namacustomer"
-                                        id="namacustomer">
+                                    <select class="form-control form-control-sm pilihnamacustomer" name="namacustomer" id="namacustomer">
 
                                     </select>
                                 </div>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control form-control-sm" name="customeraddr"
-                                        id="customeraddr" readonly>
+                                    <input type="text" class="form-control form-control-sm" name="customeraddr" id="customeraddr" readonly>
                                 </div>
                             </div>
                         </div>
@@ -113,12 +101,10 @@
                             <label>Qty Jumlan Satuan</label>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input type="number" class="form-control form-control-sm" name="kodespp"
-                                        id="inputkodespp">
+                                    <input type="number" class="form-control form-control-sm" name="kodespp" id="inputkodespp">
                                 </div>
                                 <div class="col-sm-5">
-                                    <select class="form-control form-control-sm pilihkaryawan" name="nama" id="nama"
-                                        aria-placeholder="Pilih Karyawan">
+                                    <select class="form-control form-control-sm pilihkaryawan" name="nama" id="nama" aria-placeholder="Pilih Karyawan">
                                         <option value="">Pilih Satuan</option>
                                         <option value="#">KG</option>
                                         <option value="#">Pc's</option>
@@ -134,8 +120,7 @@
                             <label>Qty Jumlah KG</label>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input type="number" class="form-control form-control-sm" name="kodespp"
-                                        id="inputkodespp">
+                                    <input type="number" class="form-control form-control-sm" name="kodespp" id="inputkodespp">
                                 </div>
                             </div>
                         </div>
@@ -145,12 +130,10 @@
                             <label>Qty Jumlah Packing</label>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input type="number" class="form-control form-control-sm" name="kodespp"
-                                        id="inputkodespp">
+                                    <input type="number" class="form-control form-control-sm" name="kodespp" id="inputkodespp">
                                 </div>
                                 <div class="col-sm-5">
-                                    <select class="form-control form-control-sm pilihkaryawan" name="nama" id="nama"
-                                        aria-placeholder="Pilih Karyawan">
+                                    <select class="form-control form-control-sm pilihkaryawan" name="nama" id="nama" aria-placeholder="Pilih Karyawan">
                                         <option value="">Pilih Satuan</option>
                                         <option value="#">Dus</option>
                                         <option value="#">Ball</option>
@@ -170,6 +153,9 @@
                         </div>
                     </div> -->
                 </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success float-left">Save</button>
+                </div>
                 <?= form_close() ?>
             </div><!-- /.card-body -->
         </div>
@@ -181,139 +167,223 @@
 <div class="vieweditdata" style="display: none;"></div>
 
 <script>
-const flashDataa = "<?= session()->getFlashdata('success') ?>";
+    const flashDataa = "<?= session()->getFlashdata('success') ?>";
 
-$(document).ready(function() {
+    $(document).ready(function() {
 
-    // let inputkodespp = $('#inputkodespp');
+        // let inputkodespp = $('#inputkodespp');
 
-    $('.pilihkodeitem').select2({
-        minimumInputLength: 2,
-        // allowClear: true,
-        placeholder: 'Ketik Kode Item',
-        ajax: {
-            url: '<?= site_url('admin/gudang/ajax/item') ?>',
-            dataType: "json",
-            // type: "GET",
-            data: function(params) {
+        $('#tambahkodespp').click(function(e) {
+            $.ajax({
+                url: "<?= site_url('admin/gudang/ajax/nambahspp') ?>",
+                type: "POST",
+                dataType: "json",
+                success: function(response) {
+                    if (response.sukses) {
+                        $('.vieweditdata').html(response.sukses).show();
+                        $('#tambahdata').modal('show');
+                    }
+                    $('input[name=csrf_test_name]').val(response.csrf_test_name);
+                },
+            });
+        });
 
-                var queryParameters = {
-                    search: params.term
+        $('.pilihkodeitem').select2({
+            minimumInputLength: 2,
+            // allowClear: true,
+            placeholder: 'Ketik Kode Item',
+            ajax: {
+                url: '<?= site_url('admin/gudang/ajax/item') ?>',
+                dataType: "json",
+                // type: "GET",
+                data: function(params) {
+
+                    var queryParameters = {
+                        search: params.term
+                    }
+                    return queryParameters;
+                },
+                processResults: function(data, page) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                text: item.item,
+                                id: item.item
+                            }
+                        })
+                    };
                 }
-                return queryParameters;
-            },
-            processResults: function(data, page) {
-                return {
-                    results: $.map(data, function(item) {
-                        return {
-                            text: item.item,
-                            id: item.item
-                        }
-                    })
-                };
-            }
-        }
-    });
-
-    $("#kodeitem").change(function() {
-        var kode = $(this).val();
-        console.log(kode);
-        $.ajax({
-            url: '<?= site_url('admin/gudang/ajax/carinamaitem') ?>',
-            type: 'post',
-            dataType: 'json',
-            data: {
-                kodeitem: kode
-            },
-            success: function(response) {
-
-                var namaitem = response.namaitem;
-
-                console.log(namaitem);
-
-                $("#namaitem").val(namaitem);
-            },
-            error: function(xhr, ajaxOption, thrownError) {
-                alert(xhr.status + "\n\n\n" + thrownError);
             }
         });
-    });
 
-    $('.pilihnamacustomer').select2({
-        minimumInputLength: 2,
-        // allowClear: true,
-        placeholder: 'Ketik Nama Customer',
-        ajax: {
-            url: '<?= site_url('admin/gudang/ajax/namacustomer') ?>',
-            dataType: "json",
-            data: function(params) {
+        $("#kodeitem").change(function() {
+            var kode = $(this).val();
+            console.log(kode);
+            $.ajax({
+                url: '<?= site_url('admin/gudang/ajax/carinamaitem') ?>',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    kodeitem: kode
+                },
+                success: function(response) {
 
-                var queryParameters = {
-                    search: params.term
+                    var namaitem = response.namaitem;
+
+                    console.log(namaitem);
+
+                    $("#namaitem").val(namaitem);
+                },
+
+                error: function(xhr, ajaxOption, thrownError) {
+                    alert(xhr.status + "\n\n\n" + thrownError);
                 }
-                return queryParameters;
-            },
-            processResults: function(data, page) {
-                return {
-                    results: $.map(data, function(customer) {
-                        return {
-                            text: customer.customer_name,
-                            id: customer.customer_name
-                        }
-                    })
-                };
-            }
-        }
-    });
+            });
+        });
 
-    $("#namacustomer").change(function() {
-        var customerinput = $(this).val();
-        $.ajax({
-            url: '<?= site_url('admin/gudang/ajax/customeraddr') ?>',
-            type: 'post',
-            dataType: 'json',
-            data: {
-                namacustomer: customerinput
-            },
-            success: function(response) {
+        $("#kodespp").change(function() {
+            var kode = $(this).val();
+            console.log(kode);
+            $.ajax({
+                url: '<?= site_url('admin/gudang/ajax/carinamaitem') ?>',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    kodeitem: kode
+                },
+                success: function(response) {
 
-                var customeraddr = response.customeraddr;
+                    var namaitem = response.namaitem;
 
-                console.log(customeraddr);
+                    console.log(namaitem);
 
-                $("#customeraddr").val(customeraddr);
-            },
-            error: function(xhr, ajaxOption, thrownError) {
-                alert(xhr.status + "\n\n\n" + thrownError);
+                    $("#namaitem").val(namaitem);
+                },
+                error: function(xhr, ajaxOption, thrownError) {
+                    alert(xhr.status + "\n\n\n" + thrownError);
+                }
+            });
+        });
+
+        $("#kodeitem").change(function() {
+            var kode = $(this).val();
+            console.log(kode);
+            $.ajax({
+                url: '<?= site_url('admin/gudang/ajax/carinamaitem') ?>',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    kodeitem: kode
+                },
+                success: function(response) {
+
+                    var namaitem = response.namaitem;
+
+                    console.log(namaitem);
+
+                    $("#namaitem").val(namaitem);
+                },
+                error: function(xhr, ajaxOption, thrownError) {
+                    alert(xhr.status + "\n\n\n" + thrownError);
+                }
+            });
+        });
+
+        $('.pilihnamacustomer').select2({
+            minimumInputLength: 2,
+            // allowClear: true,
+            placeholder: 'Ketik Nama Customer',
+            ajax: {
+                url: '<?= site_url('admin/gudang/ajax/namacustomer') ?>',
+                dataType: "json",
+                data: function(params) {
+
+                    var queryParameters = {
+                        search: params.term
+                    }
+                    return queryParameters;
+                },
+                processResults: function(data, page) {
+                    return {
+                        results: $.map(data, function(customer) {
+                            return {
+                                text: customer.customer_name,
+                                id: customer.customer_name
+                            }
+                        })
+                    };
+                }
             }
         });
-    });
 
-    inputkodespp.bind('keyup', function(ev) {
-        if (ev.which !== 8) {
-            let input = inputkodespp.val();
-            let out = input.replace(/\D/g, '');
-            let len = out.length;
+        $("#namacustomer").change(function() {
+            var customerinput = $(this).val();
+            $.ajax({
+                url: '<?= site_url('admin/gudang/ajax/customeraddr') ?>',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    namacustomer: customerinput
+                },
+                success: function(response) {
 
-            if (len > 1 && len < 4) {
-                out = out.substring(0, 2) + '/' + out.substring(2, 3);
-            } else if (len >= 4) {
-                out = out.substring(0, 2) + '/' + out.substring(2, 4) + '/' + out.substring(4, len);
-                out = out.substring(0, 10)
+                    var customeraddr = response.customeraddr;
+
+                    console.log(customeraddr);
+
+                    $("#customeraddr").val(customeraddr);
+                },
+                error: function(xhr, ajaxOption, thrownError) {
+                    alert(xhr.status + "\n\n\n" + thrownError);
+                }
+            });
+        });
+
+        inputkodespp.bind('keyup', function(ev) {
+            if (ev.which !== 8) {
+                let input = inputkodespp.val();
+                let out = input.replace(/\D/g, '');
+                let len = out.length;
+
+                if (len > 1 && len < 4) {
+                    out = out.substring(0, 2) + '/' + out.substring(2, 3);
+                } else if (len >= 4) {
+                    out = out.substring(0, 2) + '/' + out.substring(2, 4) + '/' + out.substring(4, len);
+                    out = out.substring(0, 10)
+                }
+                inputkodespp.val(out)
             }
-            inputkodespp.val(out)
-        }
-    });
+        });
 
-    $("#kkjjp3").on('click', function(event) {
-        // tkjp3.destroy();
-        var tajp3 = $('#karyawanjp3k').DataTable({
+        $("#kkjjp3").on('click', function(event) {
+            // tkjp3.destroy();
+            var tajp3 = $('#karyawanjp3k').DataTable({
+                "destroy": true,
+                "processing": true,
+                "serverSide": true,
+                "order": [],
+                "ajax": {
+                    "url": "<?= site_url('admin/karyawanjp3k/datatables') ?>",
+                    "type": "POST",
+                },
+                "lengthMenu": [
+                    [5, 10, 25, 100],
+                    [5, 10, 25, 100]
+                ],
+                "columnDefs": [{
+                    "targets": 6,
+                    "orderable": false,
+                }],
+            })
+        })
+        // tajp3.destroy();
+        var tkjp3 = $('#karyawanjp3a').DataTable({
             "destroy": true,
             "processing": true,
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?= site_url('admin/karyawanjp3k/datatables') ?>",
+                "url": "<?= site_url('admin/karyawanjp3a/datatables') ?>",
                 "type": "POST",
             },
             "lengthMenu": [
@@ -325,28 +395,8 @@ $(document).ready(function() {
                 "orderable": false,
             }],
         })
-    })
-    // tajp3.destroy();
-    var tkjp3 = $('#karyawanjp3a').DataTable({
-        "destroy": true,
-        "processing": true,
-        "serverSide": true,
-        "order": [],
-        "ajax": {
-            "url": "<?= site_url('admin/karyawanjp3a/datatables') ?>",
-            "type": "POST",
-        },
-        "lengthMenu": [
-            [5, 10, 25, 100],
-            [5, 10, 25, 100]
-        ],
-        "columnDefs": [{
-            "targets": 6,
-            "orderable": false,
-        }],
-    })
 
-})
+    })
 </script>
 
 <?= $this->endSection() ?>
