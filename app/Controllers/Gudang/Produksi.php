@@ -352,6 +352,155 @@ class Produksi extends BaseController
         }
     }
 
+    public function Savemutasibarangjadi()
+    {
+        if ($this->request->getMethod() == 'post') {
+
+            $rules = [
+                'kodespp' => [
+                    'label'  => 'kodespp',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'KodeSPP harus diisi !',
+                    ],
+                ],
+                'qty' => [
+                    'label'  => 'qty',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'QTY harus diisi !',
+                    ],
+                ],
+                'tglspp' => [
+                    'label'  => 'tglspp',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'Tglspp harus diisi !',
+                    ],
+                ],
+                'tglrencanaspp' => [
+                    'label'  => 'tglrencanaspp',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'KodeSPP harus diisi !',
+                    ],
+                ],
+                'kodeitem' => [
+                    'label'  => 'kodeitem',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'KodeSPP harus diisi !',
+                    ],
+                ],
+                'namaitem' => [
+                    'label'  => 'namaitem',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'KodeSPP harus diisi !',
+                    ],
+                ],
+                'tglpenerimaanbarangj' => [
+                    'label'  => 'tglpenerimaanbarangj',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'Tgl harus diisi !',
+                    ],
+                ],
+                'namacustomer' => [
+                    'label'  => 'namacustomer',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'Nama Customer harus diisi !',
+                    ],
+                ],
+                'customeraddr' => [
+                    'label'  => 'customeraddr',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'customeraddr harus diisi !',
+                    ],
+                ],
+                'qtyjumlahsatuan' => [
+                    'label'  => 'qtyjumlahsatuan',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'QTY Jumlah Satuan harus diisi !',
+                    ],
+                ],
+                'qtysatuan' => [
+                    'label'  => 'qtysatuan',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'QTY Satuan harus diisi !',
+                    ],
+                ],
+                'qtyjumlahkg' => [
+                    'label'  => 'qtyjumlahkg',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'QTY Jumlah KG harus diisi !',
+                    ],
+                ],
+                'qtyjumlahpacking' => [
+                    'label'  => 'qtyjumlahpacking',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'QTY Jumlah Packing harus diisi !',
+                    ],
+                ],
+                'packingsatuan' => [
+                    'label'  => 'packingsatuan',
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'Packing Satuan harus diisi !',
+                    ],
+                ],
+            ];
+
+            if ($this->validate($rules)) {
+                $kodespp = $this->request->getPost('kodespp');
+                $qty = $this->request->getPost('qty');
+                $tglspp = $this->request->getPost('tglspp');
+                $tglrencanaspp = $this->request->getPost('tglrencanaspp');
+                $tgl = $this->request->getPost('tgl');
+                $tgl = $this->request->getPost('tgl');
+                $tgl = $this->request->getPost('tgl');
+                $tgl = $this->request->getPost('tgl');
+                $tgl = $this->request->getPost('tgl');
+                $tgl = $this->request->getPost('tgl');
+                $tgl = $this->request->getPost('tgl');
+                $tgl = $this->request->getPost('tgl');
+                $tgl = $this->request->getPost('tgl');
+                $tgl = $this->request->getPost('tgl');
+                $unit = $this->request->getPost('unit');
+                $jorang = $this->request->getPost('jorang');
+
+                $pegawai = [
+                    'tgl' => $tgl,
+                    'pembagian4_id' => $unit,
+                    'jumlah_orang' => $jorang
+                ];
+
+                $save = $this->diliburkan->insert($pegawai);
+
+                if ($save) {
+                    $msg = [
+                        'success' => 'berhasil'
+                    ];
+                } else {
+                    $msg = [
+                        'error' => 'data error'
+                    ];
+                }
+            } else {
+                $msg = [
+                    'error' => $this->validator->listErrors()
+                ];
+            }
+            echo json_encode($msg);
+        }
+    }
+
     public function Deletediliburkan()
     {
         helper('form');

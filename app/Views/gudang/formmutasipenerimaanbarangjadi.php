@@ -21,10 +21,10 @@
                 </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
-                <?= form_open() ?>
+                <?= form_open('admin/gudang/mutasibarangjd/save') ?>
                 <?= csrf_field() ?>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <label>Kode SPP</label>
                         <div class="row">
                             <div class="col-sm-9">
@@ -37,6 +37,16 @@
                             </div>
                             <div class="col-1">
                                 <button type="button" class="btn btn-sm btn-primary tambahkodespp" id="tambahkodespp"><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Qty</label>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <input type="number" class="form-control form-control-sm" name="qty" id="inputqty">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -75,10 +85,9 @@
                         <!-- text input -->
                         <div class="form-group">
                             <label>Tgl Penerimaan Barang Jadi</label>
-                            <input type="date" class="form-control form-control-sm" name="tglspp" id="inputkodespp" placeholder="Enter ...">
+                            <input type="date" class="form-control form-control-sm" name="tglpenerimaanbarangj" id="tglpenerimaanbarangj">
                         </div>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
@@ -101,10 +110,10 @@
                             <label>Qty Jumlan Satuan</label>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input type="number" class="form-control form-control-sm" name="kodespp" id="inputkodespp">
+                                    <input type="number" class="form-control form-control-sm" name="qtyjumlahsatuan" id="inputqtyjumlahsatuan">
                                 </div>
                                 <div class="col-sm-5">
-                                    <select class="form-control form-control-sm pilihkaryawan" name="nama" id="nama" aria-placeholder="Pilih Karyawan">
+                                    <select class="form-control form-control-sm pilihkaryawan" name="qtysatuan" id="qtysatuan">
                                         <option value="">Pilih Satuan</option>
                                         <option value="#">KG</option>
                                         <option value="#">Pc's</option>
@@ -120,7 +129,7 @@
                             <label>Qty Jumlah KG</label>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input type="number" class="form-control form-control-sm" name="kodespp" id="inputkodespp">
+                                    <input type="number" class="form-control form-control-sm" name="qtyjumlahkg" id="inputqtyjumlahkg">
                                 </div>
                             </div>
                         </div>
@@ -130,10 +139,10 @@
                             <label>Qty Jumlah Packing</label>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input type="number" class="form-control form-control-sm" name="kodespp" id="inputkodespp">
+                                    <input type="number" class="form-control form-control-sm" name="qtyjumlahpacking" id="inputqtyjumlahpacking">
                                 </div>
                                 <div class="col-sm-5">
-                                    <select class="form-control form-control-sm pilihkaryawan" name="nama" id="nama" aria-placeholder="Pilih Karyawan">
+                                    <select class="form-control form-control-sm pilihkaryawan" name="packingsatuan" id="packingsatuan">
                                         <option value="">Pilih Satuan</option>
                                         <option value="#">Dus</option>
                                         <option value="#">Ball</option>
