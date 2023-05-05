@@ -148,6 +148,7 @@
                         data-accordion="false">
                         <?php if (in_groups('vendor') || in_groups('sdm') || in_groups('it')) : ?>
                         <?php if (has_permission('dashboard')) : ?>
+                        <li class="nav-header">HRD (PAYROLL)</li>
                         <li class="nav-item">
                             <a href="<?= base_url() ?>/admin"
                                 class="nav-link <?= $halaman == 'Dashboard' ? 'active' : 'DASHBOARD SDM' ?>">
@@ -298,6 +299,40 @@
                             </a>
                         </li>
                         <?php } ?>
+                        <li class="nav-header">QC</li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-trash"></i>
+                                <p>
+                                    Temuan
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <?php if (has_permission('datakaryawan')) : ?>
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/gudang/inputmutasipenerimaan"
+                                        class="nav-link <?= $halaman == 'Karyawan' ? 'active' : 'DASHBOARD SDM' ?>">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>Mutasi Penerimaan B Jadi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/admin/diliburkan" class="nav-link">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>DILIBURKAN</p>
+                                    </a>
+                                </li>
+                                <?php endif ?>
+                                <!-- <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>TAGIHAN HARI KERJA</p>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </li>
+                        <li class="nav-header">PRODUKSI</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-warehouse"></i>

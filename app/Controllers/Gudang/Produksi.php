@@ -157,22 +157,33 @@ class Produksi extends BaseController
                     $tglspp = htmlspecialchars($this->request->getPost('tglspp'));
                     $tglrencanaspp = htmlspecialchars($this->request->getPost('tglrencanaspp'));
                     $kodeitem = htmlspecialchars($this->request->getPost('kodeitem'));
-                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
-                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
-                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
-                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
-                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
-                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
-                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
-                    $tgl = htmlspecialchars($this->request->getPost('tglresign'));
-                    $nip = $this->request->getPost('iidkar');
+                    $namaitem = htmlspecialchars($this->request->getPost('namaitem'));
+                    $tglpenerimaanbarangj = htmlspecialchars($this->request->getPost('tglpenerimaanbarangj'));
+                    $namacustomer = htmlspecialchars($this->request->getPost('namacustomer'));
+                    $customeraddr = htmlspecialchars($this->request->getPost('customeraddr'));
+                    $qtyjumlahsatuan = htmlspecialchars($this->request->getPost('qtyjumlahsatuan'));
+                    $qtysatuan = htmlspecialchars($this->request->getPost('qtysatuan'));
+                    $qtyjumlahkg = htmlspecialchars($this->request->getPost('qtyjumlahkg'));
+                    $qtyjumlahpacking = htmlspecialchars($this->request->getPost('qtyjumlahpacking'));
+                    $packingsatuan = $this->request->getPost('packingsatuan');
 
                     $pegawai = [
-                        'tgl_resign' => $tgl,
-                        'resign' => '1'
+                        'no_spp' => $kodespp,
+                        'tglspp_in' => $tglspp,
+                        'kodespp' => $tglrencanaspp,
+                        'kodespp' => $kodeitem,
+                        'kodespp' => $namaitem,
+                        'kodespp' => $tglpenerimaanbarangj,
+                        'kodespp' => $namacustomer,
+                        'kodespp' => $customeraddr,
+                        'kodespp' => $qtyjumlahsatuan,
+                        'kodespp' => $qtysatuan,
+                        'kodespp' => $qtyjumlahkg,
+                        'kodespp' => $qtyjumlahpacking,
+                        'kodespp' => $packingsatuan,
                     ];
 
-                    $dataupdate = $this->pegawaimodel->where('pegawai_nip', $nip)->set($pegawai)->update();
+                    $dataupdate = $this->pegawaimodel->where('no_spp', $kodespp)->set($pegawai)->update();
 
                     if ($dataupdate) {
                         $msg = [
@@ -462,23 +473,32 @@ class Produksi extends BaseController
                 $qty = $this->request->getPost('qty');
                 $tglspp = $this->request->getPost('tglspp');
                 $tglrencanaspp = $this->request->getPost('tglrencanaspp');
-                $tgl = $this->request->getPost('tgl');
-                $tgl = $this->request->getPost('tgl');
-                $tgl = $this->request->getPost('tgl');
-                $tgl = $this->request->getPost('tgl');
-                $tgl = $this->request->getPost('tgl');
-                $tgl = $this->request->getPost('tgl');
-                $tgl = $this->request->getPost('tgl');
-                $tgl = $this->request->getPost('tgl');
-                $tgl = $this->request->getPost('tgl');
-                $tgl = $this->request->getPost('tgl');
-                $unit = $this->request->getPost('unit');
-                $jorang = $this->request->getPost('jorang');
+                $kodeitem = $this->request->getPost('kodeitem');
+                $namaitem = $this->request->getPost('namaitem');
+                $tglpenerimaanbarangj = $this->request->getPost('tglpenerimaanbarangj');
+                $namacustomer = $this->request->getPost('namacustomer');
+                $customeraddr = $this->request->getPost('customeraddr');
+                $qtyjumlahsatuan = $this->request->getPost('qtyjumlahsatuan');
+                $qtysatuan = $this->request->getPost('qtysatuan');
+                $qtyjumlahkg = $this->request->getPost('qtyjumlahkg');
+                $qtyjumlahpacking = $this->request->getPost('qtyjumlahpacking');
+                $packingsatuan = $this->request->getPost('packingsatuan');
 
                 $pegawai = [
+                    'no_spp' => $kodespp,
+                    'qty' => $qty,
+                    'tglspp_in' => $tglspp,
                     'tgl' => $tgl,
-                    'pembagian4_id' => $unit,
-                    'jumlah_orang' => $jorang
+                    'tgl' => $tgl,
+                    'tgl' => $tgl,
+                    'tgl' => $tgl,
+                    'tgl' => $tgl,
+                    'tgl' => $tgl,
+                    'tgl' => $tgl,
+                    'tgl' => $tgl,
+                    'tgl' => $tgl,
+                    'tgl' => $tgl,
+                    'tgl' => $tgl,
                 ];
 
                 $save = $this->diliburkan->insert($pegawai);
